@@ -1,0 +1,161 @@
+body, html {
+    height: 100%; /* Asegura que body y html ocupen el 100% de la ventana */
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+    color: #333;
+}
+
+/* Estilos del encabezado */
+header {
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: #182a3f;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 20px 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo y Título */
+.logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+}
+
+.logo-image {
+    width: 40px; /* Tamaño del logo (más pequeño) */
+    margin-right: 10px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+.logo h1 {
+    font-size: 30px; /* Tamaño del texto */
+    color: #1f3a93;
+    font-family: serif;
+}
+
+/* Estilos del menú de usuario */
+.user-menu {
+    display: none; /* Oculta el menú por defecto */
+    position: absolute; /* Asegúrate de que el menú se superponga */
+    background-color: whitesmoke; /* Fondo del menú */
+    border: 1px solid whitesmoke; /* Bordes del menú */
+    border-radius: 8px; /* Bordes redondeados */
+    z-index: 1000; /* Asegúrate de que el menú esté encima de otros elementos */
+}
+
+.user-container {
+    position: relative; /* Necesario para el posicionamiento absoluto del menú */
+}
+
+.user-container:hover .user-menu {
+    display: block; /* Muestra el menú al pasar el ratón por encima */
+}
+
+/* Estilos del menú desplegable de categorías */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent; /* Color de fondo */
+    color: #182a3f; /* Color del texto */
+    padding: 10px 16px; /* Espaciado */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de mano */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.dropdown-content {
+    display: none; /* Ocultar contenido por defecto */
+    position: absolute; /* Posicionar absolutamente */
+    background-color: #b7d7ff; /* Color de fondo del contenido */
+    min-width: 160px; /* Ancho mínimo */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 1; /* Asegurarse de que aparezca sobre otros elementos */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostrar contenido al pasar el ratón */
+}
+
+.dropdown-content a {
+    color: black; /* Color del texto */
+    padding: 12px 16px; /* Espaciado de las opciones */
+    text-decoration: none; /* Sin subrayado */
+    display: block; /* Ocupar toda la línea */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.dropdown-content a:hover {
+    background-color:  #074693; /* Color al pasar el ratón */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    margin-left: 20px; /* Espaciado entre el ícono y la barra de búsqueda */
+    display: flex; /* Para alinear el input y el botón */
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; /* Bordes redondeados a la izquierda */
+}
+
+.search-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-left: none; /* Sin borde izquierdo */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white;
+    border-radius: 0 4px 4px 0; /* Bordes redondeados a la derecha */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+
+/* Estilos del pie de página */
+footer {
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: whitesmoke;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-nav a {
+    color: whitesmoke;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #074693;
+}
