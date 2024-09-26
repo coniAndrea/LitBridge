@@ -1,33 +1,33 @@
 /* Estilos para header-2 */
 header-2 {
     display: flex;
-    align-items: center; /* Centra verticalmente */
-    justify-content: space-between; /* Espacia los elementos */
+    align-items: center; 
+    justify-content: space-between; 
     padding: 20px 50px;
-    background-color: whitesmoke; /* Fondo del segundo encabezado */
-    color: white; /* Color del texto */
+    background-color: whitesmoke; 
+    color: white; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative; /* Relativa para que los elementos internos sean posicionados */
+    position: relative; 
 }
 
 /* Flecha de volver */
 .back-arrow {
     display: flex;
-    align-items: center; /* Centra verticalmente la flecha */
-    justify-content: flex-start; /* Alinea la flecha a la izquierda */
-    z-index: 10; /* Asegura que la flecha esté visible por encima de otros elementos */
+    align-items: center; 
+    justify-content: flex-start; 
+    z-index: 10; 
 }
 
 .back-arrow a {
-    color: #074693; /* Color del texto de la flecha */
-    font-size: 36px; /* Tamaño del texto de la flecha */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Permite el espaciado adecuado */
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1.0)); /* Sombra para la flecha */
+    color: #074693; 
+    font-size: 36px; 
+    text-decoration: none;
+    display: inline-block; 
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1.0)); 
 }
 
 .back-arrow a:hover {
-    color: #182a3f; /* Cambia el color al pasar el ratón */
+    color: #182a3f; 
 }
 
 /* Otros estilos */
@@ -35,43 +35,43 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    align-items: center; /* Centra verticalmente los elementos */
+    align-items: center;
 }
 
 nav a {
     text-decoration: none;
-    color: white; /* Color del texto */
+    color: white; 
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav a.join-button {
     background-color: #074693;
-    color: white; /* Color del texto */
+    color: white; 
     padding: 10px 20px;
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 20px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .container {
-    max-width: 600px; /* Ajusta el ancho máximo según sea necesario */
-    margin: 20px auto; /* Centra el contenedor horizontalmente */
-    padding: 20px; /* Espaciado interno */
-    background: whitesmoke; /* Fondo */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 600px;
+    margin: 20px auto; 
+    padding: 20px; 
+    background: whitesmoke;
+    border-radius: 10px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
 input[type="text"], textarea {
     width: 100%;
     padding: 10px;
-    border: none; /* Sin borde */
+    border: none;
     margin-top: 10px;
 }
 
 textarea {
-    resize: horizontal; /* Permite redimensionar solo horizontalmente */
-    border: none; /* Sin borde */
+    resize: horizontal; 
+    border: none;
 }
 
 hr {
