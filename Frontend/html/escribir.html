@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/escribir.css">
-    <script src="" defer></script> 
 </head>
 <body>
     <header>
@@ -37,31 +36,37 @@
             </div>
         </div>
     </header>
- <br>
+    <br>
     <main>
-
-        <div class="back-arrow">
-            <a href="../html/home.html"><i class="fas fa-arrow-left"></i></a>
-        </div>
-<br>
-        <div class="container-1">
-            <div class="container-2">
-             <h1> Seguir Escribiendo...</h1>
+        <nav>
+            <div class="back-arrow">
+                <a href="#"><i class="fa-solid fa-arrow-left"></i></a>
             </div>
- <br>
-            <nav>
-                <ul>
-                    <li><a href="#" class="join-button"><i class="fa-regular fa-pen-to-square"></i>Editar Historia</a></li>
-                    <br>
-                    <li><a href="../html/crear.html" class="join-button"><i class="fa-regular fa-square-plus"></i>
-                        Crear Una Nueva Historia</a></li>
-                        <br>
-                    <li><a href="#" class="join-button"> <i class="fa-solid fa-trash-can"></i>Eliminar Historia</a></li>
-                </ul>
-            </nav>
-
-        </div>         
+        </nav>
+        <div class="create-new-story-container"> <!-- Contenedor del botón -->
+            <a href="../html/crear.html" class="create-new-story">
+                <i class="fa-regular fa-square-plus"></i>
+                Crear Una Nueva Historia
+            </a>
+        </div>
+        <br>
+        <h1> Mis Creaciones</h1>
+        <br>
+        <div class="story-card">
+            <div class="story-image">
+                <img src="ruta_de_la_imagen" alt="Imagen de la historia">
+            </div>
+            <div class="story-details">
+                <p class="story-name"><strong>Nombre de la historia</strong></p>
+                <p class="story-info">Estado: <span>Activo</span> | Cantidad de capítulos: <span>10</span></p>
+                <br>
+                <nav class="story-actions">
+                    <div><a href="#" class="edit"><i class="fa-regular fa-pen-to-square"></i>Editar</a></div>
+                    <div><a href="#" class="continue"><i class="fa-solid fa-pencil-alt"></i>Continuar...</a></div>
+                    <div><a href="#" class="delete"> <i class="fa-solid fa-trash-can"></i>Eliminar</a></div>
+                </nav>
+            </div>
+        </div>
     </main>
-    
 </body>
 </html>
