@@ -1,247 +1,246 @@
 /* Estilos generales */
 * {
-    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
-    padding: 0; /* Elimina el relleno predeterminado de todos los elementos */
-    box-sizing: border-box; /* Incluye el relleno y el borde en el tamaño total de los elementos */
-    font-family: 'Arial', sans-serif; /* Establece la fuente para todo el documento */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Arial', sans-serif; 
 }
 
 body {
-    background-color: whitesmoke; /* Establece el color de fondo del cuerpo */
-    color: #333; /* Establece el color del texto del cuerpo */
+    background-color: whitesmoke; 
+    color: #333; 
 }
 
 /* Estilos del encabezado */
 header {
-    background: linear-gradient(90deg, #b7d7ff, #3f51b5); /* Fondo en degradé */
-    color: #182a3f; /* Color del texto del encabezado */
-    width: 100%; /* Ancho completo del encabezado */
-    display: flex; /* Utiliza flexbox para la disposición */
-    justify-content: space-between; /* Espacia los elementos en el encabezado */
-    align-items: center; /* Alinea verticalmente los elementos */
-    padding: 20px 50px; /* Espaciado interno del encabezado */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave debajo del encabezado */
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: #182a3f; 
+    width: 100%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Logo y Título */
 .logo {
-    display: flex; /* Utiliza flexbox para la disposición */
-    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    display: flex; 
+    align-items: center; 
 }
 
 .logo-image {
-    width: 40px; /* Tamaño del logo (más pequeño) */
-    margin-right: 10px; /* Espaciado a la derecha del logo */
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1.0)); /* Sombra en el logo */
+    width: 40px;
+    margin-right: 10px; 
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1.0)); 
 }
 
 .logo h1 {
-    font-size: 30px; /* Tamaño del texto del logo */
-    color: #1f3a93; /* Color del texto del logo */
-    font-family: serif; /* Fuente del texto del logo */
+    font-size: 30px; 
+    color: #1f3a93; 
+    font-family: serif; 
 }
 
 /* Estilos del menú de usuario */
 .user-menu {
-    display: none; /* Oculta el menú por defecto */
-    position: absolute; /* Posiciona el menú absolutamente respecto a su contenedor */
-    background-color: whitesmoke; /* Fondo del menú */
-    border: 1px solid whitesmoke; /* Bordes del menú */
-    border-radius: 8px; /* Bordes redondeados del menú */
-    z-index: 1000; /* Asegura que el menú esté encima de otros elementos */
+    display: none; 
+    position: absolute; 
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke; 
+    border-radius: 8px; 
+    z-index: 1000; 
 }
 
 .user-container {
-    position: relative; /* Necesario para el posicionamiento absoluto del menú */
+    position: relative; 
 }
 
 .user-container:hover .user-menu {
-    display: block; /* Muestra el menú al pasar el ratón por encima */
+    display: block; 
 }
 
 /* Header-2 */
 .header-2 {
-    display: flex; /* Utiliza flexbox para la disposición */
-    justify-content: space-between; /* Espacia los elementos en el encabezado */
-    align-items: center; /* Alinea verticalmente los elementos */
-    padding: 10px; /* Espaciado interno del header-2 */
-    background-color: whitesmoke; /* Color de fondo de header-2 */
-    margin-bottom: 20px; /* Margen inferior para separación */
-    position: relative; /* Posicionamiento relativo para elementos absolutos dentro */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px; 
+    background-color: whitesmoke; 
+    margin-bottom: 20px; 
+    position: relative; 
 }
 
 .header-2 h1 {
-    font-size: 30px; /* Tamaño del texto en header-2 */
-    margin: 0; /* Elimina el margen predeterminado */
-    margin-left: 50px; /* Agrega margen izquierdo para mover el texto a la derecha */
+    font-size: 30px;
+    margin: 0; 
+    margin-left: 50px; 
 }
 
 .header-2 button {
-    padding: 8px 16px; /* Espaciado interno del botón */
-    background-color: #074693; /* Color de fondo del botón */
-    color: whitesmoke; /* Color del texto del botón */
-    border: none; /* Sin borde para el botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    border-radius: 5px; /* Bordes redondeados del botón */
+    padding: 8px 16px;
+    background-color: #074693;
+    color: whitesmoke; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px; 
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    align-items: center; /* Centra verticalmente los elementos */
+    align-items: center; 
 }
 
 nav a {
     text-decoration: none;
-    color: whitesmoke; /* Color del texto */
+    color: whitesmoke; 
     font-weight: bold;
     padding: 10px 20px;
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 20px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: red;
 }
 
 nav a.join-button {
     background-color: #074693;
-    color: white; /* Color del texto */
+    color: white; 
     padding: 10px 20px;
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 20px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Flecha de volver */
 .back-arrow {
-    position: absolute; /* Posiciona la flecha absolutamente en relación al contenedor */
-    top: 10px; /* Espaciado desde la parte superior */
-    left: 10px; /* Espaciado desde la izquierda */
-    z-index: 10; /* Asegura que la flecha esté encima de otros elementos */
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    z-index: 10; 
 }
 
 .back-arrow a {
-    color: #074693; /* Color del texto de la flecha */
-    font-size: 36px; /* Tamaño del texto de la flecha */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Permite el espaciado adecuado */
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1.0)); /* Sombra para la flecha */
+    color: #074693; 
+    font-size: 36px; 
+    text-decoration: none; 
+    display: inline-block; 
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1.0)); 
 }
 
 .back-arrow a:hover {
-    color: #182a3f; /* Cambia el color al pasar el ratón */
+    color: #182a3f;
 }
 
 /* Contenedor principal */
 .container {
-    display: flex; /* Utiliza flexbox para la disposición */
-    justify-content: flex-start; /* Alineación a la izquierda para que se junten */
-    padding: 20px; /* Espaciado interno del contenedor */
+    display: flex;
+    justify-content: flex-start; 
+    padding: 20px;
 }
 
 /* Contenedor izquierdo para subir imagen */
 .left {
-    width: 30%; /* Ancho del contenedor izquierdo */
-    display: flex; /* Utiliza flexbox para la disposición */
-    flex-direction: column; /* Alinea los elementos en columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    margin-right: 20px; /* Espaciado a la derecha para separación */
+    width: 30%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-right: 20px; 
 }
 
 #bookCover {
-    display: flex; /* Utiliza flexbox para centrar el contenido */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    width: 200px; /* Ancho del contenedor de la portada */
-    height: 300px; /* Altura del contenedor de la portada */
-    background-color: whitesmoke; /* Fondo en degradé */
-    text-align: center; /* Alinea el texto al centro */
-    border: 2px dashed #074693; /* Bordes discontínuos */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el contenedor */
-    margin-bottom: 20px; /* Margen inferior para separación */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 200px;
+    height: 300px; 
+    background-color: whitesmoke; 
+    text-align: center; 
+    border: 2px dashed #074693; 
+    cursor: pointer; 
+    margin-bottom: 20px; 
 }
 
 #bookCover p {
-    font-size: 18px; /* Tamaño del texto dentro del contenedor de la portada */
-    color: black; /* Color del texto dentro del contenedor de la portada */
+    font-size: 18px; 
+    color: black; 
 }
 
 /* Formulario del lado izquierdo */
 form#uploadForm {
-    display: flex; /* Utiliza flexbox para la disposición */
-    flex-direction: column; /* Mantiene el formulario en columna */
-    margin-top: 20px; /* Margen superior para separación */
-    width: 100%; /* Asegura que el formulario ocupe el ancho completo */
+    display: flex; 
+    flex-direction: column; 
+    margin-top: 20px; 
+    width: 100%; 
 }
 
 form#uploadForm label {
-    font-size: 20px; /* Tamaño del texto de las etiquetas */
-    margin-bottom: 5px; /* Margen inferior para separación */
-    color: black; /* Color del texto de las etiquetas */
+    font-size: 20px; 
+    margin-bottom: 5px; 
+    color: black; 
 }
 
 form#uploadForm select {
-    width: 100%; /* Ancho completo del select */
-    padding: 8px; /* Espaciado interno del select */
-    font-size: 14px; /* Tamaño del texto del select */
-    margin-top: 10px; /* Margen superior para separación */
-    border-radius: 10px; /* Bordes redondeados del select */
-    border: 2px solid #074693; /* Borde del select */
+    width: 100%; 
+    padding: 8px; 
+    font-size: 14px; 
+    margin-top: 10px; 
+    border-radius: 10px; 
+    border: 2px solid #074693; 
 }
 
 form#uploadForm p {
-    font-size: 14px; /* Tamaño del texto del párrafo */
-    color: #656363; /* Color del texto del párrafo */
-    margin-top: 10px; /* Margen superior para separación */
-    text-align: center; /* Alinea el texto al centro */
+    font-size: 14px; 
+    color: #656363; 
+    margin-top: 10px;
+    text-align: center; 
 }
 
 /* Contenedor derecho para los detalles */
 .right {
-    width: 70%; /* Ancho del contenedor derecho */
+    width: 70%;
 }
 
 .right h1 {
-    font-size: 30px; /* Tamaño del texto del encabezado derecho */
-    margin-bottom: 20px; /* Margen inferior para separación */
+    font-size: 30px;
+    margin-bottom: 20px; 
     
 }
 
 form div {
-    margin-bottom: 15px; /* Margen inferior para separación entre los divs del formulario */
+    margin-bottom: 15px; 
 }
 
 /* Contenedor para alinear Título y Categoría */
 .title-container {
-    display: flex; /* Utiliza flexbox para la disposición */
-    justify-content: space-between; /* Espacia los elementos */
-    gap: 20px; /* Espacio entre los elementos */
+    display: flex; 
+    justify-content: space-between; 
+    gap: 20px; 
 }
 
 .input-container {
-    width: 48%; /* Ancho del contenedor del input */
+    width: 48%;
 }
 
 /* Estilo del textarea */
 textarea {
-    width: 100%; /* Ancho completo del textarea */
-    height: 100px; /* Altura del textarea */
-    resize: none; /* Desactiva el cambio de tamaño del textarea */
-    padding: 10px; /* Espaciado interno del textarea */
+    width: 100%; 
+    height: 100px; 
+    resize: none; 
 }
 
 /* Estilo de select y input */
 select,
 input[type="text"] {
-    width: 100%; /* Ancho completo para select y input */
-    padding: 10px; /* Espaciado interno para select e input */
-    font-size: 20px; /* Tamaño del texto para select e input */
-    margin-top: 5px; /* Margen superior para separación */
-    border: 2px solid #074693; /* Borde para input y textarea */
-    border-radius: 10px; /* Bordes redondeados para input y textarea */
+    width: 100%;
+    padding: 10px; 
+    font-size: 20px; 
+    margin-top: 5px; 
+    border: 2px solid #074693; 
+    border-radius: 10px; 
 }
 
 /* Ajustes de diseño de la portada y derechos de autor */
 #bookCover,
 form#uploadForm {
-    margin-bottom: 20px; /* Asegura espacio entre los elementos */
-    width: 100%; /* Asegura que ocupen el ancho completo */
+    margin-bottom: 20px; 
+    width: 100%; 
 }
