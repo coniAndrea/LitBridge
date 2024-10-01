@@ -22,7 +22,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Alinea verticalmente los elementos */
+    align-items: center; 
     padding: 20px 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -30,109 +30,193 @@ header {
 /* Logo y Título */
 .logo {
     display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    align-items: center;
 }
 
 .logo-image {
-    width: 40px; /* Tamaño del logo (más pequeño) */
+    width: 40px;
     margin-right: 10px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 .logo h1 {
-    font-size: 30px; /* Tamaño del texto */
+    font-size: 30px; 
     color: #1f3a93;
     font-family: serif;
 }
 
 /* Estilos del menú de usuario */
+
 .user-menu {
-    display: none; /* Oculta el menú por defecto */
-    position: absolute; /* Asegúrate de que el menú se superponga */
-    background-color: whitesmoke; /* Fondo del menú */
-    border: 1px solid whitesmoke; /* Bordes del menú */
-    border-radius: 8px; /* Bordes redondeados */
-    z-index: 1000; /* Asegúrate de que el menú esté encima de otros elementos */
+    display: none; 
+    position: absolute; 
+    background-color: whitesmoke; 
+    border: 1px solid #1f3a93; 
+    border-radius: 8px; 
+    z-index: 1000; 
+    padding: 10px; 
+    left: 0; 
 }
 
 .user-container {
-    position: relative; /* Necesario para el posicionamiento absoluto del menú */
+    position: relative; 
+    left: -80px; 
 }
 
-.user-container:hover .user-menu {
-    display: block; /* Muestra el menú al pasar el ratón por encima */
+.user-container img {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    background-color: whitesmoke; 
+    margin-left: -10px; 
 }
+
+/* Para los elementos de la lista dentro del menú de usuario */
+.user-menu li {
+    margin: 5px 0; 
+    padding: 5px; 
+    cursor: pointer;
+}
+
+.user-menu li:hover {
+    background-color:#b7d7ff;
+    border-radius: 50%; 
+}
+
+/* Estilo para los enlaces dentro de los elementos de la lista */
+.user-menu li a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* Mostrar el menú al pasar el mouse */
+.user-container:hover .user-menu {
+    display: block; 
+}
+
+/* Estilos para eliminar los puntos de la lista */
+ul {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+ol {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
 
 /* Estilos del menú desplegable de categorías */
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-left: -10px; /
 }
 
 .dropbtn {
-    background-color: transparent; /* Color de fondo */
-    color: #182a3f; /* Color del texto */
-    padding: 10px 16px; /* Espaciado */
-    font-size: 16px; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    cursor: pointer; /* Cursor de mano */
-    border-radius: 8px; /* Bordes redondeados */
+    background-color: transparent;
+    color: whitesmoke; 
+    padding: 10px 16px; 
+    font-size: 16px; 
+    border: none; 
+    cursor: pointer;
+    border-radius: 8px; 
 }
 
 .dropdown-content {
-    display: none; /* Ocultar contenido por defecto */
-    position: absolute; /* Posicionar absolutamente */
-    background-color: #b7d7ff; /* Color de fondo del contenido */
-    min-width: 160px; /* Ancho mínimo */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
-    z-index: 1; /* Asegurarse de que aparezca sobre otros elementos */
+    display: none; 
+    position: absolute;
+    background-color: rgba(183, 215, 255, 0.7);
+    min-width: 1000px; 
+    border-radius: 10px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    z-index: 1; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px; 
+    column-count: 3; 
+    column-gap: 10px; 
 }
 
 .dropdown:hover .dropdown-content {
-    display: block; /* Mostrar contenido al pasar el ratón */
+    display: flex; 
 }
 
 .dropdown-content a {
-    color: black; /* Color del texto */
-    padding: 12px 16px; /* Espaciado de las opciones */
-    text-decoration: none; /* Sin subrayado */
-    display: block; /* Ocupar toda la línea */
-    border-radius: 4px; /* Bordes redondeados */
+    color: black; 
+    padding: 12px 16px; 
+    text-decoration: none; 
+    display: block; 
+    border-radius: 4px; 
 }
 
 .dropdown-content a:hover {
-    background-color:  #074693; /* Color al pasar el ratón */
+    background-color:  #87b2e6; 
 }
 
-/* Barra de búsqueda */
+
+/* Barra de navegación */
 .search-bar {
-    margin-left: 20px; /* Espaciado entre el ícono y la barra de búsqueda */
-    display: flex; /* Para alinear el input y el botón */
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 20px; 
+    padding: 10px; 
+    width: 300px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s; 
 }
 
-.search-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px; /* Bordes redondeados a la izquierda */
+.search-bar:hover {
+    border-color: #1f3a93; 
 }
 
-.search-button {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-left: none; /* Sin borde izquierdo */
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white;
-    border-radius: 0 4px 4px 0; /* Bordes redondeados a la derecha */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+.search-bar i {
+    margin-right: 10px; 
+    color: #1f3a93; 
+}
+.search-bar input {
+    border: none; 
+    outline: none; 
+    flex: 1; 
+    padding: 8px; 
+    font-size: 16px; 
+    border-radius: 10px; 
+    background: transparent; 
+    color: #1f3a93; 
 }
 
+.search-bar input::placeholder {
+    color: #1f3a93;
+    opacity: 1; 
+}
+
+.navigate-button {
+    padding: 10px 20px; 
+    background: linear-gradient(90deg, #074693, #6ea3dc);
+    color: white; 
+    border: none;
+    border-radius: 20px;
+    cursor: pointer; 
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.navigate-button:hover {
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5); 
+    transform: scale(1.05); 
+}
 
 /* Estilos del pie de página */
 footer {
     background: linear-gradient(90deg, #b7d7ff, #3f51b5);
     color: whitesmoke;
-    padding: 20px 0;
+    padding: 20px 0; 
 }
 
 .footer-content {
