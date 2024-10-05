@@ -1,0 +1,188 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hacer que el body ocupe al menos la altura de la ventana */
+}
+
+/* Contenedor de configuración */
+.settings-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1; /* Permite que el contenedor ocupe el espacio disponible */
+}
+
+/* Menú de configuración */
+.settings-menu {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.settings-menu li {
+    list-style: none;
+}
+
+.settings-menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.settings-menu a.active,
+.settings-menu a:hover {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Contenido de configuración */
+.settings-content {
+    padding: 20px 0;
+}
+
+.section {
+    display: none;
+}
+
+.section h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.change-link {
+    color: #007bff;
+    text-decoration: none;
+    float: right;
+    margin-top: 5px;
+}
+
+.change-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los checkboxes */
+.notifications-group input[type="checkbox"] {
+    -webkit-appearance: none; /* Elimina el estilo predeterminado en navegadores WebKit */
+    -moz-appearance: none; /* Elimina el estilo predeterminado en Firefox */
+    appearance: none; /* Elimina el estilo predeterminado */
+    width: 20px; /* Tamaño del checkbox */
+    height: 20px; /* Tamaño del checkbox */
+    border: 2px solid #ccc; /* Borde del checkbox */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: white; /* Fondo blanco */
+    cursor: pointer; /* Cursor pointer */
+    position: relative; /* Posición relativa para el estado check */
+}
+
+/* Estado checked para el checkbox */
+.notifications-group input[type="checkbox"]:checked {
+    background-color: #007bff; /* Color de fondo cuando está marcado */
+    border-color: #007bff; /* Color del borde cuando está marcado */
+}
+
+/* Estilo para el checkmark (marca de verificación) */
+.notifications-group input[type="checkbox"]:checked::after {
+    content: ""; /* Necesario para crear el checkmark */
+    position: absolute;
+    left: 5px; /* Ajustar posición del checkmark */
+    top: 1px; /* Ajustar posición del checkmark */
+    width: 10px; /* Ancho del checkmark */
+    height: 10px; /* Alto del checkmark */
+    background-color: white; /* Color del checkmark */
+    border-radius: 2px; /* Bordes del checkmark */
+}
+
+/* Botones */
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.notifications-group {
+    margin-top: 10px;
+}
+
+.notifications-group ul {
+    list-style-type: disc; /* Usa un estilo de lista con viñetas */
+    padding-left: 20px; /* Espaciado a la izquierda para las listas anidadas */
+    margin-top: 5px; /* Espaciado superior */
+}
+
+/* Botón de cerrar cuenta */
+.close-account-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.close-account-btn:hover {
+    background-color: #c82333;
+}
+
+/* Pie de página */
+footer {
+    background-color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    margin: 0 auto;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .settings-container {
+        width: 95%;
+    }
+
+    .settings-menu {
+        flex-direction: column;
+    }
+}

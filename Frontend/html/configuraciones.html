@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/header.css">
     <script src="../js/header.js" defer></script> 
+    <link rel="stylesheet" href="../css/configuracion.css">
+    <script src="../js/configuracion.js" defer></script> 
 </head>
 <body>
     <header>
@@ -73,17 +75,88 @@
             </div>
         </div>
     </header>
-   <!-- Pie de página -->
-   <footer>
-    <div class="footer-content">
-        <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
-        <nav class="footer-nav">
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Contacto</a>
-        </nav>
-    </div>
-</footer>
+    <div class="settings-container">
+        <ul class="settings-menu">
+            <li><a href="#" class="active" onclick="showSection('cuenta')">Cuenta</a></li>
+            <li><a href="#" onclick="showSection('notificaciones')">Notificaciones</a></li>
+        </ul>
+    
+        <div class="settings-content">
+            <div id="cuenta" class="section" style="display: block;">
+                <h2>Cambia la información de tu cuenta y la configuración de privacidad</h2>
+                <form class="account-form">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" placeholder="Ingrese su nombre de usuario" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" placeholder="Ingrese su contraseña" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" placeholder="Ingrese su correo electrónico" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </form>
+            </div>
+    
+            <div id="notificaciones" class="section">
+                <h2>Notificaciones</h2>
+                <p>Recibir notificaciones por correo electrónico para estos eventos</p>
+                
+                <div class="notifications-group">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="mensajes" checked>
+                            <label for="mensajes">Mensajes</label>
+                            <ul>
+                                <li>Alguien escribe en tu panel de mensajes</li>
+                                <li>Alguien empieza a seguirte</li>
+                                <li>Alguien comenta en tu historia</li>
+                                <li>Alguien te menciona en un comentario</li>
+                                <li>Recibes un mensaje</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="usuarios-sigues">
+                            <label for="usuarios-sigues">Los usuarios que sigues suben una historia</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="actualizaciones" checked>
+                            <label for="actualizaciones">Actualizaciones</label>
+                            <ul>
+                                <li>Anuncios importantes de Wattpad</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="submit-btn">Guardar</button>
+            </div>
+        </div> <!-- Cierre del settings-content -->
+    </div> <!-- Cierre del settings-container -->
+    
+    <!-- Botón de cerrar cuenta -->
+    <button class="close-account-btn">Cerrar cuenta</button> 
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+    
 </body>
 </html>
-
