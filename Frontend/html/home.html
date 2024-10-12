@@ -6,7 +6,9 @@
     <title>Sugerencia - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/home.css">
     <script src="../js/header.js" defer></script> 
+    <script src="../js/home.js" defer></script> 
 </head>
 <body>
     <header>
@@ -73,6 +75,113 @@
             </div>
         </div>
     </header>
+    <main>
+        <section class="carousel" id="recommendations">
+            <h2>Recomendaciones</h2>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <button class="prev" onclick="moveCarousel(-1)">⯇</button>
+            <div class="carousel-content" id="carousel-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarousel(1)">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="fantasy">
+            <h2>Fantasía <span>🐉</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'genre-books')">⯇</button>
+            <div class="carousel-content" id="genre-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'genre-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="adventure">
+            <h2>Aventura <span>🧭</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'adventure-books')">⯇</button>
+            <div class="carousel-content" id="adventure-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'adventure-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="werewolf">
+            <h2>Hombre Lobos <span>🐺</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'werewolf-books')">⯇</button>
+            <div class="carousel-content" id="werewolf-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'werewolf-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="vampires">
+            <h2>Vampiros <span>🧛</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'vampire-books')">⯇</button>
+            <div class="carousel-content" id="vampire-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'vampire-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="classic">
+            <h2>Clásico <span>📜</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'classic-books')">⯇</button>
+            <div class="carousel-content" id="classic-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'classic-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="fairy-tales">
+            <h2>Cuentos <span>🧚</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'fairy-tales-books')">⯇</button>
+            <div class="carousel-content" id="fairy-tales-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'fairy-tales-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="romance">
+            <h2>Romance <span>❤️</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'romance-books')">⯇</button>
+            <div class="carousel-content" id="romance-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'romance-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="thriller">
+            <h2>Suspenso <span>🔪</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'thriller-books')">⯇</button>
+            <div class="carousel-content" id="thriller-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'thriller-books')">⯈</button>
+        </section>
+        
+        <section class="genre-section" id="science-fiction">
+            <h2>Ciencia Ficción <span>🚀</span></h2>
+            <button class="prev" onclick="moveCarouselGenre(-1, 'science-fiction-books')">⯇</button>
+            <div class="carousel-content" id="science-fiction-books">
+                <!-- Libros cargados por la API aquí -->
+            </div>
+            <button class="next" onclick="moveCarouselGenre(1, 'science-fiction-books')">⯈</button>
+        </section>
+        
+    </main>
+
+    <!-- Modal -->
+   
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="close">&times;</span> <!-- Botón de cierre -->
+            <img id="book-image" src="" alt="Book Image" />
+            <h2 id="book-title"></h2>
+            <p id="book-description"></p>
+            <button onclick="addToLibrary()">Agregar a mi biblioteca</button>
+        </div>
+    </div>
+
+    
    <!-- Pie de página -->
    <footer>
     <div class="footer-content">

@@ -1,0 +1,239 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;  /* Fuente de la página */
+    background-color: whitesmoke;     /* Color de fondo suave */
+    margin: 0;                        /* Eliminar margen por defecto */
+    padding: 0;                       /* Eliminar padding por defecto */
+}
+
+main {
+    padding: 20px;  /* Espaciado interno del elemento main */
+}
+
+h2 {
+    font-size: 24px;       /* Tamaño de la fuente de los títulos */
+    color: black;          /* Color del texto del título */
+    margin: 20px 0;        /* Márgenes arriba y abajo */
+}
+
+button {
+    background-color: #074693;  /* Color de fondo del botón */
+    color: white;               /* Color del texto del botón */
+    border: none;               /* Sin borde */
+    padding: 10px;              /* Espaciado interno */
+    cursor: pointer;           /* El cursor se convierte en mano al pasar por encima */
+    font-size: 16px;            /* Tamaño de la fuente */
+}
+
+/* Efecto cuando se pasa el cursor sobre el botón */
+button:hover {
+    background-color: #003366; /* Color más oscuro del botón al hacer hover */
+}
+
+/* Sección del carrusel */
+.carousel, .genre-section {
+    margin-bottom: 40px;                    /* Espaciado inferior */
+    display: flex;                          /* Usamos flexbox para el layout */
+    flex-direction: column;                 /* Disposición en columna */
+    align-items: center;                    /* Centrar los elementos dentro */
+    position: relative;                     /* Posición relativa para colocar flechas */
+}
+
+/* Estilos del contenido del carrusel */
+.carousel-content {
+    display: flex;                          /* Elementos en fila */
+    overflow-x: hidden;                     /* Oculta los elementos fuera del área visible */
+    gap: 10px;                              /* Espaciado entre las imágenes */
+    padding: 10px;                          /* Espaciado interno */
+    width: 80%;                             /* Ancho ajustado para que quepan 4 libros */
+    justify-content: flex-start;            /* Alinea los libros al principio */
+}
+
+.carousel-content img {
+    width: 200px;                           /* Ancho de las imágenes */
+    height: 300px;                          /* Altura de las imágenes */
+    object-fit: cover;                      /* Hace que la imagen cubra el área sin distorsionarse */
+    border-radius: 8px;                     /* Bordes redondeados en las imágenes */
+    transition: transform 0.3s ease;        /* Transición suave para el efecto hover */
+}
+
+/* Efecto cuando se pasa el cursor sobre una imagen del carrusel */
+.carousel-content img:hover {
+    transform: scale(1.1);  /* Hace que la imagen se agrande un poco */
+}
+
+/* Botones de navegación del carrusel */
+.prev, .next {
+    font-size: 30px;                       /* Tamaño de fuente de los botones */
+    color: #007BFF;                        /* Color de los botones */
+    background: none;                      /* Sin fondo */
+    border: none;                          /* Sin borde */
+    cursor: pointer;                       /* Cursor en forma de mano */
+    padding: 10px;                          /* Espaciado interno */
+    transition: color 0.3s;                 /* Transición suave para el color */
+    position: absolute;                     /* Posición absoluta para colocar las flechas en los extremos */
+    top: 50%;                               /* Centrado vertical */
+    transform: translateY(-50%);            /* Centrado exacto */
+}
+
+/* Efecto cuando se pasa el cursor sobre los botones de navegación */
+.prev:hover, .next:hover {
+    color: #0056b3;   /* Color más oscuro cuando se hace hover */
+}
+
+/* Estilos de las estrellas de calificación */
+.stars {
+    font-size: 18px;        /* Tamaño de la fuente */
+    margin: 10px 0;         /* Márgenes arriba y abajo */
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;                          /* Modal oculto por defecto */
+    position: fixed;                        /* Posición fija para que se quede en pantalla */
+    z-index: 1;                             /* Asegura que el modal esté por encima de otros elementos */
+    left: 0;                                /* Alineado a la izquierda */
+    top: 0;                                 /* Alineado a la parte superior */
+    width: 100%;                            /* Ocupa todo el ancho */
+    height: 100%;                           /* Ocupa todo el alto */
+    background-color: rgba(0, 0, 0, 0.5);   /* Fondo semitransparente */
+    overflow: auto;                         /* Permite el desplazamiento si es necesario */
+    padding-top: 50px;   
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);                   /* Sombra suave */
+}
+
+.modal-content {
+    background-color: #b7d7ff;                 /* Fondo blanco para el contenido del modal */
+    margin: 5% auto;                         /* Centrado vertical y horizontal */
+    padding: 20px;                           /* Espaciado interno */
+    border-radius: 10px;                     /* Bordes redondeados */
+    width: 80%;                              /* Ancho ajustado */
+    max-width: 600px;                        /* Máximo ancho */
+    text-align: center;                      /* Centrado del texto */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilos para la imagen dentro del modal */
+.modal-content img {
+    width: 200px;                           /* Ancho de la imagen */
+    height: 300px;                          /* Altura de la imagen */
+    object-fit: cover;                      /* Mantiene la imagen ajustada */
+    margin-bottom: 20px;                    /* Margen inferior */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el botón de cerrar del modal */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Estilos para el título y descripción del libro */
+.book-title, .book-description {
+    color: black;                            /* Color oscuro para el texto */
+}
+
+.book-title {
+    font-size: 22px;                        /* Tamaño de fuente del título */
+    margin-bottom: 15px;                     /* Margen inferior */
+}
+
+.book-description {
+    font-size: 16px;                        /* Tamaño de fuente de la descripción */
+    margin-bottom: 20px;                     /* Margen inferior */
+}
+
+/* Estilos para las secciones con iconos */
+h2 span {
+    font-size:60px;                        /* Tamaño de fuente del ícono */
+    margin-left: 10px;                      /* Margen a la izquierda */
+}
+
+/* Carrusel en cada género */
+.genre-section {
+    position: relative;                     /* Posición relativa para colocar las flechas */
+}
+
+.genre-section h2 {
+    display: flex;                          /* Usamos flexbox para alinear los elementos */
+    align-items: center;                    /* Alinear verticalmente */
+}
+
+/* Ajustar los botones de navegación dentro del carrusel */
+.prev {
+    left: 10px;                             /* Posición de la flecha de izquierda */
+}
+
+.next {
+    right: 10px;                            /* Posición de la flecha de derecha */
+}
+
+/* Media Queries para hacer el diseño responsivo */
+@media (max-width: 768px) {
+    .carousel-content {
+        width: 100%;  /* Hacer el carrusel más pequeño en pantallas pequeñas */
+        justify-content: center;  /* Centrar los libros en pantallas pequeñas */
+    }
+
+    .carousel-content img {
+        width: 150px;   /* Reducir el tamaño de las imágenes */
+        height: 225px;  /* Ajustar la altura proporcionalmente */
+    }
+
+    .prev, .next {
+        font-size: 24px; /* Reducir el tamaño de las flechas */
+    }
+
+    .modal-content {
+        width: 90%;  /* Hacer el modal más pequeño en pantallas pequeñas */
+    }
+
+    .book-title {
+        font-size: 18px; /* Reducir el tamaño del título */
+    }
+
+    .book-description {
+        font-size: 14px; /* Reducir el tamaño de la descripción */
+    }
+
+    h2 {
+        font-size: 20px; /* Reducir el tamaño de los títulos */
+    }
+
+    h2 span {
+        font-size: 50px; /* Reducir el tamaño de los iconos */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px; /* Reducir aún más el tamaño del título */
+    }
+
+    button {
+        font-size: 14px;  /* Reducir el tamaño de la fuente de los botones */
+        padding: 8px;      /* Reducir el padding de los botones */
+    }
+
+    .carousel-content {
+        flex-direction: column; /* Cambiar a una columna en lugar de fila */
+        width: 100%;
+    }
+
+    .carousel-content img {
+        width: 100%;   /* Hacer las imágenes más grandes en pantallas muy pequeñas */
+        height: auto;  /* Ajustar la altura automáticamente */
+    }
+
+    .prev, .next {
+        font-size: 18px;  /* Reducir aún más las flechas en pantallas pequeñas */
+    }
+}
