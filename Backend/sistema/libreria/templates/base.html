@@ -20,12 +20,12 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand navbar-light bg-light">
+        <nav class="navbar navbar-expand navbar-light" style="background-color: #bfddf3;">
             <div class="nav navbar-nav">
-                <!-- <a class="nav-item nav-link active" href="#" aria-current="page">Home <span class="visually-hidden">(current)</span></a> -->
-                <a class="nav-item nav-link" href="{% url 'inicio' %}">Home</a>
-                <a class="nav-item nav-link" href="{% url 'libros' %}">Libros</a>
-                <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link text-dark" href="{% url 'inicio' %}">Home</a>
+                <a class="nav-item nav-link text-dark" href="{% url 'libros' %}">Libros</a>
+                <a class="nav-item nav-link text-dark" href="{% url 'nosotros' %}">Nosotros</a>
+                <a class="nav-item nav-link bs-danger-border-subtle" href="{% url 'logout' %}">Cerrar sesión</a>
             </div>
         </nav>
         
