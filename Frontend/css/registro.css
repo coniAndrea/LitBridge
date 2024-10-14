@@ -46,9 +46,8 @@ main {
 /* Flecha de volver */
 .back-arrow {
     position: absolute;
-    top: 50%;          /* Ajustamos la flecha al centro vertical del header */
-    right: 20px;       /* Se posiciona a la derecha */
-    transform: translateY(-50%);  /* Ajusta la flecha para que esté perfectamente centrada verticalmente */
+    top: 50px;           /* Ajuste la posición para colocar la flecha entre el encabezado y el contenido */
+    right: 20px;         /* Mueve la flecha hacia el lado derecho */
     z-index: 10;
 }
 
@@ -63,7 +62,6 @@ main {
 .back-arrow a:hover {
     color: #182a3f;
 }
-
 
 .formulario {
 	display: grid;
@@ -155,22 +153,22 @@ main {
 	height: 45px;
 	line-height: 45px;
 	width: 30%;
-	background: #000;
-	color: #fff;
+	background: #182a3f;
+	color: whitesmoke;
 	font-weight: bold;
 	border: none;
-	border-radius: 3px;
+	border-radius: 15px;
 	cursor: pointer;
 	transition: .1s ease all;
 }
 
 .formulario__btn:hover {
-	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+	box-shadow: 3px 0px 30px rgb(141, 148, 255);
 }
 
 .formulario__mensaje-exito {
-	font-size: 14px;
-	color: #119200;
+	font-size: 20px;
+	color: #2E8B57;
 	display: none;
 }
 
@@ -180,7 +178,7 @@ main {
 
 /* ----- -----  Estilos para Validacion ----- ----- */
 .formulario__grupo-correcto .formulario__validacion-estado {
-	color: #1ed12d;
+	color: #2E8B57;
 	opacity: 1;
 }
 
