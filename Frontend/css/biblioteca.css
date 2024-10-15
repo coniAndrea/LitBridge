@@ -1,0 +1,113 @@
+/* Estilos para el contenedor del logo */
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el logo y el texto */
+}
+
+/* Estilizar la imagen del logo */
+header .logo .logo-image {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+/* Estilizar el texto del logo */
+header .logo h1 {
+    font-size: 50px;
+    color: #1f3a93;
+    font-family: serif;
+}
+
+/* Efecto de hover sobre el logo */
+header .logo a:hover .logo-image {
+    transform: scale(1.1); /* Agranda ligeramente la imagen */
+}
+
+/* Estilo del enlace (para evitar el subrayado) */
+header .logo a {
+    text-decoration: none; /* Eliminar el subrayado del enlace */
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos del contenedor que envuelve el h1 (contiene el logo y el título) */
+.contenedor-titulo {
+    display: flex;               
+    flex-direction: column;      /* Apilar logo y título verticalmente */
+    align-items: center;         /* Centrar todo el contenido */
+    justify-content: flex-start; /* Alinear desde el principio (parte superior) */
+    min-height: 50vh;             /* Altura mínima de la mitad de la pantalla */
+    padding-top: 10px;            /* Menos separación en la parte superior */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor */
+}
+
+/* Estilos del título (h1) */
+.titulo-principal {
+    display: flex;                
+    justify-content: center;     /* Centra el contenido entre las imágenes */
+    align-items: center;         /* Centra verticalmente el texto */
+    font-size: 55px;              /* Tamaño grande para el título */
+    color: #1f3a93;               /* Color de texto */
+    font-weight: bold;            
+    font-family: serif;
+    text-align: center;         
+    text-shadow: 2px 2px 4px rgba(83, 82, 82, 0.2); /* Sombra sutil al texto */
+}
+
+/* Efecto hover sobre el título principal */
+.titulo-principal:hover {
+    transform: scale(1.05);          /* Aumenta ligeramente el tamaño del título */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más intensa en hover */
+}
+
+/* Estilos para las imágenes dentro del span */
+.titulo-principal .icon img {
+    width: 250px;                  /* Aumenta el tamaño de la imagen */
+    height: auto;                 /* Mantiene la proporción de la imagen */
+    margin: 0 20px;               /* Espacio entre las imágenes y el texto */
+}
+
+/* Media Queries para hacerlo responsivo */
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    header .logo h1 {
+        font-size: 30px; /* Reduce el tamaño del título en pantallas pequeñas */
+    }
+
+    header .logo .logo-image {
+        width: 80px; /* Reduce el tamaño del logo */
+    }
+
+    .titulo-principal {
+        font-size: 40px; /* Reduce el tamaño del título */
+        text-align: center; /* Asegura que el título esté centrado */
+    }
+
+    .titulo-principal .icon img {
+        width: 150px; /* Reduce el tamaño de las imágenes */
+        margin: 0 15px; /* Reduce el espacio entre las imágenes y el texto */
+    }
+}
+
+/* Pantallas extra pequeñas (móviles muy pequeños) */
+@media (max-width: 480px) {
+    header .logo h1 {
+        font-size: 25px; /* Ajusta aún más el tamaño del título */
+    }
+
+    header .logo .logo-image {
+        width: 60px; /* Ajusta el tamaño del logo para pantallas muy pequeñas */
+    }
+
+    .titulo-principal {
+        font-size: 30px; /* Reduce más el tamaño del título */
+    }
+
+    .titulo-principal .icon img {
+        width: 120px; /* Ajusta el tamaño de las imágenes en pantallas muy pequeñas */
+        margin: 0 10px; /* Menos espacio entre las imágenes y el texto */
+    }
+}
