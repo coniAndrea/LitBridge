@@ -17,7 +17,7 @@ header {
     color: whitesmoke;
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Alinea el contenido del header */
+    justify-content: space-between;
     padding: 20px 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -46,7 +46,7 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    align-items: center; /* Centra verticalmente los elementos */
+    align-items: center;
 }
 
 nav a {
@@ -76,7 +76,7 @@ nav a.join-button {
 
 /* Espacio entre el header y el contenedor */
 .header {
-    margin-bottom: 20px; /* Ajusta este valor según necesites */
+    margin-bottom: 20px; 
 }
 
 /* Sección izquierda */
@@ -116,31 +116,31 @@ nav a.join-button {
 
 /* Imagen a la derecha */
 .right img {
-    width: 100%; /* Ajusta la imagen para que ocupe el 100% del contenedor */
+    width: 100%; 
     max-width: 700px;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 .incline-right {
-    display: inline-block; /* Asegura que el transform se aplique correctamente */
-    transform: rotate(10deg); /* Ajusta el ángulo según necesites */
+    display: inline-block; 
+    transform: rotate(10deg); 
 }
 
 /* Contenedor 2 */
 .container-2 {
     display: flex;
-    flex-direction: row-reverse; /* Invierte el orden de los elementos en el contenedor */
+    flex-direction: row-reverse; 
 }
 
 /* Información */
 .info {
     flex: 1;
-    margin-left: 20px; /* Espacio entre la información y el carrusel */
+    margin-left: 20px; 
 }
 
 .info h3 {
     font-size: 30px;
-    margin-bottom: 20px; /* Ajustado el margen inferior */
+    margin-bottom: 20px; 
     color: #182a3f;
 }
 
@@ -153,7 +153,7 @@ nav a.join-button {
 .carrusel {
     flex: 2;
     position: relative;
-    width: 100%; /* Asegúrate de que ocupe el 100% del contenedor disponible */
+    width: 100%; 
     overflow: hidden;
 }
 
@@ -163,12 +163,12 @@ nav a.join-button {
 }
 
 .carrusel-item {
-    min-width: 100%; /* Asegúrate de que cada ítem ocupe el 100% del ancho del carrusel */
+    min-width: 100%; 
     box-sizing: border-box;
 }
 
 .carrusel img {
-    width: 50%; /* Ajusta el ancho de la imagen */
+    width: 50%; 
     height: auto;
     margin-left: 20px;
     filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.9))
@@ -216,12 +216,12 @@ footer {
 
     .info, .carrusel {
         margin: 0;
-        width: 100%; /* Asegura que los elementos ocupen el 100% del ancho en pantallas pequeñas */
+        width: 100%; 
     }
 
     .carrusel img {
-        width: 100%; /* Ajusta las imágenes dentro del carrusel para que ocupen todo el ancho disponible */
-        margin: 0; /* Elimina márgenes para evitar desplazamientos no deseados */
+        width: 100%;
+        margin: 0;
     }
 
     .footer-content {

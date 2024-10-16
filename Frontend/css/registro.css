@@ -26,9 +26,9 @@ main {
 .logo-container {
     display: flex;
     align-items: center;
-    position: absolute;  /* Para que el logo esté en la parte superior */
-    top: 20px;           /* Ajusta la distancia desde el borde superior */
-    left: 20px;          /* Ajusta la distancia desde el borde izquierdo */
+    position: absolute;  
+    top: 20px;           
+    left: 20px;          
 }
 
 .logo {

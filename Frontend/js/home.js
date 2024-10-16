@@ -125,3 +125,21 @@ function addToLibrary() {
     closeModal();
 }
 
+function addToLibrary(title, author, image, chapters) {
+    // Obtén los libros existentes desde localStorage
+    let library = JSON.parse(localStorage.getItem('library')) || [];
+
+    // Crea un nuevo objeto libro
+    const newBook = {
+        title: title,
+        author: author,
+        image: image,
+        chapters: chapters
+    };
+
+    // Agrega el nuevo libro a la biblioteca
+    library.push(newBook);
+
+    // Guarda la biblioteca actualizada en localStorage
+    localStorage.setItem('library', JSON.stringify(library));
+}
