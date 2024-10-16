@@ -1,5 +1,5 @@
 body, html {
-    height: 100%; /* Asegura que body y html ocupen el 100% de la ventana */
+    height: 100%; 
 }
 
 /* Estilos generales */
@@ -21,7 +21,7 @@ header {
     color: #182a3f;
     width: 100%;
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    flex-wrap: wrap; 
     justify-content: space-between;
     align-items: center; 
     padding: 20px;
@@ -128,7 +128,7 @@ ol {
     display: none; 
     position: absolute;
     background-color: rgba(183, 215, 255, 0.7);
-    min-width: 300px; /* Cambiado a un valor menor para pantallas pequeñas */
+    min-width: 300px; 
     border-radius: 10px; 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
     z-index: 1; 
@@ -136,8 +136,8 @@ ol {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-height: 300px; /* Usar max-height en lugar de height para mejor responsividad */
-    overflow-y: auto; /* Permite el desplazamiento si el contenido excede */
+    max-height: 300px; 
+    overflow-y: auto; 
 }
 
 .dropdown:hover .dropdown-content {
@@ -217,7 +217,7 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
@@ -246,47 +246,47 @@ footer {
 /* Pantallas pequeñas (tabletas) */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Organiza los elementos en columna */
-        align-items: center; /* Centra los elementos horizontalmente */
+        flex-direction: column; 
+        align-items: center; 
     }
 
     .logo h1 {
-        font-size: 25px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+        font-size: 25px; 
     }
 
     .search-bar {
-        width: 250px; /* Hace más pequeña la barra de búsqueda */
+        width: 250px; 
     }
 
     .dropdown-content {
-        min-width: 250px; /* Ajusta el ancho del menú desplegable */
+        min-width: 250px; 
     }
 
     .footer-content {
-        flex-direction: column; /* Organiza los elementos del pie de página en columna */
-        align-items: center; /* Centra los elementos del pie de página */
+        flex-direction: column;
+        align-items: center; 
     }
 }
 
 /* Pantallas muy pequeñas (móviles) */
 @media (max-width: 480px) {
     header {
-        padding: 15px; /* Reduce el padding en pantallas pequeñas */
+        padding: 15px; 
     }
 
     .logo h1 {
-        font-size: 20px; /* Ajusta el tamaño del logo para pantallas muy pequeñas */
+        font-size: 20px;  
     }
 
     .search-bar {
-        width: 200px; /* Reduce aún más el tamaño de la barra de búsqueda */
+        width: 200px; 
     }
 
     .navigate-button {
-        font-size: 14px; /* Reduce el tamaño del botón de navegación */
+        font-size: 14px; 
     }
 
     footer {
-        padding: 15px 0; /* Ajusta el padding en el pie de página */
+        padding: 15px 0; 
     }
 }
