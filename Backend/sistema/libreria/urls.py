@@ -5,6 +5,9 @@ from . import views
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
+from django.urls import path
+from .views import translate_text
+
 urlpatterns = [
     path('inicio', views.inicio, name='inicio'),
     path('', views.login, name='login'),
@@ -15,5 +18,6 @@ urlpatterns = [
     path('libros/editar', views.editar, name='editar'),
     path('eliminar/<int:id>/', views.eliminar, name='eliminar'),
     path('libros/editar/<int:id>/', views.editar, name='editar'),
+    path('translate/', translate_text, name='translate_text'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
