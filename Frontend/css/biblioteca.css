@@ -90,28 +90,25 @@ header .logo a {
     background: linear-gradient(90deg, #bcd8fa, #969cbf);
 }
 
-/* Para pantallas pequeñas, hacer que se apilen verticalmente */
-@media (max-width: 768px) {
-    .story-container {
-        flex-direction: column; 
-    }
-
-    .story-cover {
-        width: 100%; 
-    }
-}
-
-/* Estilos para el contenedor de los detalles de la historia */
-.story-details {
-    flex: 1; 
+/* Estilos para la biblioteca de libros */
+.library-container {
     display: flex;
-    flex-direction: column; 
-    gap: 10px; 
+    flex-wrap: wrap;
+    gap: 20px; /* Separación entre libros */
+    justify-content: center;
 }
 
-/* Imagen de la historia */
+.story-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 200px; /* Ancho de cada libro */
+    text-align: center;
+    background-color: #fff; /* Fondo blanco para cada libro */
+}
+
+/* Imagen de la portada del libro */
 .story-cover {
-    width: 250px; 
+    width: 100%;
     height: auto; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
