@@ -94,3 +94,43 @@ formulario.addEventListener('submit', (e) => {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+
+formulario.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const terminos = document.getElementById('terminos');
+	if(campos.usuario && campos.password && campos.correo && terminos.checked) {
+		// Obtener los valores de los campos
+		const usuario = document.getElementById('usuario').value;
+		const correo = document.getElementById('correo').value;
+		const password = document.getElementById('password').value;
+
+		// Crear un objeto con los datos del registro
+		const datosUsuario = {
+			usuario: usuario,
+			correo: correo,
+			password: password
+		};
+
+		// Guardar los datos en localStorage
+		localStorage.setItem('registroUsuario', JSON.stringify(datosUsuario));
+
+		// Reiniciar el formulario
+		formulario.reset();
+
+		// Mostrar mensaje de éxito
+		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+		setTimeout(() => {
+			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+		}, 5000);
+
+		// Eliminar las clases de éxito
+		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+			icono.classList.remove('formulario__grupo-correcto');
+		});
+	} else {
+		// Mostrar mensaje de error si faltan campos o términos
+		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+	}
+});
