@@ -90,43 +90,49 @@ header .logo a {
     background: linear-gradient(90deg, #bcd8fa, #969cbf);
 }
 
-/* Estilos para la biblioteca de libros */
+/* Contenedor de la biblioteca con diseño de grid para tres columnas */
 .library-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Separación entre libros */
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 40px; /* Espacio entre los libros */
+    justify-items: center;
+    padding: 20px;
 }
 
+/* Cada libro será una tarjeta dentro de la grid */
 .story-container {
     border: 1px solid #ddd;
-    padding: 15px;
-    width: 200px; /* Ancho de cada libro */
+    padding: 25px; /* Más espacio interno */
+    width: 300px; /* Aumenta el ancho de cada libro */
     text-align: center;
     background-color: #fff; /* Fondo blanco para cada libro */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Añadir sombra */
+    border-radius: 15px; /* Bordes más redondeados */
 }
 
 /* Imagen de la portada del libro */
 .story-cover {
     width: 100%;
     height: auto; 
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
 }
 
 /* Estilo del título de la historia */
 .story-title {
-    font-size: 24px;
+    font-size: 28px; /* Título más grande */
     font-weight: bold;
     color: black;
-    margin: 0; 
+    margin-bottom: 10px; /* Más espacio entre título y autor */
     font-family: serif;
 }
 
 /* Estilo del autor de la historia */
 .story-author {
-    font-size: 20px;
+    font-size: 22px; /* Autor más grande */
     color: black;
+    margin-bottom: 20px; /* Espacio debajo del autor */
     font-family: serif;
 }
 
@@ -136,13 +142,12 @@ header .logo a {
     align-items: center;
     background: linear-gradient(90deg, #074693, #6ea3dc);
     color: whitesmoke;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Botón más grande */
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 25px;
+    border-radius: 8px;
+    font-size: 22px; /* Texto del botón más grande */
     font-weight: bold;
-    transition: background-color 0.3s ease;
-    width: fit-content; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-family: serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -150,13 +155,13 @@ header .logo a {
 /* Efecto hover en el botón */
 .cta-button:hover {
     background: linear-gradient(90deg, #b7d7ff, #3f51b5); 
-    transform: scale(1.05); 
+    transform: scale(1.08); /* Efecto de agrandamiento al hacer hover */
 }
 
 /* Icono dentro del botón de CTA */
 .cta-image {
-    width: 25px; 
-    height: 25px;
+    width: 30px; /* Icono más grande */
+    height: 30px;
     margin-right: 10px; 
 }
 
@@ -189,6 +194,11 @@ header .logo a {
     .story-cover {
         width: 100%;
     }
+
+    /* Ajustar a dos columnas en pantallas más pequeñas */
+    .library-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
 }
 
 /* Pantallas extra pequeñas (móviles muy pequeños) */
@@ -216,5 +226,10 @@ header .logo a {
 
     .story-cover {
         width: 100%;
+    }
+
+    /* Ajustar a una columna en pantallas extra pequeñas */
+    .library-container {
+        grid-template-columns: 1fr;
     }
 }
