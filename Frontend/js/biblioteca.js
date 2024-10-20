@@ -2,22 +2,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const libraryContainer = document.getElementById('library');
     const storedBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
 
-    for (let i = 0; i < storedBooks.length; i += 2) {
-        const row = document.createElement('div');
-        row.classList.add('library-row'); // Nueva fila para contener dos libros
+    // Mostrar libros almacenados
+    storedBooks.forEach(book => {
+        const bookElement = createBookElement(book);
+        libraryContainer.appendChild(bookElement);
+    });
 
-        // Primer libro
-        const bookElement1 = createBookElement(storedBooks[i]);
-        row.appendChild(bookElement1);
+    // Función para agregar un libro
+    function addBookToLibrary(book) {
+        const storedBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
+        const bookExists = storedBooks.some(storedBook => storedBook.title === book.title && storedBook.author === book.author);
 
-        // Segundo libro (si existe)
-        if (storedBooks[i + 1]) {
-            const bookElement2 = createBookElement(storedBooks[i + 1]);
-            row.appendChild(bookElement2);
+        if (!bookExists) {
+            storedBooks.push(book);
+            localStorage.setItem('libraryBooks', JSON.stringify(storedBooks));
+            console.log('Libro agregado a la biblioteca.');
+        } else {
+            console.log('El libro ya está en la biblioteca.');
         }
-
-        // Añadir la fila a la biblioteca
-        libraryContainer.appendChild(row);
     }
 
     function createBookElement(book) {
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="story-details">
                 <h2 class="story-title">${book.title || 'Título Desconocido'}</h2>
                 <p class="story-author">${book.author || 'Autor Desconocido'}</p>
-                <a href="${book.link || '#'}" class="cta-button">
+                <a href="${book.link || '../html/lectura.html'}" class="cta-button">
                     <img src="../img/leer.png" alt="Icono de Leer" class="cta-image"> Leer
                 </a>
             </div>
@@ -37,4 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return bookElement;
     }
+
+    // Ejemplo de uso (puedes ajustar según tus necesidades)
+    const newBook = {
+        title: 'Título del Libro',
+        author: 'Autor del Libro',
+        image: '../img/portada-libro.png',
+        link: '../html/lectura.html'
+    };
+
+    addBookToLibrary(newBook);
 });
+
