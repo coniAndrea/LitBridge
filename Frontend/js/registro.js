@@ -3,36 +3,36 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	password: /^.{4,12}$/, // 4 a 12 dígitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 }
 
 const campos = {
 	usuario: false,
 	password: false,
-	correo: false,
+	correo: false
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "usuario":
 			validarCampo(expresiones.usuario, e.target, 'usuario');
-		break;
+			break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
 			validarPassword2();
-		break;
+			break;
 		case "password2":
 			validarPassword2();
-		break;
+			break;
 		case "correo":
 			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
+			break;
 	}
 }
 
 const validarCampo = (expresion, input, campo) => {
-	if(expresion.test(input.value)){
+	if (expresion.test(input.value)) {
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
 		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
@@ -53,7 +53,7 @@ const validarPassword2 = () => {
 	const inputPassword1 = document.getElementById('password');
 	const inputPassword2 = document.getElementById('password2');
 
-	if(inputPassword1.value !== inputPassword2.value){
+	if (inputPassword1.value !== inputPassword2.value) {
 		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
 		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
@@ -79,44 +79,21 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.password && campos.correo &&terminos.checked ){
-		formulario.reset();
-
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
-
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
-});
-
-
-formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.password && campos.correo && terminos.checked) {
-		// Obtener los valores de los campos
+	if (campos.usuario && campos.password && campos.correo && terminos.checked) {
+		// Registrar usuario en localStorage
 		const usuario = document.getElementById('usuario').value;
 		const correo = document.getElementById('correo').value;
 		const password = document.getElementById('password').value;
 
-		// Crear un objeto con los datos del registro
 		const datosUsuario = {
 			usuario: usuario,
 			correo: correo,
 			password: password
 		};
 
-		// Guardar los datos en localStorage
 		localStorage.setItem('registroUsuario', JSON.stringify(datosUsuario));
 
-		// Reiniciar el formulario
+		// Limpiar formulario
 		formulario.reset();
 
 		// Mostrar mensaje de éxito
@@ -125,12 +102,14 @@ formulario.addEventListener('submit', (e) => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
 		}, 5000);
 
-		// Eliminar las clases de éxito
+		// Quitar clases de éxito y ocultar mensaje de error
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+
 	} else {
-		// Mostrar mensaje de error si faltan campos o términos
+		// Mostrar mensaje de error
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });

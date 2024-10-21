@@ -92,3 +92,23 @@ fetchBooks('science fiction', document.getElementById('science-fiction-books'));
 
 // Asignamos el evento para cerrar el modal
 document.getElementById('closeModalBtn').onclick = closeModal;
+
+// Función para mover el carrusel principal (recomendaciones)
+function moveCarousel(direction) {
+    const carousel = document.getElementById('carousel-books');
+    const scrollAmount = carousel.offsetWidth; // El ancho visible del carrusel
+    carousel.scrollBy({
+        left: scrollAmount * direction, // Desplazar en la dirección indicada
+        behavior: 'smooth' // Movimiento suave
+    });
+}
+
+// Función para mover el carrusel en los géneros
+function moveCarouselGenre(direction, containerId) {
+    const carousel = document.getElementById(containerId);
+    const scrollAmount = carousel.offsetWidth; // El ancho visible del carrusel
+    carousel.scrollBy({
+        left: scrollAmount * direction, // Desplazar en la dirección indicada
+        behavior: 'smooth' // Movimiento suave
+    });
+}
