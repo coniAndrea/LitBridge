@@ -138,8 +138,8 @@ function getCookie(name) {
 }
 //// djago////
 //// from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
+//// from django.views.decorators.csrf import csrf_exempt
+//// import json
 
 //// @csrf_exempt  # Solo para pruebas; considera usar el decorador CSRF en producción
 //// def registrar_usuario(request):
