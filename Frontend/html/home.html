@@ -170,15 +170,18 @@
 
     <!-- Modal -->
    
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModalBtn" class="close">&times;</span> <!-- Botón de cierre -->  
-            <img id="book-image" src="" alt="Imagen del libro">
-            <h2 id="book-title"></h2>
-            <p id="book-description"></p>
-            <button onclick="addToLibrary('Título de la Historia', 'Autor de la Historia', 'ruta/de/la/imagen.jpg', 'X capítulos')">Agregar a mi Biblioteca</button>
-        </div>
+   <!-- Modal de detalles del libro -->
+<div id="bookModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <img id="book-image" src="" alt="Imagen del libro">
+        <h2 id="book-title"></h2>
+        <p id="book-description"></p>
+        <p id="book-price-info"></p>
+        <button id="addToLibraryBtn">Agregar a la biblioteca</button>  <!-- Indicador si el libro es gratuito o no -->
     </div>
+</div>
+
 
     
    <!-- Pie de página -->

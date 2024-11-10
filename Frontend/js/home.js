@@ -38,6 +38,8 @@ function showBookDetails(bookInfo) {
     const bookImage = document.getElementById('book-image');
     const bookTitle = document.getElementById('book-title');
     const bookDescription = document.getElementById('book-description');
+    const bookPriceInfo = document.getElementById('book-price-info'); // Referencia correcta
+    const addToLibraryBtn = document.getElementById('addToLibraryBtn'); // Referencia al botón
 
     // Actualizamos los detalles del libro en el modal
     bookTitle.textContent = bookInfo.title || 'Título no disponible';
@@ -46,10 +48,36 @@ function showBookDetails(bookInfo) {
     const shortDescription = getShortDescription(fullDescription, 150); // Limitar descripción
     bookDescription.textContent = shortDescription;
 
+    // Verificamos si el libro es gratuito
+    const isFree = bookInfo.saleInfo?.saleability === 'FREE' || !bookInfo.saleInfo?.retailPrice;
+
+    if (isFree) {
+        bookPriceInfo.textContent = "Este libro es gratuito";
+        bookPriceInfo.style.color = "green"; // Estilo para indicar que es gratuito
+    } else {
+        bookPriceInfo.textContent = "Este libro no es gratuito";
+        bookPriceInfo.style.color = "red"; // Estilo para indicar que no es gratuito
+    }
+
     bookImage.src = bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300?text=Sin+imagen';
+
+    // Asignamos el evento al botón de agregar a la biblioteca
+    addToLibraryBtn.onclick = function() {
+        addToLibrary(bookInfo); // Agregamos el libro a la biblioteca
+        alert('Libro agregado a la biblioteca');
+        closeModal(); // Cerramos el modal después de agregarlo
+    };
 
     modal.style.display = 'block'; // Mostramos el modal
 }
+
+// Cerrar el modal al hacer clic en el botón de cerrar
+function closeModal() {
+    document.getElementById('bookModal').style.display = 'none';
+}
+
+// Asignamos el evento para cerrar el modal
+document.getElementById('closeModalBtn').onclick = closeModal;
 
 // Función para obtener las primeras N palabras de una descripción
 function getShortDescription(description, maxWords) {
@@ -61,26 +89,21 @@ function getShortDescription(description, maxWords) {
 }
 
 // Función para agregar un libro a la biblioteca
-function addToLibrary(book) {
+function addToLibrary(bookInfo) {
     const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
     libraryBooks.push({
-        title: book.title,
-        author: book.authors?.join(', ') || 'Autor no disponible', // Aseguramos mostrar autores
-        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
-        link: book.infoLink || '#'
+        title: bookInfo.title,
+        author: bookInfo.authors?.join(', ') || 'Autor no disponible', // Aseguramos mostrar autores
+        image: bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
+        link: bookInfo.infoLink || '#'
     });
     localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks)); // Guardamos en localStorage
 }
 
-// Cerrar el modal al hacer clic en el botón de cerrar
-function closeModal() {
-    document.getElementById('bookModal').style.display = 'none';
-}
-
 // Llamadas para cargar libros en distintas secciones
-fetchBooks('mystery', carouselBooks);  // Cargamos libros de misterio en el carrusel principal
-fetchBooks('fantasy', genreBooks);     // Cargamos libros de fantasía en otra sección
-fetchBooks('adventure', document.getElementById('adventure-books'));  // Ejemplo para otra sección
+fetchBooks('mystery', carouselBooks);  
+fetchBooks('fantasy', genreBooks);    
+fetchBooks('adventure', document.getElementById('adventure-books'));  
 fetchBooks('werewolf', document.getElementById('werewolf-books'));
 fetchBooks('vampire', document.getElementById('vampire-books'));
 fetchBooks('classic', document.getElementById('classic-books'));
@@ -88,7 +111,6 @@ fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
 fetchBooks('romance', document.getElementById('romance-books'));
 fetchBooks('thriller', document.getElementById('thriller-books'));
 fetchBooks('science fiction', document.getElementById('science-fiction-books'));
-
 
 // Asignamos el evento para cerrar el modal
 document.getElementById('closeModalBtn').onclick = closeModal;
