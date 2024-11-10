@@ -109,7 +109,7 @@ function addToLibrary(bookInfo) {
     const isBookInLibrary = libraryBooks.some(book => book.title === bookInfo.title);
 
     if (isBookInLibrary) {
-        alert('Este libro ya está en tu biblioteca.');
+        showBookAlreadyAddedMessage();
         return; // Salimos si el libro ya está en la biblioteca
     }
 
@@ -120,7 +120,32 @@ function addToLibrary(bookInfo) {
         link: bookInfo.infoLink || '#'
     });
     localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks)); // Guardamos en localStorage
-    alert('Libro agregado a la biblioteca');
+
+    showBookAddedMessage(); // Mostramos el mensaje de libro agregado
+}
+
+// Función para mostrar el mensaje de "Libro ya agregado"
+function showBookAlreadyAddedMessage() {
+    const message = document.createElement('div');
+    message.className = 'book-message';
+    message.textContent = 'Este libro ya está en tu biblioteca.';
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove(); // Elimina el mensaje después de 3 segundos
+    }, 3000);
+}
+
+// Función para mostrar el mensaje de "Libro agregado"
+function showBookAddedMessage() {
+    const message = document.createElement('div');
+    message.className = 'book-message';
+    message.textContent = 'Libro agregado a la biblioteca';
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove(); // Elimina el mensaje después de 3 segundos
+    }, 3000);
 }
 
 // Llamadas para cargar libros en distintas secciones

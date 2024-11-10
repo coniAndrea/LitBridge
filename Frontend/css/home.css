@@ -173,6 +173,20 @@ h2 span {
 .next {
     right: 10px;                          
 }
+/* Estilo para el mensaje flotante */
+.book-message {
+    
+    position: fixed;
+    top: 100px; /* Lo posicionamos en la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: #182a3f;
+    padding: 10px;
+    z-index: 9999; /* Aseguramos que esté por encima de otros elementos */
+    font-size: 20;
+
+}
 
 /* Media Queries para hacer el diseño responsivo */
 @media (max-width: 768px) {
