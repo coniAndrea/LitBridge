@@ -19,14 +19,17 @@ function fetchBooks(query, container) {
 
             // Iteramos sobre los resultados de los libros
             data.items.forEach(item => {
-                const book = document.createElement('img');
-                // Verificamos si el libro tiene una imagen disponible, sino mostramos un placeholder
-                book.src = item.volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen';
-                book.alt = item.volumeInfo.title;
-                book.classList.add('book'); // Agregamos clase para estilo
-                // Al hacer clic, mostramos los detalles del libro
-                book.onclick = () => showBookDetails(item.volumeInfo);
-                container.appendChild(book); // Agregamos el libro al contenedor
+                // Solo mostramos libros que tengan imagen y descripción
+                if (item.volumeInfo.description && item.volumeInfo.imageLinks?.thumbnail) {
+                    const book = document.createElement('img');
+                    // Verificamos si el libro tiene una imagen disponible, sino mostramos un placeholder
+                    book.src = item.volumeInfo.imageLinks.thumbnail;
+                    book.alt = item.volumeInfo.title;
+                    book.classList.add('book'); // Agregamos clase para estilo
+                    // Al hacer clic, mostramos los detalles del libro
+                    book.onclick = () => showBookDetails(item.volumeInfo);
+                    container.appendChild(book); // Agregamos el libro al contenedor
+                }
             });
         })
         .catch(error => console.error('Error al cargar los libros:', error));
@@ -59,19 +62,23 @@ function showBookDetails(bookInfo) {
         bookPriceInfo.style.color = "red"; // Estilo para indicar que no es gratuito
     }
 
+    // Verificamos si el libro tiene imagen disponible
     bookImage.src = bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300?text=Sin+imagen';
 
     // Asignamos el evento al botón de agregar a la biblioteca
     addToLibraryBtn.onclick = function() {
-        addToLibrary(bookInfo); // Agregamos el libro a la biblioteca
-        alert('Libro agregado a la biblioteca');
-        closeModal(); // Cerramos el modal después de agregarlo
+        if (isFree) {
+            addToLibrary(bookInfo); // Solo agregamos si el libro es gratuito
+            closeModal(); // Cerramos el modal después de agregarlo
+        } else {
+            alert('Este libro no es gratuito y no puede ser agregado a tu biblioteca.');
+        }
     };
 
     modal.style.display = 'block'; // Mostramos el modal
 }
 
-// Cerrar el modal al hacer clic en el botón de cerrar
+// Función para cerrar el modal al hacer clic en el botón de cerrar
 function closeModal() {
     document.getElementById('bookModal').style.display = 'none';
 }
@@ -90,7 +97,22 @@ function getShortDescription(description, maxWords) {
 
 // Función para agregar un libro a la biblioteca
 function addToLibrary(bookInfo) {
+    // Verificamos si el libro tiene descripción e imagen
+    if (!bookInfo.description || !bookInfo.imageLinks?.thumbnail) {
+        alert('El libro no tiene suficiente información para ser agregado a la biblioteca.');
+        return; // Salimos si no tiene descripción o imagen
+    }
+
     const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
+
+    // Verificamos si el libro ya está en la biblioteca
+    const isBookInLibrary = libraryBooks.some(book => book.title === bookInfo.title);
+
+    if (isBookInLibrary) {
+        alert('Este libro ya está en tu biblioteca.');
+        return; // Salimos si el libro ya está en la biblioteca
+    }
+
     libraryBooks.push({
         title: bookInfo.title,
         author: bookInfo.authors?.join(', ') || 'Autor no disponible', // Aseguramos mostrar autores
@@ -98,6 +120,7 @@ function addToLibrary(bookInfo) {
         link: bookInfo.infoLink || '#'
     });
     localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks)); // Guardamos en localStorage
+    alert('Libro agregado a la biblioteca');
 }
 
 // Llamadas para cargar libros en distintas secciones
@@ -111,9 +134,6 @@ fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
 fetchBooks('romance', document.getElementById('romance-books'));
 fetchBooks('thriller', document.getElementById('thriller-books'));
 fetchBooks('science fiction', document.getElementById('science-fiction-books'));
-
-// Asignamos el evento para cerrar el modal
-document.getElementById('closeModalBtn').onclick = closeModal;
 
 // Función para mover el carrusel principal (recomendaciones)
 function moveCarousel(direction) {

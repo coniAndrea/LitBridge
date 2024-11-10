@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         bookElement.innerHTML = `
             <img src="${book.image || '../img/default-cover.png'}" alt="Portada de la historia" class="story-cover">
             <div class="story-details">
-                <h2 class="story-title">${book.title || 'Título Desconocido'}</h2>
+                <h4 class="story-title">${book.title || 'Título Desconocido'}</h4>
                 <p class="story-author">${book.author || 'Autor Desconocido'}</p>
                 <a href="${book.link || '../html/lectura.html'}" class="cta-button">
                     <img src="../img/leer.png" alt="Icono de Leer" class="cta-image"> Leer
@@ -39,15 +39,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return bookElement;
     }
-
-    // Ejemplo de uso (puedes ajustar según tus necesidades)
-    const newBook = {
-        title: 'Título del Libro',
-        author: 'Autor del Libro',
-        image: '../img/portada-libro.png',
-        link: '../html/lectura.html'
-    };
-
-    addBookToLibrary(newBook);
 });
 
+//function clearLocalStorageOnReload() {
+    //localStorage.clear(); // Limpia todos los datos del localStorage
+//}
+
+// Llama a la función cuando se carga la ventana
+//window.onload = clearLocalStorageOnReload;
