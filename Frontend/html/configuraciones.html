@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/header.css">
-    <script src="../js/header.js" defer></script> 
+    <script src="../js/header.js" defer></script>
     <link rel="stylesheet" href="../css/configuracion.css">
-    <script src="../js/configuracion.js" defer></script> 
+    <script src="../js/configuracion.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -21,8 +23,8 @@
             <button class="dropbtn">Categoría</button>
             <i class="fas fa-caret-down"></i>
             <div class="dropdown-content">
-                <a href="#">Acción</a>                   
-                <a href="#">Aventura</a>                  
+                <a href="#">Acción</a>
+                <a href="#">Aventura</a>
                 <a href="#">Chick-Lit</a>
                 <a href="#">Ciencia Ficción</a>
                 <a href="#">Clásico</a>
@@ -46,7 +48,7 @@
                 <a href="#">Vampiro</a>
             </div>
         </div>
-         
+
         <div class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
@@ -80,10 +82,10 @@
             <li><a href="#" onclick="showSection('notificaciones')">Notificaciones</a></li>
             <li><a href="#" onclick="showSection('idioma')">Idioma</a></li>
         </ul>
-    
+
         <div class="settings-content">
             <div id="cuenta" class="section" style="display: block;">
-                <h2>Cambia la información de tu cuenta y la configuración de privacidad</h2>
+                <h2>Cambia la información de tu cuenta </h2>
                 <br>
                 <form class="account-form">
                     <div class="form-group">
@@ -101,22 +103,19 @@
                         <input type="email" placeholder="Ingrese su correo electrónico" required>
                         <a href="#" class="change-link">cambiar</a>
                     </div>
-                    <div class="form-group">
-                        <label>Fecha de nacimiento</label>
-                        <input type="date" required>
-                    </div>
+
                     <div class="button-group">
-                        <button class="submit-btn">Guardar cambios</button>
-                        <button class="close-account-btn">Cerrar cuenta</button>
+                        <button class="submit-btn" type="button" onclick="guardarCambios()">Guardar cambios</button>
+                        <button class="close-account-btn" type="button" onclick="cerrarcuenta()">Cerrar cuenta</button>
                     </div>
                 </form>
             </div>
-    
+
             <div id="notificaciones" class="section">
                 <h2>Notificaciones</h2>
                 <br>
                 <p>Recibir notificaciones por correo electrónico para estos eventos</p>
-                
+
                 <div class="notifications-group">
                     <ul>
                         <li>
@@ -152,14 +151,14 @@
 
             <div id="idioma" class="section">
                 <h2>Por favor selecciona tu configuración de idioma preferido para LitBridge</h2>
-              <br>
+                <br>
                 <div class="container">
                     <!-- Europa Column -->
                     <div class="continent">
                         <h2>Europa</h2>
                         <div class="language-item">
                             <input type="checkbox" id="spanish-europe" name="language">
-                            <label for="spanish-europe">Español</label>
+                            <label for="spanish-europe">Español (España)</label>
                         </div>
                         <div class="language-item">
                             <input type="checkbox" id="french" name="language">
@@ -173,9 +172,8 @@
                             <input type="checkbox" id="italian" name="language">
                             <label for="italian">Italiano</label>
                         </div>
-                        <!-- Agrega más idiomas según necesites -->
                     </div>
-            
+
                     <!-- Asia Column -->
                     <div class="continent">
                         <h2>Asia</h2>
@@ -195,15 +193,14 @@
                             <input type="checkbox" id="hindi" name="language">
                             <label for="hindi">Hindi</label>
                         </div>
-                        <!-- Agrega más idiomas según necesites -->
                     </div>
-            
+
                     <!-- América Column -->
                     <div class="continent">
                         <h2>América</h2>
                         <div class="language-item">
                             <input type="checkbox" id="spanish-america" name="language">
-                            <label for="spanish-america">Español</label>
+                            <label for="spanish-america">Español (Latino)</label>
                         </div>
                         <div class="language-item">
                             <input type="checkbox" id="english" name="language">
@@ -213,18 +210,64 @@
                             <input type="checkbox" id="portuguese" name="language">
                             <label for="portuguese">Portugués</label>
                         </div>
-                        <!-- Agrega más idiomas según necesites -->
+                        <div class="language-item">
+                            <input type="checkbox" id="french-canada" name="language">
+                            <label for="french-canada">Francés (Canadá)</label>
+                        </div>
                     </div>
+
+                    <!-- África Column -->
+                    <div class="continent">
+                        <h2>África</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="arabic" name="language">
+                            <label for="arabic">Árabe</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="swahili" name="language">
+                            <label for="swahili">Suajili</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="amharic" name="language">
+                            <label for="amharic">Amárico</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="french-africa" name="language">
+                            <label for="french-africa">Francés (África)</label>
+                        </div>
+                    </div>
+
+                    <!-- Oceanía Column -->
+                    <div class="continent">
+                        <h2>Oceanía</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="english-australia" name="language">
+                            <label for="english-australia">Inglés (Australia)</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="maori" name="language">
+                            <label for="maori">Maorí</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="samoan" name="language">
+                            <label for="samoan">Samoano</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="fijian" name="language">
+                            <label for="fijian">Fiyiano</label>
+                        </div>
+                    </div>
+
                 </div>
                 <br>
                 <button class="submit-btn">Guardar</button>
             </div>
         </div> <!-- Cierre del settings-content -->
     </div> <!-- Cierre del settings-container -->
-    
+
     <!-- Botón de cerrar cuenta -->
-   
-    
+
+
     <!-- Pie de página -->
     <footer>
         <div class="footer-content">
@@ -236,6 +279,7 @@
             </nav>
         </div>
     </footer>
-    
+
 </body>
+
 </html>
