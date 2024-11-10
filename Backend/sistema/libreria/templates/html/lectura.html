@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Biblioteca - LitBrigde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/biblioteca.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script> 
+    <script src="{% static 'js/biblioteca.js' %}" defer></script> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
+            <h1>LitBrigde</h1>
+          </a>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Categoría</button>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-content">
+                <a href="#">Acción</a>                   
+                <a href="#">Aventura</a>                  
+                <a href="#">Chick-Lit</a>
+                <a href="#">Ciencia Ficción</a>
+                <a href="#">Clásico</a>
+                <a href="#">De Todo</a>
+                <a href="#">Espiritual</a>
+                <a href="#">Fanfic</a>
+                <a href="#">Fantasía</a>
+                <a href="#">Ficción General</a>
+                <a href="#">Historia Corta</a>
+                <a href="#">Hombre Lobo</a>
+                <a href="#">Humor</a>
+                <a href="#">Misterio</a>
+                <a href="#">No Ficción</a>
+                <a href="#">Novela Histórica</a>
+                <a href="#">Novela Juvenil</a>
+                <a href="#">Paranormal</a>
+                <a href="#">Poesía</a>
+                <a href="#">Romance</a>
+                <a href="#">Suspenso</a>
+                <a href="#">Terror</a>
+                <a href="#">Vampiro</a>
+            </div>
+        </div>
+         
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+        </div>
+        <div class="button-container">
+            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+        </div>
+
+        <div class="user-container">
+            <div class="user-icon">
+                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="userMenu" class="user-menu">
+                <ul>
+                    <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+                    <hr>
+                    <li><a href="#">Buzón</a></li>
+                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
+                    <hr>
+                    <li><a href="#">Idioma:</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+
+    
+   <!-- Pie de página -->
+   <footer>
+    <div class="footer-content">
+        <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
+        <nav class="footer-nav">
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

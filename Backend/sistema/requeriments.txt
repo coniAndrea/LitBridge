@@ -1,0 +1,5 @@
+pip3 install Django==3.2.8
+django-admin startproject sistema
+python manage.py startapp libreria
+python manage.py makemigrations
+python manage.py migrate

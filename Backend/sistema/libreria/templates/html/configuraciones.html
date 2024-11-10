@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - LitBrigde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script> 
+    <link rel="stylesheet" href="{% static 'css/configuracion.css' %}">
+    <script src="{% static 'js/configuracion.js' %}" defer></script> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
+            <h1>LitBrigde</h1>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Categoría</button>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-content">
+                <a href="#">Acción</a>                   
+                <a href="#">Aventura</a>                  
+                <a href="#">Chick-Lit</a>
+                <a href="#">Ciencia Ficción</a>
+                <a href="#">Clásico</a>
+                <a href="#">De Todo</a>
+                <a href="#">Espiritual</a>
+                <a href="#">Fanfic</a>
+                <a href="#">Fantasía</a>
+                <a href="#">Ficción General</a>
+                <a href="#">Historia Corta</a>
+                <a href="#">Hombre Lobo</a>
+                <a href="#">Humor</a>
+                <a href="#">Misterio</a>
+                <a href="#">No Ficción</a>
+                <a href="#">Novela Histórica</a>
+                <a href="#">Novela Juvenil</a>
+                <a href="#">Paranormal</a>
+                <a href="#">Poesía</a>
+                <a href="#">Romance</a>
+                <a href="#">Suspenso</a>
+                <a href="#">Terror</a>
+                <a href="#">Vampiro</a>
+            </div>
+        </div>
+         
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+        </div>
+        <div class="button-container">
+            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+        </div>
+
+        <div class="user-container">
+            <div class="user-icon">
+                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="userMenu" class="user-menu">
+                <ul>
+                    <li><a href="{% url 'perfil'%}">Mi Perfil</a></li>
+                    <hr>
+                    <li><a href="#">Buzón</a></li>
+                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
+                    <hr>
+                    <li><a href="#">Idioma: Español</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="settings-container">
+        <ul class="settings-menu">
+            <li><a href="#" class="active" onclick="showSection('cuenta')">Cuenta</a></li>
+            <li><a href="#" onclick="showSection('notificaciones')">Notificaciones</a></li>
+            <li><a href="#" onclick="showSection('idioma')">Idioma</a></li>
+        </ul>
+    
+        <div class="settings-content">
+            <div id="cuenta" class="section" style="display: block;">
+                <h2>Cambia la información de tu cuenta y la configuración de privacidad</h2>
+                <form class="account-form">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" placeholder="Ingrese su nombre de usuario" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" placeholder="Ingrese su contraseña" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" placeholder="Ingrese su correo electrónico" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </form>
+            </div>
+    
+            <div id="notificaciones" class="section">
+                <h2>Notificaciones</h2>
+                <p>Recibir notificaciones por correo electrónico para estos eventos</p>
+                
+                <div class="notifications-group">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="mensajes" checked>
+                            <label for="mensajes">Mensajes</label>
+                            <ul>
+                                <li>Alguien escribe en tu panel de mensajes</li>
+                                <li>Alguien empieza a seguirte</li>
+                                <li>Alguien comenta en tu historia</li>
+                                <li>Alguien te menciona en un comentario</li>
+                                <li>Recibes un mensaje</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="usuarios-sigues">
+                            <label for="usuarios-sigues">Los usuarios que sigues suben una historia</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="actualizaciones" checked>
+                            <label for="actualizaciones">Actualizaciones</label>
+                            <ul>
+                                <li>Anuncios importantes de Wattpad</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="submit-btn">Guardar</button>
+            </div>
+        </div> <!-- Cierre del settings-content -->
+    </div> <!-- Cierre del settings-container -->
+    
+    <!-- Botón de cerrar cuenta -->
+    <button class="close-account-btn">Cerrar cuenta</button> 
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+    
+</body>
+</html>
