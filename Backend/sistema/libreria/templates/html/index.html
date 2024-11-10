@@ -1,23 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LitBridge</title>
-    <link rel="stylesheet" href="../css/index.css"> <!-- Vinculamos el archivo CSS -->
-    <script src="../js/index.js" defer></script> <!-- Asegúrate de que el script se cargue después del HTML -->
+    <!-- Vinculamos el archivo CSS correctamente usando la etiqueta 'static' -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!-- Asegúrate de que el script se cargue correctamente con 'static' -->
+    <script src="{% static 'js/index.js' %}" defer></script>
 </head>
 <body>
     <!-- Encabezado -->
     <header>
         <div class="logo">
-            <img src="../img/logo.png" alt="LitBrigde Logo">
-            <h1>LitBrigde</h1>
+            <!-- Usamos 'static' para cargar imágenes correctamente -->
+            <img src="{% static 'img/logo.png' %}" alt="LitBridge Logo">
+            <h1>LitBridge</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="../html/login.html">Iniciar Sesión</a></li>
-                <li><a href="../html/registro.html" class="join-button">Registrate</a></li>
+                <li><a href="{% url 'login_usuario' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'registro' %}" class="join-button">Regístrate</a></li>
             </ul>
         </nav>
     </header>
@@ -29,10 +33,10 @@
             <div class="left">
                 <h1>LEE Y CREA HISTORIAS SIN FRONTERAS CON NUESTRA TRADUCCIÓN AUTOMÁTICA.</h1>
                 <h4>Únete a nuestra comunidad global donde las historias no conocen fronteras. Lee, crea y traduce relatos con nuestra tecnología automática, y comparte la experiencia invitando a amigos de cualquier parte del mundo para explorar juntos nuevas culturas y lenguajes.</h4>
-                <a href="../html/registro.html" class="cta-button">ÚNETE AHORA</a>
+                <a href="{% url 'registro' %}" class="cta-button">ÚNETE AHORA</a>
             </div>
             <div class="right">
-                <img src="../img/computer.png" alt="LitBridge Image"  class="incline-right">
+                <img src="{% static 'img/computer.png' %}" alt="LitBridge Image" class="incline-right">
             </div>
         </div>
 
@@ -43,17 +47,17 @@
             </div>
             <div class="carrusel">
                 <div class="carrusel-inner">
-                    <div class="carrusel-item"><img src="../img/categorias/Aventura.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/Cuento.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/Drama.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/Fantasia.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/Novela Narrativa.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/Terror.jpg" alt=""></div>
-                    <div class="carrusel-item"><img src="../img/categorias/otros.jpg" alt=""></div>
+                    <!-- Usamos 'static' también para las imágenes del carrusel -->
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Aventura.jpg' %}" alt="Aventura"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Cuento.jpg' %}" alt="Cuento"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Drama.jpg' %}" alt="Drama"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Fantasia.jpg' %}" alt="Fantasía"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Novela Narrativa.jpg' %}" alt="Novela Narrativa"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Terror.jpg' %}" alt="Terror"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/otros.jpg' %}" alt="Otros"></div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Pie de página -->

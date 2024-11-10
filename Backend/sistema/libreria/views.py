@@ -3,15 +3,16 @@ from django.http import HttpResponse
 from .models import Libro
 from .forms import LibroForm
 from .models import Administrador
-
+from django.db import connection
 import openai
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
 
+    # BACKEND #
 # LOGIN USUARIO
-def login(request):
+def login_admin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -32,9 +33,8 @@ def logout(request):
     return redirect('login')
 
 #PÁGINA DE INICIO
-
 def inicio(request):
-    return render(request, 'paginas/inicio.html')
+    return render(request, '')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
@@ -43,7 +43,7 @@ def libros(request):
     libros = Libro.objects.all()
     return render(request, 'libros/index.html', {'libros': libros})
 
-def crear(request):
+def crear_admin(request):
     formulario  = LibroForm(request.POST or None, request.FILES or None)
     if formulario.is_valid():
         formulario.save()
@@ -91,3 +91,66 @@ def translate_text(request):
     
     # Si la solicitud es GET, devolver un mensaje o un HttpResponse vacío
     return HttpResponse("La solicitud GET no está permitida en esta vista.", status=405)
+
+    # FRONTEND #
+# biblioteca
+def biblioteca(request):
+    return render(request, 'html/Biblioteca.html')
+
+# config
+def config(request):
+    return render(request, 'html/configuraciones.html')
+
+#crear_desarrollo
+def crear_desarrollo(request):
+    return render(request, 'html/crear_desarrollo.html')
+
+#crear
+def crear_usuario(request):
+    return render(request, 'html/crear.html')
+
+#escribir
+def escribir(request):
+    return render(request, 'html/escribir.html')
+
+# home
+def home(request):
+    return render(request, 'html/home.html')
+
+#index
+def index(request):
+    return render(request, 'html/index.html')
+
+# lectura
+def lectura(request):
+    return render(request, 'html/lectura.html')
+
+# login
+def login_usuario(request):
+    return render(request, 'html/login.html')
+
+# perfil
+def perfil(request):
+    return render(request, 'html/perfil.html')
+
+
+# sugerencia
+def sugerencia(request):
+    return render(request, 'html/sugerencia.html')
+
+#registro usuario
+def registrar_usuario(request):
+    if request.method == 'POST':
+        nombre_usuario = request.POST['nombre_usuario']
+        correo = request.POST['correo']
+        contraseña = request.POST['contraseña']
+
+        # Guardar el nuevo usuario en la base de datos
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO usuarios (nombre_usuario, correo, contraseña)
+                VALUES (%s, %s, %s)
+            """, [nombre_usuario, correo, contraseña])
+        
+        return redirect('home')  # Redirigir a la página principal o a la que quieras
+    return render(request, 'html/registro.html')

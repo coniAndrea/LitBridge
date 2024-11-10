@@ -1,18 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Perfil - LitBrigde</title>
+    <title> Biblioteca - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <script src="../js/header.js" defer></script> 
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/biblioteca.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script> 
+    <script src="{% static 'js/biblioteca.js' %}" defer></script> 
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="../img/logo.png" alt="LitBrigde Logo" class="logo-image">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
+          </a>
         </div>
 
         <div class="dropdown">
@@ -59,20 +64,34 @@
             </div>
             <div id="userMenu" class="user-menu">
                 <ul>
-                    <li><a href="../html/perfil.html">Mi Perfil</a></li>
+                    <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
                     <hr>
                     <li><a href="#">Buzón</a></li>
                     <li><a href="#">Notificaciones</a></li>
-                    <li><a href="../html/Biblioteca.html">Biblioteca</a></li>
+                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma: Español</a></li>
+                    <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
-                    <li><a href="../html/configuraciones.html">Configuración</a></li>
-                    <li><a href="../html/index.html">Cerrar sesión</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
     </header>
+    
+    <main class="contenedor-titulo">
+      <h1 class="titulo-principal">
+          <span class="icon"><img src="{% static 'img/book1.png' %}" alt="Icono Biblioteca"></span>
+          Biblioteca
+          <span class="icon"><img src="{% static 'img/book2.png' %}" alt="Icono Biblioteca"></span>
+      </h1>
+  </main>
+
+    <!-- Contenedor donde se mostrarán los libros de la biblioteca -->
+    <div id="library" class="library-container">
+        <!-- Aquí se mostrarán los libros agregados a la biblioteca -->
+    </div>
+    
    <!-- Pie de página -->
    <footer>
     <div class="footer-content">
@@ -86,4 +105,3 @@
 </footer>
 </body>
 </html>
-
