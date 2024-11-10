@@ -67,7 +67,6 @@
                     <li><a href="#">Notificaciones</a></li>
                     <li><a href="../html/Biblioteca.html">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma: Español</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="../html/configuraciones.html">Configuración</a></li>
                     <li><a href="../html/index.html">Cerrar sesión</a></li>
@@ -85,6 +84,7 @@
         <div class="settings-content">
             <div id="cuenta" class="section" style="display: block;">
                 <h2>Cambia la información de tu cuenta y la configuración de privacidad</h2>
+                <br>
                 <form class="account-form">
                     <div class="form-group">
                         <label>Nombre de usuario</label>
@@ -105,12 +105,16 @@
                         <label>Fecha de nacimiento</label>
                         <input type="date" required>
                     </div>
-                    <button type="submit" class="submit-btn">Enviar</button>
+                    <div class="button-group">
+                        <button class="submit-btn">Guardar cambios</button>
+                        <button class="close-account-btn">Cerrar cuenta</button>
+                    </div>
                 </form>
             </div>
     
             <div id="notificaciones" class="section">
                 <h2>Notificaciones</h2>
+                <br>
                 <p>Recibir notificaciones por correo electrónico para estos eventos</p>
                 
                 <div class="notifications-group">
@@ -126,10 +130,12 @@
                                 <li>Recibes un mensaje</li>
                             </ul>
                         </li>
+                        <br>
                         <li>
                             <input type="checkbox" id="usuarios-sigues">
                             <label for="usuarios-sigues">Los usuarios que sigues suben una historia</label>
                         </li>
+                        <br>
                         <li>
                             <input type="checkbox" id="actualizaciones" checked>
                             <label for="actualizaciones">Actualizaciones</label>
@@ -139,13 +145,85 @@
                         </li>
                     </ul>
                 </div>
+                <br>
+                <button class="submit-btn">Guardar</button>
+            </div>
+
+
+            <div id="idioma" class="section">
+                <h2>Por favor selecciona tu configuración de idioma preferido para LitBridge</h2>
+              <br>
+                <div class="container">
+                    <!-- Europa Column -->
+                    <div class="continent">
+                        <h2>Europa</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="spanish-europe" name="language">
+                            <label for="spanish-europe">Español</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="french" name="language">
+                            <label for="french">Francés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="german" name="language">
+                            <label for="german">Alemán</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="italian" name="language">
+                            <label for="italian">Italiano</label>
+                        </div>
+                        <!-- Agrega más idiomas según necesites -->
+                    </div>
+            
+                    <!-- Asia Column -->
+                    <div class="continent">
+                        <h2>Asia</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="chinese" name="language">
+                            <label for="chinese">Chino</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="japanese" name="language">
+                            <label for="japanese">Japonés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="korean" name="language">
+                            <label for="korean">Coreano</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="hindi" name="language">
+                            <label for="hindi">Hindi</label>
+                        </div>
+                        <!-- Agrega más idiomas según necesites -->
+                    </div>
+            
+                    <!-- América Column -->
+                    <div class="continent">
+                        <h2>América</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="spanish-america" name="language">
+                            <label for="spanish-america">Español</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="english" name="language">
+                            <label for="english">Inglés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="portuguese" name="language">
+                            <label for="portuguese">Portugués</label>
+                        </div>
+                        <!-- Agrega más idiomas según necesites -->
+                    </div>
+                </div>
+                <br>
                 <button class="submit-btn">Guardar</button>
             </div>
         </div> <!-- Cierre del settings-content -->
     </div> <!-- Cierre del settings-container -->
     
     <!-- Botón de cerrar cuenta -->
-    <button class="close-account-btn">Cerrar cuenta</button> 
+   
     
     <!-- Pie de página -->
     <footer>
