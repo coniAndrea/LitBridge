@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Libro
+from .models import Libro, Usuario
 from .forms import LibroForm
 from .models import Administrador
 from django.db import connection
 import openai
+from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
 
     # BACKEND #
-# LOGIN USUARIO
+# LOGIN ADMIN
 def login_admin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -153,4 +154,21 @@ def registrar_usuario(request):
             """, [nombre_usuario, correo, contraseña])
         
         return redirect('home')  # Redirigir a la página principal o a la que quieras
-    return render(request, 'html/registro.html')
+    return render(request, 'html/home.html')
+
+# LOGIN USUARIO
+def login_user(request):
+    if request.method == 'POST':
+        usuario = request.POST.get('usuario')
+        password = request.POST.get('password')
+        
+        try:
+            # Busca al usuario en la base de datos por el nombre de usuario o correo
+            user = Usuario.objects.get(nombre_usuario=usuario, contraseña=password)
+            # Si el usuario se encuentra, redirige a la página de inicio
+            return redirect('html/home.html')
+        except Usuario.DoesNotExist:
+            # Si no se encuentra, muestra un mensaje de error
+            messages.error(request, 'Usuario o contraseña incorrectos.')
+
+    return render(request, 'html/home.html')
