@@ -24,7 +24,8 @@
 	
 	<main>
 		<!-- Formulario adaptado con CSRF token -->
-		<form action="{% url 'registro' %}" method="POST" class="formulario" id="formulario">
+		<form action="{% url 'registrar_usuario' %}" method="POST" class="formulario" id="formulario">
+
 			{% csrf_token %}  <!-- Token CSRF para la protección contra ataques CSRF -->
 
 			<!-- Grupo: Usuario -->
