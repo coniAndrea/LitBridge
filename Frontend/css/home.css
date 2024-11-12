@@ -187,6 +187,27 @@ h2 span {
     font-size: 20;
 
 }
+/* Estilos para las notificaciones de mensajes */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInOut 3s forwards;
+}
+
+/* Animación para que la notificación aparezca y desaparezca */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
 
 /* Media Queries para hacer el diseño responsivo */
 @media (max-width: 768px) {
