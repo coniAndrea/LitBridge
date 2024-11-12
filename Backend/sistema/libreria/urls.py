@@ -22,7 +22,7 @@ urlpatterns = [
     path('translate/', translate_text, name='translate_text'),
     #FRONTEND
     path('', views.index, name='index'),
-    path('Biblioteca', views.biblioteca, name='Biblioteca'),
+    path('Biblioteca', views.Biblioteca, name='Biblioteca'),
     path('config', views.config, name='config'),
     path('crear_desarrollo', views.crear_desarrollo, name='crear_desarrollo'),
     path('crear', views.crear_usuario, name='crear_usuario'),
@@ -30,9 +30,10 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('index', views.index, name='index'),
     path('lectura', views.lectura, name='lectura'),
-    path('login_usuario', views.login_usuario, name='login_usuario'),
+    path('login_user', views.login_user, name='login_user'),
     path('perfil', views.perfil, name='perfil'),
-    path('registro', views.registrar_usuario, name='registro'),
+    path('registrar_usuario', views.registrar_usuario, name='registrar_usuario'),
+    path('registro', views.registro, name='registro'),
     path('sugerencia', views.sugerencia, name='sugerencia'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

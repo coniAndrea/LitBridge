@@ -7,15 +7,15 @@ header .logo {
 
 /* Estilizar la imagen del logo */
 header .logo .logo-image {
-    width: 100px;
+    width: 120px;  /* Aumento el tamaño */
     height: auto;
-    margin-right: 10px;
+    margin-right: 15px;  /* Más espacio entre el logo y el texto */
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 /* Estilizar el texto del logo */
 header .logo h1 {
-    font-size: 50px;
+    font-size: 60px;  /* Aumento el tamaño */
     color: #1f3a93;
     font-family: serif;
     margin: 0; 
@@ -40,7 +40,7 @@ header .logo a {
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start; 
-    padding-top: 10px; 
+    padding-top: 20px;  /* Más espacio superior */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
 }
 
@@ -49,14 +49,14 @@ header .logo a {
     display: flex;
     justify-content: center; 
     align-items: center; 
-    font-size: 55px; 
+    font-size: 65px;  /* Aumento el tamaño */
     color: #1f3a93;
     font-weight: bold;
     font-family: serif;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(83, 82, 82, 0.2);
     margin: 0; 
-    padding: 10px; 
+    padding: 15px;  /* Aumento el padding */
 }
 
 /* Efecto hover sobre el título principal */
@@ -68,71 +68,64 @@ header .logo a {
 
 /* Estilos para las imágenes dentro del span */
 .titulo-principal .icon img {
-    width: 250px; 
+    width: 300px;  /* Aumento el tamaño */
     height: auto; 
     margin: 0 20px; 
 }
 
 /* Contenedor de la historia con imagen a la derecha y detalles a la izquierda */
 .story-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    gap: 20px; 
-    margin-top: 10px; 
-    margin-bottom: 20px;
-    max-width: 800px; 
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;  /* Aumento el margen superior */
+    margin-bottom: 30px;  /* Aumento el margen inferior */
+    max-width: 900px;  /* Aumento el max-width */
     margin-left: auto;
-    margin-right: auto; 
-    padding: 20px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; 
+    margin-right: auto;
+    padding: 25px;  /* Aumento el padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Sombra más pronunciada */
+    border-radius: 8px;
     background: linear-gradient(90deg, #bcd8fa, #969cbf);
+    flex-wrap: wrap; /* Asegura que los elementos no se desborden */
 }
 
-/* Contenedor de la biblioteca con diseño de grid para tres columnas */
-.library-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 40px; /* Espacio entre los libros */
-    justify-items: center;
-    padding: 20px;
-}
-
-/* Cada libro será una tarjeta dentro de la grid */
-.story-container {
-    border: 1px solid #ddd;
-    padding: 25px; /* Más espacio interno */
-    width: 300px; /* Aumenta el ancho de cada libro */
-    text-align: center;
-    background-color: #fff; /* Fondo blanco para cada libro */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Añadir sombra */
-    border-radius: 15px; /* Bordes más redondeados */
-}
-
-/* Imagen de la portada del libro */
+/* Contenedor de la imagen de la portada del libro */
 .story-cover {
     width: 100%;
-    height: auto; 
+    max-width: 200px;  /* Mantengo el tamaño adecuado */
+    height: auto;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 15px; /* Espacio debajo de la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Más espacio debajo de la imagen */
+}
+
+/* Contenedor de los detalles de la historia */
+.story-details {
+    flex: 1; /* Deja que el contenedor ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    padding: 10px;
+    height: 100%; /* Asegura que ocupe toda la altura disponible */
 }
 
 /* Estilo del título de la historia */
 .story-title {
-    font-size: 28px; /* Título más grande */
+    font-size: 24px; /* Aumento el tamaño del título */
     font-weight: bold;
     color: black;
     margin-bottom: 10px; /* Más espacio entre título y autor */
     font-family: serif;
+    overflow-wrap: break-word; /* Asegura que los títulos largos no desborden */
+    hyphens: auto; /* Divide el texto si es muy largo */
 }
 
 /* Estilo del autor de la historia */
 .story-author {
-    font-size: 22px; /* Autor más grande */
+    font-size: 18px; /* Aumento el tamaño del autor */
     color: black;
-    margin-bottom: 20px; /* Espacio debajo del autor */
+    margin-bottom: 15px; /* Espacio debajo del autor */
     font-family: serif;
 }
 
@@ -142,14 +135,17 @@ header .logo a {
     align-items: center;
     background: linear-gradient(90deg, #074693, #6ea3dc);
     color: whitesmoke;
-    padding: 12px 25px; /* Botón más grande */
+    padding: 12px 40px;  /* Botón de tamaño mediano */
     text-decoration: none;
     border-radius: 8px;
-    font-size: 22px; /* Texto del botón más grande */
+    font-size: 20px; /* Tamaño mediano del texto */
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
     font-family: serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centrado horizontal */
+    display: block; /* Asegura que el botón esté centrado */
+    width: auto; /* Ajusta el tamaño a contenido */
 }
 
 /* Efecto hover en el botón */
@@ -160,9 +156,9 @@ header .logo a {
 
 /* Icono dentro del botón de CTA */
 .cta-image {
-    width: 30px; /* Icono más grande */
-    height: 30px;
-    margin-right: 10px; 
+    width: 35px;  /* Aumento el tamaño del icono */
+    height: 35px;
+    margin-right: 12px; 
 }
 
 /* Media Queries para hacerlo responsivo */
@@ -170,25 +166,26 @@ header .logo a {
 /* Pantallas pequeñas (tabletas/móviles) */
 @media (max-width: 768px) {
     header .logo h1 {
-        font-size: 30px; 
+        font-size: 40px;  /* Ajusto para que no quede tan pequeño */
     }
 
     header .logo .logo-image {
-        width: 80px; 
+        width: 100px;  /* Aumento el tamaño del logo */
     }
 
     .titulo-principal {
-        font-size: 40px; 
+        font-size: 50px;  /* Ajusto para pantallas medianas */
     }
 
     .titulo-principal .icon img {
-        width: 150px; 
-        margin: 0 15px; 
+        width: 180px;  /* Ajusto el tamaño de las imágenes */
+        margin: 0 20px; 
     }
 
     .story-container {
-        width: 90%; 
-        padding: 15px; 
+        flex-direction: column; /* Cambio a columna para pantallas pequeñas */
+        width: 95%;  /* Aumento el ancho en pantallas medianas */
+        padding: 20px; 
     }
 
     .story-cover {
@@ -204,24 +201,25 @@ header .logo a {
 /* Pantallas extra pequeñas (móviles muy pequeños) */
 @media (max-width: 480px) {
     header .logo h1 {
-        font-size: 25px;
+        font-size: 35px;  /* Ajusto para móviles más pequeños */
     }
 
     header .logo .logo-image {
-        width: 60px; 
+        width: 80px;  /* Ajusto el tamaño */
     }
 
     .titulo-principal {
-        font-size: 30px; 
+        font-size: 40px;  /* Ajusto para pantallas más pequeñas */
     }
 
     .titulo-principal .icon img {
-        width: 120px; 
-        margin: 0 10px; 
+        width: 150px;  /* Ajusto el tamaño de las imágenes */
+        margin: 0 15px; 
     }
 
     .story-container {
-        width: 100%; 
+        flex-direction: column; /* Cambio a columna para pantallas más pequeñas */
+        width: 100%;  /* Ancho completo en móviles */
     }
 
     .story-cover {

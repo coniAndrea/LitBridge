@@ -76,40 +76,16 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.nombre_usuario && campos.contraseña && campos.correo && terminos.checked ){
-		// Obtener los valores de los campos
-		const nombre_usuario = document.getElementById('nombre_usuario').value;
-		const correo = document.getElementById('correo').value;
-		const contraseña = document.getElementById('contraseña').value;
-
-		// Crear un objeto con los datos del registro
-		const datosUsuario = {
-			nombre_usuario: nombre_usuario,
-			correo: correo,
-			contraseña: contraseña
-		};
-
-		// Guardar los datos en localStorage
-		localStorage.setItem('registroUsuario', JSON.stringify(datosUsuario));
-
-		// Reiniciar el formulario
-		formulario.reset();
-
-		// Mostrar mensaje de éxito
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
-
-		// Eliminar las clases de éxito
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		// Mostrar mensaje de error si faltan campos o términos
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
+    // Elimina e.preventDefault(); para permitir que el formulario se envíe al servidor
+    const terminos = document.getElementById('terminos');
+    if (campos.nombre_usuario && campos.contraseña && campos.correo && terminos.checked) {
+        document.getElementById('formulariomensaje-exito').classList.add('formulariomensaje-exito-activo');
+        setTimeout(() => {
+        document.getElementById('formulariomensaje-exito').classList.remove('formulariomensaje-exito-activo');
+        }, 5000);
+        // Permitir el envío del formulario al servidor
+    } else {
+        e.preventDefault(); // Solo prevenir envío si hay un error
+        document.getElementById('formulariomensaje').classList.add('formulariomensaje-activo');
+    }
 });

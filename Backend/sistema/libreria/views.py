@@ -8,6 +8,7 @@ import openai
 from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
 import json
 # Create your views here.
 
@@ -95,7 +96,7 @@ def translate_text(request):
 
     # FRONTEND #
 # biblioteca
-def biblioteca(request):
+def Biblioteca(request):
     return render(request, 'html/Biblioteca.html')
 
 # config
@@ -139,6 +140,9 @@ def perfil(request):
 def sugerencia(request):
     return render(request, 'html/sugerencia.html')
 
+def registro(request):
+    return render(request, 'html/registro.html')
+
 #registro usuario
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -152,23 +156,38 @@ def registrar_usuario(request):
                 INSERT INTO usuarios (nombre_usuario, correo, contraseña)
                 VALUES (%s, %s, %s)
             """, [nombre_usuario, correo, contraseña])
-        
-        return redirect('home')  # Redirigir a la página principal o a la que quieras
-    return render(request, 'html/home.html')
+    return render(request, 'html/registro.html')
+
 
 # LOGIN USUARIO
 def login_user(request):
     if request.method == 'POST':
         usuario = request.POST.get('usuario')
         password = request.POST.get('password')
-        
-        try:
-            # Busca al usuario en la base de datos por el nombre de usuario o correo
-            user = Usuario.objects.get(nombre_usuario=usuario, contraseña=password)
-            # Si el usuario se encuentra, redirige a la página de inicio
-            return redirect('html/home.html')
-        except Usuario.DoesNotExist:
-            # Si no se encuentra, muestra un mensaje de error
-            messages.error(request, 'Usuario o contraseña incorrectos.')
 
-    return render(request, 'html/home.html')
+        # Imprime para depuración
+        print(f"Usuario: {usuario}, Contraseña: {password}")
+
+        # Autenticar usuario manualmente con la base de datos de XAMPP
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("""
+                    SELECT * FROM usuarios WHERE nombre_usuario = %s AND contraseña = %s
+                """, [usuario, password])
+                user = cursor.fetchone()  # Obtiene una fila si coincide, o None si no existe
+
+            if user:
+                # Si el usuario se encuentra, iniciar sesión (aquí simulado) y redirigir
+                request.session['usuario'] = usuario  # Puedes almacenar el usuario en la sesión
+                print("Autenticación exitosa, redirigiendo a home.")
+                return redirect('home')  # Redirige a la vista 'home' en urls.py
+            else:
+                # Si la autenticación falla, muestra un mensaje de error sin redirigir
+                print("Autenticación fallida, mostrando mensaje de error.")
+                messages.error(request, 'Usuario o contraseña incorrectos.')
+        except Exception as e:
+            print(f"Error en la autenticación: {e}")
+            messages.error(request, 'Error en el sistema de autenticación.')
+
+    # Renderiza la página de inicio de sesión nuevamente si falla la autenticación o es un GET request
+    return render(request, 'html/login.html')
