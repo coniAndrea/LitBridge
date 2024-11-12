@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Ejemplo de uso (puedes ajustar según tus necesidades)
-    const newBook = {
+  /*  const newBook = {
         title: 'Título del Libro',
         author: 'Autor del Libro',
         image: '../img/portada-libro.png',
         link: '../html/lectura.html'
     };
 
-    addBookToLibrary(newBook);
+    addBookToLibrary(newBook);*/
 });
 

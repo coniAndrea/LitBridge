@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Libro, Usuario
+from .models import Libro
 from .forms import LibroForm
 from .models import Administrador
 from django.db import connection
@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 import json
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
     # BACKEND #
@@ -96,8 +97,8 @@ def translate_text(request):
 
     # FRONTEND #
 # biblioteca
-def Biblioteca(request):
-    return render(request, 'html/Biblioteca.html')
+def biblioteca(request):
+    return render(request, 'html/biblioteca.html')
 
 # config
 def config(request):
@@ -116,6 +117,7 @@ def escribir(request):
     return render(request, 'html/escribir.html')
 
 # home
+@login_required
 def home(request):
     return render(request, 'html/home.html')
 
