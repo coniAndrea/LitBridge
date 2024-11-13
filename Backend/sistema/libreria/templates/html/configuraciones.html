@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - LitBrigde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script> 
+    <link rel="stylesheet" href="{% static 'css/configuracion.css' %}">
+    <script src="{% static 'js/configuracion.js' %}" defer></script> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
+            <h1>LitBrigde</h1>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Categoría</button>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-content">
+                <a href="#">Acción</a>
+                <a href="#">Aventura</a>
+                <a href="#">Chick-Lit</a>
+                <a href="#">Ciencia Ficción</a>
+                <a href="#">Clásico</a>
+                <a href="#">De Todo</a>
+                <a href="#">Espiritual</a>
+                <a href="#">Fanfic</a>
+                <a href="#">Fantasía</a>
+                <a href="#">Ficción General</a>
+                <a href="#">Historia Corta</a>
+                <a href="#">Hombre Lobo</a>
+                <a href="#">Humor</a>
+                <a href="#">Misterio</a>
+                <a href="#">No Ficción</a>
+                <a href="#">Novela Histórica</a>
+                <a href="#">Novela Juvenil</a>
+                <a href="#">Paranormal</a>
+                <a href="#">Poesía</a>
+                <a href="#">Romance</a>
+                <a href="#">Suspenso</a>
+                <a href="#">Terror</a>
+                <a href="#">Vampiro</a>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+        </div>
+        <div class="button-container">
+            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+        </div>
+
+        <div class="user-container">
+            <div class="user-icon">
+                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="userMenu" class="user-menu">
+                <ul>
+                    <li><a href="{% url 'perfil'%}">Mi Perfil</a></li>
+                    <hr>
+                    <li><a href="#">Buzón</a></li>
+                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
+                    <hr>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="settings-container">
+        <ul class="settings-menu">
+            <li><a href="#" class="active" onclick="showSection('cuenta')">Cuenta</a></li>
+            <li><a href="#" onclick="showSection('notificaciones')">Notificaciones</a></li>
+            <li><a href="#" onclick="showSection('idioma')">Idioma</a></li>
+        </ul>
+
+        <div class="settings-content">
+            <div id="cuenta" class="section" style="display: block;">
+                <h2>Cambia la información de tu cuenta </h2>
+                <br>
+                <form class="account-form">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" placeholder="Ingrese su nombre de usuario" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" placeholder="Ingrese su contraseña" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" placeholder="Ingrese su correo electrónico" required>
+                        <a href="#" class="change-link">cambiar</a>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="submit-btn" type="button" onclick="guardarCambios()">Guardar cambios</button>
+                        <button class="close-account-btn" type="button" onclick="cerrarcuenta()">Cerrar cuenta</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="notificaciones" class="section">
+                <h2>Notificaciones</h2>
+                <br>
+                <p>Recibir notificaciones por correo electrónico para estos eventos</p>
+
+                <div class="notifications-group">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="mensajes" checked>
+                            <label for="mensajes">Mensajes</label>
+                            <ul>
+                                <li>Alguien escribe en tu panel de mensajes</li>
+                                <li>Alguien empieza a seguirte</li>
+                                <li>Alguien comenta en tu historia</li>
+                                <li>Alguien te menciona en un comentario</li>
+                                <li>Recibes un mensaje</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>
+                            <input type="checkbox" id="usuarios-sigues">
+                            <label for="usuarios-sigues">Los usuarios que sigues suben una historia</label>
+                        </li>
+                        <br>
+                        <li>
+                            <input type="checkbox" id="actualizaciones" checked>
+                            <label for="actualizaciones">Actualizaciones</label>
+                            <ul>
+                                <li>Anuncios importantes de Wattpad</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <button class="submit-btn">Guardar</button>
+            </div>
+
+
+            <div id="idioma" class="section">
+                <h2>Por favor selecciona tu configuración de idioma preferido para LitBridge</h2>
+                <br>
+                <div class="container">
+                    <!-- Europa Column -->
+                    <div class="continent">
+                        <h2>Europa</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="spanish-europe" name="language">
+                            <label for="spanish-europe">Español (España)</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="french" name="language">
+                            <label for="french">Francés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="german" name="language">
+                            <label for="german">Alemán</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="italian" name="language">
+                            <label for="italian">Italiano</label>
+                        </div>
+                    </div>
+
+                    <!-- Asia Column -->
+                    <div class="continent">
+                        <h2>Asia</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="chinese" name="language">
+                            <label for="chinese">Chino</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="japanese" name="language">
+                            <label for="japanese">Japonés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="korean" name="language">
+                            <label for="korean">Coreano</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="hindi" name="language">
+                            <label for="hindi">Hindi</label>
+                        </div>
+                    </div>
+
+                    <!-- América Column -->
+                    <div class="continent">
+                        <h2>América</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="spanish-america" name="language">
+                            <label for="spanish-america">Español (Latino)</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="english" name="language">
+                            <label for="english">Inglés</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="portuguese" name="language">
+                            <label for="portuguese">Portugués</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="french-canada" name="language">
+                            <label for="french-canada">Francés (Canadá)</label>
+                        </div>
+                    </div>
+
+                    <!-- África Column -->
+                    <div class="continent">
+                        <h2>África</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="arabic" name="language">
+                            <label for="arabic">Árabe</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="swahili" name="language">
+                            <label for="swahili">Suajili</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="amharic" name="language">
+                            <label for="amharic">Amárico</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="french-africa" name="language">
+                            <label for="french-africa">Francés (África)</label>
+                        </div>
+                    </div>
+
+                    <!-- Oceanía Column -->
+                    <div class="continent">
+                        <h2>Oceanía</h2>
+                        <div class="language-item">
+                            <input type="checkbox" id="english-australia" name="language">
+                            <label for="english-australia">Inglés (Australia)</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="maori" name="language">
+                            <label for="maori">Maorí</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="samoan" name="language">
+                            <label for="samoan">Samoano</label>
+                        </div>
+                        <div class="language-item">
+                            <input type="checkbox" id="fijian" name="language">
+                            <label for="fijian">Fiyiano</label>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <button class="submit-btn" onclick="traducirContenidoDeAPI(); traducirPaginaCompleta();">Guardar</button>
+            </div>
+        </div> <!-- Cierre del settings-content -->
+    </div> <!-- Cierre del settings-container -->
+
+    <!-- Botón de cerrar cuenta -->
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+
+</html>

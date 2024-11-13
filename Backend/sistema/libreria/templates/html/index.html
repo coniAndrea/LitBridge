@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LitBridge</title>
+    <!-- Vinculamos el archivo CSS correctamente usando la etiqueta 'static' -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <!-- Asegúrate de que el script se cargue correctamente con 'static' -->
+    <script src="{% static 'js/index.js' %}" defer></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <!-- Usamos 'static' para cargar imágenes correctamente -->
+            <img src="{% static 'img/logo.png' %}" alt="LitBridge Logo">
+            <h1>LitBridge</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'login_user' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'registro' %}" class="join-button">Regístrate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <!-- Primer contenedor -->
+        <div class="container">
+            <div class="left">
+                <h1>LEE Y CREA HISTORIAS SIN FRONTERAS CON NUESTRA TRADUCCIÓN AUTOMÁTICA.</h1>
+                <h4>Únete a nuestra comunidad global donde las historias no conocen fronteras. Lee, crea y traduce relatos con nuestra tecnología automática, y comparte la experiencia invitando a amigos de cualquier parte del mundo para explorar juntos nuevas culturas y lenguajes.</h4>
+                <a href="{% url 'registro' %}" class="cta-button">ÚNETE AHORA</a>
+            </div>
+            <div class="right">
+                <img src="{% static 'img/computer.png' %}" alt="LitBridge Image" class="incline-right">
+            </div>
+        </div>
+
+        <!-- Segundo contenedor (Carrusel) -->
+        <div class="container-2">
+            <div class="info">
+                <h3>Explora categorías irresistibles en nuestra plataforma: Desde aventuras épicas y romances apasionantes hasta misterios intrigantes. Encuentra tu próxima lectura favorita y sumérgete en historias que cruzan fronteras y despiertan emociones.</h3>
+            </div>
+            <div class="carrusel">
+                <div class="carrusel-inner">
+                    <!-- Usamos 'static' también para las imágenes del carrusel -->
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Aventura.jpg' %}" alt="Aventura"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Cuento.jpg' %}" alt="Cuento"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Drama.jpg' %}" alt="Drama"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Fantasia.jpg' %}" alt="Fantasía"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Novela Narrativa.jpg' %}" alt="Novela Narrativa"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/Terror.jpg' %}" alt="Terror"></div>
+                    <div class="carrusel-item"><img src="{% static 'img/categorias/otros.jpg' %}" alt="Otros"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 LitBridge. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

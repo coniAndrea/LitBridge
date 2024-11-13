@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Historia - LitBrigde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/crear.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <script src="{% static 'js/crear.js' %}" defer></script> 
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
+            <h1>LitBrigde</h1>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Categoría</button>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-content">
+                <a href="#">Acción</a>              
+                <a href="#">Aventura</a>                  
+                <a href="#">Chick-Lit</a>
+                <a href="#">Ciencia Ficción</a>
+                <a href="#">Clásico</a>
+                <a href="#">De Todo</a>
+                <a href="#">Espiritual</a>
+                <a href="#">Fanfic</a>
+                <a href="#">Fantasía</a>
+                <a href="#">Ficción General</a>
+                <a href="#">Historia Corta</a>
+                <a href="#">Hombre Lobo</a>
+                <a href="#">Humor</a>
+                <a href="#">Misterio</a>
+                <a href="#">No Ficción</a>
+                <a href="#">Novela Histórica</a>
+                <a href="#">Novela Juvenil</a>
+                <a href="#">Paranormal</a>
+                <a href="#">Poesía</a>
+                <a href="#">Romance</a>
+                <a href="#">Suspenso</a>
+                <a href="#">Terror</a>
+                <a href="#">Vampiro</a>
+            </div>
+        </div>
+         
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+        </div>
+
+        <div class="user-container">
+            <div class="user-icon">
+                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="userMenu" class="user-menu">
+                <ul>
+                    <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+                    <hr>
+                    <li><a href="#">Buzón</a></li>
+                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
+                    <hr>
+                    <li><a href="#">Idioma:</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+ <br>
+    <main>
+        <!-- Header 2 -->
+        <div class="header-2">
+            <div class="back-arrow">
+                <a href="{% url 'escribir' %}"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <h1>Creando historia...</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Cancelar</a></li>
+                    <li><a href="{% url 'crear_desarrollo' %}" class="join-button">Siguiente</a></li>
+                </ul>
+            </nav>
+        </div>
+<br>
+        <div class="container">
+            <!-- Contenedor izquierdo con el botón para subir imagen -->
+            <div class="left">
+               
+                <div id="bookCover" onclick="document.getElementById('fileInput').click();">
+                    <p>Añadir Portada</p>
+                    <!-- Input oculto para subir archivos -->
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                </div>
+
+                <form id="uploadForm">
+                    <label for="derechos">Derecho de Autor</label>
+                    <select name="derechos" id="derechos">
+                        <option value="" disabled selected></option>
+                        <option value="Atri. de (CC) No Com. ShareAlike">Atri. de (CC) No Com. ShareAlike</option>
+                        <option value="Atri. de (CC) ShareAlike">Atri. de (CC) ShareAlike</option>
+                        <option value="Atri. de (CC) Sin Derivados">Atri. de (CC) Sin Derivados</option>
+                        <option value="Atribución de Creative Commons (CC)">Atribución de Creative Commons (CC)</option>
+                        <option value="Dominio Público">Dominio Público</option>
+                        <option value="Todos los derechos reservados">Todos los derechos reservados</option>
+                    </select>
+                    <p>No permitas que tu trabajo sea utilizado o adaptado, bajo ningún concepto, sin tu permiso.</p>
+                </form>
+            </div>
+
+            <!-- Contenedor derecho con los detalles de la historia -->
+            <div class="right">
+                <h1>Detalles</h1>
+                <form>
+                    <div class="form-group">
+                        <div class="title-container">
+                            <div class="input-container">
+                                <label for="titulo">Título</label>
+                                <input type="text" id="titulo" name="titulo" placeholder="Título de la historia" required>
+                            </div>
+                            <div class="input-container">
+                                <label for="categorias">Categoría</label>
+                                <select name="categorias" id="categorias">
+                                    <option value="" disabled selected></option>
+                                    <option value="Acción">Acción</option>
+                                    <option value="Aventura">Aventura</option>
+                                    <option value="Chick-Lit">Chick-Lit</option>
+                                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                                    <option value="Clásico">Clásico</option>
+                                    <option value="De Todo">De Todo</option>
+                                    <option value="Espiritual">Espiritual</option>
+                                    <option value="Fanfic">Fanfic</option>
+                                    <option value="Fantasía">Fantasía</option>
+                                    <option value="Ficción General">Ficción General</option>
+                                    <option value="Historia Corta">Historia Corta</option>
+                                    <option value="Hombre Lobo">Hombre Lobo</option>
+                                    <option value="Humor">Humor</option>
+                                    <option value="Misterio">Misterio</option>
+                                    <option value="No Ficción">No Ficción</option>
+                                    <option value="Novela Histórica">Novela Histórica</option>
+                                    <option value="Novela Juvenil">Novela Juvenil</option>
+                                    <option value="Paranormal">Paranormal</option>
+                                    <option value="Poesía">Poesía</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Suspenso">Suspenso</option>
+                                    <option value="Terror">Terror</option>
+                                    <option value="Vampiro">Vampiro</option>
+                                <!-- Añadir más categorías aquí -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-container">
+                        <h5>Descripción</h5>
+                        <div contenteditable="true" style="border: 1px solid #ccc; padding: 10px; width: 100%; height: 200px; overflow-y: auto;">
+                            Escribe aquí la descripción de tu historia...
+                        </div>
+                    </div>
+                    <div>
+                        <label for="idiomas">Idioma</label>
+                        <select name="idiomas" id="idiomas">
+                            <option value="" disabled selected></option>
+                            <option value="Alemán">Alemán</option>
+                            <option value="Árabe">Árabe</option>
+                            <option value="Búlgaro">Búlgaro</option> 
+                            <option value="Checo">Checo</option>
+                            <option value="Chino">Chino</option>
+                            <option value="Coreano">Coreano</option>
+                            <option value="Francés">Francés</option>
+                            <option value="Griego">Griego</option>
+                            <option value="Húngaro">Húngaro</option>
+                            <option value="Indonesio">Indonesio</option> 
+                            <option value="Inglés">Inglés</option>
+                            <option value="Italiano">Italiano</option>
+                            <option value="Japonés">Japonés</option>
+                            <option value="Polaco">Polaco</option>
+                            <option value="Portugués">Portugués</option>
+                            <option value="Rumano">Rumano</option>
+                            <option value="Ruso">Ruso</option> 
+                            <option value="Sueco">Sueco</option>
+                            <option value="Turco">Turco</option>
+                            <option value="Ucraniano">Ucraniano</option>
+                            <!-- Añadir más idiomas aquí -->
+                        </select>
+                
+                </form>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
