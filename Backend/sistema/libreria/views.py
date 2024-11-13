@@ -32,9 +32,9 @@ def login_admin(request):
             # Si no se encuentra, mostrar un mensaje de error
             messages.error(request, 'Usuario o contraseña incorrectos.')
     
-    return render(request, 'registration/loginAdmin.html')
+    return render(request, 'registration/login.html')
 
-# LOGOUT USUARIO
+# LOGOUT admin
 def logout(request):
     return redirect('login')
 
@@ -160,7 +160,7 @@ def registrar_usuario(request):
                 INSERT INTO usuarios (nombre_usuario, correo, contraseña)
                 VALUES (%s, %s, %s)
             """, [nombre_usuario, correo, contraseña])
-    return render(request, 'html/registro.html')
+    return render(request, 'html/home.html')
 
 # LOGIN USUARIO
 def login_user(request):
@@ -194,6 +194,10 @@ def login_user(request):
 
     # Renderiza la página de inicio de sesión nuevamente si falla la autenticación o es un GET request
     return render(request, 'html/login.html')
+
+# LOGOUT USUARIO
+def logout_user(request):
+    return redirect('index')
 
 # LOGIN USUARIO
 """User = get_user_model()

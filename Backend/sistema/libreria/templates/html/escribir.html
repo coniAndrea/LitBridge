@@ -8,15 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/escribir.css' %}">
+    <script src="{% static 'js/header.js' %}" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{% url 'home' %}"></a>
             <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
         </div>
-        
+
+        <div class="dropdown">
+            <button class="dropbtn">Categoría</button>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-content">
+                <a href="#">Acción</a>              
+                <a href="#">Aventura</a>                  
+                <a href="#">Chick-Lit</a>
+                <a href="#">Ciencia Ficción</a>
+                <a href="#">Clásico</a>
+                <a href="#">De Todo</a>
+                <a href="#">Espiritual</a>
+                <a href="#">Fanfic</a>
+                <a href="#">Fantasía</a>
+                <a href="#">Ficción General</a>
+                <a href="#">Historia Corta</a>
+                <a href="#">Hombre Lobo</a>
+                <a href="#">Humor</a>
+                <a href="#">Misterio</a>
+                <a href="#">No Ficción</a>
+                <a href="#">Novela Histórica</a>
+                <a href="#">Novela Juvenil</a>
+                <a href="#">Paranormal</a>
+                <a href="#">Poesía</a>
+                <a href="#">Romance</a>
+                <a href="#">Suspenso</a>
+                <a href="#">Terror</a>
+                <a href="#">Vampiro</a>
+            </div>
+        </div>
+         
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+        </div>
+
         <div class="user-container">
             <div class="user-icon">
                 <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
@@ -30,10 +64,10 @@
                     <li><a href="#">Notificaciones</a></li>
                     <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma: Español</a></li>
+                    <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
-                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>

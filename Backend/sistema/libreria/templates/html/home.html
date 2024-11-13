@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugerencia - LitBrigde</title>
+    <title>LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -57,7 +57,8 @@
 
         <div class="user-container">
             <div class="user-icon">
-                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <img src="{% static 'img/pretty-flower.jpg' %}" class="user-icon">
+                <span class="username">{{ username }}</span> <!-- Display username here -->
                 <i class="fas fa-caret-down"></i>
             </div>
             <div id="userMenu" class="user-menu">
@@ -71,10 +72,10 @@
                     <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
-                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
-        </div>
+        </div>        
     </header>
     <main>
         <section class="carousel" id="recommendations">
