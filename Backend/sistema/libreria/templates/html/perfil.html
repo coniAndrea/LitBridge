@@ -12,6 +12,7 @@
 <body>
     <header>
         <div class="logo">
+            <a href="{% url 'home' %}"></a>
             <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
         </div>
@@ -50,7 +51,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='escribir';">Escribir</button>
         </div>
 
         <div class="user-container">
@@ -64,12 +65,12 @@
                     <hr>
                     <li><a href="#">Buzón</a></li>
                     <li><a href="#">Notificaciones</a></li>
-                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
+                    <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
                     <li><a href="#">Idioma: Español</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
-                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>

@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugerencia - LitBrigde</title>
+    <title>LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <script src="{% static 'js/header.js' %}" defer></script> 
-    <script src="{% static 'js/home.js' %}" defer></script> 
+    <script src="{% static 'js/header.js' %}" defer></script>
+    <script src="{% static 'js/home.js' %}" defer></script>
 </head>
 <body>
     <header>
@@ -22,7 +22,7 @@
             <button class="dropbtn">Categoría</button>
             <i class="fas fa-caret-down"></i>
             <div class="dropdown-content">
-                <a href="#">Acción</a>                   
+                <a href="#">Acción</a>              
                 <a href="#">Aventura</a>                  
                 <a href="#">Chick-Lit</a>
                 <a href="#">Ciencia Ficción</a>
@@ -52,12 +52,13 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='escribir';">Escribir</button>
         </div>
 
         <div class="user-container">
             <div class="user-icon">
-                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <img src="{% static 'img/pretty-flower.jpg' %}" class="user-icon">
+                <span class="username">{{ username }}</span> <!-- Display username here -->
                 <i class="fas fa-caret-down"></i>
             </div>
             <div id="userMenu" class="user-menu">
@@ -66,15 +67,15 @@
                     <hr>
                     <li><a href="#">Buzón</a></li>
                     <li><a href="#">Notificaciones</a></li>
-                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
+                    <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
                     <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
-                    <li><a href="{% url 'index' %}">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
-        </div>
+        </div>        
     </header>
     <main>
         <section class="carousel" id="recommendations">
@@ -172,15 +173,18 @@
 
     <!-- Modal -->
    
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModalBtn" class="close">&times;</span> <!-- Botón de cierre -->  
-            <img id="book-image" src="" alt="Imagen del libro">
-            <h2 id="book-title"></h2>
-            <p id="book-description"></p>
-            <button onclick="addToLibrary('Título de la Historia', 'Autor de la Historia', 'ruta/de/la/imagen.jpg', 'X capítulos')">Agregar a mi Biblioteca</button>
-        </div>
+   <!-- Modal de detalles del libro -->
+<div id="bookModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <img id="book-image" src="" alt="Imagen del libro">
+        <h2 id="book-title"></h2>
+        <p id="book-description"></p>
+        <p id="book-price-info"></p>
+        <button id="addToLibraryBtn">Agregar a la biblioteca</button>  <!-- Indicador si el libro es gratuito o no -->
     </div>
+</div>
+
 
     
    <!-- Pie de página -->
@@ -196,4 +200,3 @@
 </footer>
 </body>
 </html>
-

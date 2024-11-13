@@ -128,6 +128,7 @@ fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
 fetchBooks('romance', document.getElementById('romance-books'));
 fetchBooks('thriller', document.getElementById('thriller-books'));
 fetchBooks('science fiction', document.getElementById('science-fiction-books'));
+
 // Función para mostrar una notificación de mensaje
 function showNotification(message, color) {
     const notification = document.createElement('div');
