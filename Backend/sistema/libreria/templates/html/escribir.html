@@ -12,6 +12,7 @@
 <body>
     <header>
         <div class="logo">
+            <a href="{% url 'home' %}"></a>
             <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
         </div>
@@ -27,7 +28,7 @@
                     <hr>
                     <li><a href="#">Buzón</a></li>
                     <li><a href="#">Notificaciones</a></li>
-                    <li><a href="{% url 'Biblioteca' %}">Biblioteca</a></li>
+                    <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
                     <li><a href="#">Idioma: Español</a></li>
                     <li><a href="#">Ayuda</a></li>

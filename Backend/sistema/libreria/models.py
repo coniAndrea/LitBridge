@@ -1,6 +1,5 @@
 from typing import Any
 from django.db import models
-from django.contrib.auth.hashers import make_password, check_password
 
 # Create your models here.
 class Libro(models.Model):

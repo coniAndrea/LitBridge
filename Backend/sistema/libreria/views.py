@@ -8,9 +8,12 @@ import openai
 from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 import json
 from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.hashers import make_password, check_password
+
 # Create your views here.
 
     # BACKEND #
@@ -29,7 +32,7 @@ def login_admin(request):
             # Si no se encuentra, mostrar un mensaje de error
             messages.error(request, 'Usuario o contraseña incorrectos.')
     
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/loginAdmin.html')
 
 # LOGOUT USUARIO
 def logout(request):
@@ -106,7 +109,7 @@ def config(request):
 
 #crear_desarrollo
 def crear_desarrollo(request):
-    return render(request, 'html/crear_desarrollo.html')
+    return render(request, 'html/crear desarrollo.html')
 
 #crear
 def crear_usuario(request):
@@ -117,7 +120,7 @@ def escribir(request):
     return render(request, 'html/escribir.html')
 
 # home
-@login_required
+#@login_required
 def home(request):
     return render(request, 'html/home.html')
 
@@ -136,7 +139,6 @@ def login_usuario(request):
 # perfil
 def perfil(request):
     return render(request, 'html/perfil.html')
-
 
 # sugerencia
 def sugerencia(request):
@@ -160,27 +162,26 @@ def registrar_usuario(request):
             """, [nombre_usuario, correo, contraseña])
     return render(request, 'html/registro.html')
 
-
 # LOGIN USUARIO
 def login_user(request):
     if request.method == 'POST':
-        usuario = request.POST.get('usuario')
+        username = request.POST.get('usuario')
         password = request.POST.get('password')
 
         # Imprime para depuración
-        print(f"Usuario: {usuario}, Contraseña: {password}")
+        print(f"Usuario: {username}, Contraseña: {password}")
 
         # Autenticar usuario manualmente con la base de datos de XAMPP
         try:
             with connection.cursor() as cursor:
                 cursor.execute("""
                     SELECT * FROM usuarios WHERE nombre_usuario = %s AND contraseña = %s
-                """, [usuario, password])
+                """, [username, password])
                 user = cursor.fetchone()  # Obtiene una fila si coincide, o None si no existe
 
             if user:
                 # Si el usuario se encuentra, iniciar sesión (aquí simulado) y redirigir
-                request.session['usuario'] = usuario  # Puedes almacenar el usuario en la sesión
+                request.session['usuario'] = username  # Puedes almacenar el usuario en la sesión
                 print("Autenticación exitosa, redirigiendo a home.")
                 return redirect('home')  # Redirige a la vista 'home' en urls.py
             else:
@@ -193,3 +194,41 @@ def login_user(request):
 
     # Renderiza la página de inicio de sesión nuevamente si falla la autenticación o es un GET request
     return render(request, 'html/login.html')
+
+# LOGIN USUARIO
+"""User = get_user_model()
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('usuario')
+        password = request.POST.get('password')
+
+        # Autenticar con base de datos XAMPP
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM usuarios WHERE nombre_usuario = %s", [username])
+                row = cursor.fetchone()
+
+            if row and check_password(password, row[1]):  # row[1] asume que es la columna de contraseña con hash
+                # Verificar si el usuario existe en Django; si no, crearlo
+                user, created = User.objects.get_or_create(username=username)
+
+#Configurar contraseña para el usuario en Django si es necesario
+                if created:
+                    user.password = make_password(password)  # Guardar contraseña con hash en Django
+                    user.save()
+
+                # Autenticar y iniciar sesión
+                django_user = authenticate(request, username=username, password=password)
+                if django_user is not None:
+                    login(request, django_user)
+                    return redirect('home')
+                else:
+                    messages.error(request, 'Autenticación fallida al integrar con Django.')
+            else:
+                messages.error(request, 'Usuario o contraseña incorrectos.')
+        except Exception as e:
+            print(f"Error en la autenticación: {e}")
+            messages.error(request, 'Error en el sistema de autenticación.')
+
+    return render(request, 'html/login.html')"""

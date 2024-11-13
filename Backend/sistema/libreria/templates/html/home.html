@@ -7,7 +7,7 @@
     <title>Sugerencia - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="{% static 'js/header.js' %}" defer></script>
     <script src="{% static 'js/home.js' %}" defer></script>
 </head>
@@ -52,7 +52,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='escribir';">Escribir</button>
         </div>
 
         <div class="user-container">
@@ -62,7 +62,7 @@
             </div>
             <div id="userMenu" class="user-menu">
                 <ul>
-                    <li><a href="../html/perfil.html">Mi Perfil</a></li>
+                    <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
                     <hr>
                     <li><a href="#">Buzón</a></li>
                     <li><a href="#">Notificaciones</a></li>
@@ -70,8 +70,8 @@
                     <hr>
                     <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
-                    <li><a href="../html/configuraciones.html">Configuración</a></li>
-                    <li><a href="../html/index.html">Cerrar sesión</a></li>
+                    <li><a href="{% url 'config' %}">Configuración</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -172,17 +172,18 @@
 
     <!-- Modal -->
    
-    <div id="bookModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModalBtn" class="close">&times;</span> <!-- Botón de cierre -->
-            <img id="book-image" src="" alt="Imagen del libro">
-            <h2 id="book-title"></h2>
-            <p id="book-description"></p>
-            <p id="book-price-info"></p> <!-- Nuevo párrafo para mostrar si el libro es gratuito o no -->
-            <button id="addToLibraryBtn">Agregar a mi Biblioteca</button>
-        </div>
+   <!-- Modal de detalles del libro -->
+<div id="bookModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <img id="book-image" src="" alt="Imagen del libro">
+        <h2 id="book-title"></h2>
+        <p id="book-description"></p>
+        <p id="book-price-info"></p>
+        <button id="addToLibraryBtn">Agregar a la biblioteca</button>  <!-- Indicador si el libro es gratuito o no -->
     </div>
-    
+</div>
+
 
     
    <!-- Pie de página -->
@@ -198,4 +199,3 @@
 </footer>
 </body>
 </html>
-

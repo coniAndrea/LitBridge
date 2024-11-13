@@ -1,4 +1,5 @@
 #rutas de django permiten ingresar y detetrminar si el usuario escribe algo algo en la url del navegador.
+#from django.contrib import admin
 from django.urls import path, include
 from . import views
 
@@ -9,7 +10,9 @@ from .views import translate_text
 
 urlpatterns = [
     #BACKEND
-    path('accounts/'. include('django.contrib.auth.urls')),
+    #path('admin/', admin.site.urls),
+    #path('', include('libreria.urls')),
+    #path('accounts/', include('django.contrib.auth.urls')),
     path('inicio', views.inicio, name='inicio'),
     path('admin', views.login_admin, name='login'),
     path('logout', views.logout, name='logout'),

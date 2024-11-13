@@ -17,15 +17,13 @@ function fetchBooks(query, container) {
             }
 
             data.items.forEach(item => {
-                // Asegúrate de incluir información de precios si está disponible
-                const saleInfo = item.saleInfo;
                 const bookData = {
                     title: item.volumeInfo.title,
                     authors: item.volumeInfo.authors,
                     imageLinks: item.volumeInfo.imageLinks,
                     infoLink: item.volumeInfo.infoLink,
                     description: item.volumeInfo.description || 'Descripción no disponible',
-                    saleInfo: saleInfo  // Agrega la información de ventas aquí
+                    saleInfo: item.saleInfo
                 };
 
                 const bookElement = document.createElement('img');
@@ -39,28 +37,25 @@ function fetchBooks(query, container) {
         .catch(error => console.error('Error al cargar los libros:', error));
 }
 
-
-
-
+// Mostrar los detalles del libro en un modal
 function showBookDetails(bookInfo) {
-    console.log(bookInfo);
     const modal = document.getElementById('bookModal');
     const bookImage = document.getElementById('book-image');
     const bookTitle = document.getElementById('book-title');
     const bookDescription = document.getElementById('book-description');
     const addToLibraryBtn = document.getElementById('addToLibraryBtn');
     const bookPriceInfo = document.getElementById('book-price-info');
+    
     const isFree = bookInfo.saleInfo && bookInfo.saleInfo.saleability === 'FREE';
     const isForSale = bookInfo.saleInfo && bookInfo.saleInfo.saleability === 'FOR_SALE';
     const isNotForSale = bookInfo.saleInfo && bookInfo.saleInfo.saleability === 'NOT_FOR_SALE';
-    const price = bookInfo.saleInfo && bookInfo.saleInfo.retailPrice ? `${bookInfo.saleInfo.retailPrice.amount} ${bookInfo.saleInfo.retailPrice.currencyCode}` : 'No disponible';
+    const price = bookInfo.saleInfo?.retailPrice ? `${bookInfo.saleInfo.retailPrice.amount} ${bookInfo.saleInfo.retailPrice.currencyCode}` : 'No disponible';
 
-    // Actualiza los detalles del libro en el modal
+    // Actualizar detalles del libro
     bookTitle.textContent = bookInfo.title || 'Título no disponible';
-    bookDescription.textContent = bookInfo.description || 'Descripción no disponible';
+    bookDescription.textContent = getShortDescription(bookInfo.description, 150);
     bookImage.src = bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300?text=Sin+imagen';
 
-    // Muestra si el libro es gratuito o su precio
     if (isFree) {
         bookPriceInfo.textContent = "Este libro es gratuito";
         bookPriceInfo.style.color = "green";
@@ -68,75 +63,64 @@ function showBookDetails(bookInfo) {
         bookPriceInfo.textContent = `Precio: ${price}`;
         bookPriceInfo.style.color = "red";
     } else if (isNotForSale) {
-        bookPriceInfo.textContent = "Este libro es gratuito";
-        bookPriceInfo.style.color = "green";
+        bookPriceInfo.textContent = "Este libro no está a la venta";
+        bookPriceInfo.style.color = "orange";
     }
-    
-    // Configurar el evento onclick del botón para permitir añadir el libro si es gratuito o no está a la venta
+
+    // Configurar el botón de agregar a la biblioteca
     addToLibraryBtn.onclick = () => {
-        if (isFree || isNotForSale) {  // Permitir agregar si el libro es gratuito o no está a la venta
+        if (isFree || isNotForSale) {
             addToLibrary(bookInfo);
-            closeModal();  // Cerrar el modal después de añadir el libro
+            closeModal();
         } else {
-            alert('Este libro es de pago y no puede ser añadido a tu biblioteca.');  // Mensaje para libros de pago
+            alert('Este libro es de pago y no puede ser añadido a tu biblioteca.');
         }
     };
 
-    modal.style.display = 'block'; // Mostrar el modal
+    modal.style.display = 'block';
 }
 
-// Función para obtener las primeras N palabras de una descripción
+// Función para obtener una descripción corta
 function getShortDescription(description, maxWords) {
     const words = description.split(' ');
-    if (words.length > maxWords) {
-        return words.slice(0, maxWords).join(' ') + '...';
-    }
-    return description;
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + '...' : description;
 }
 
+// Agregar un libro a la biblioteca
 function addToLibrary(book) {
-    console.log(book);
-    // Recuperar la biblioteca existente de localStorage o iniciar una nueva si no existe
     const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
-
-    if (!book.title) {
-        alert('El libro debe tener un título para ser añadido a la biblioteca.');
-        return; // Salir de la función si el libro no tiene título
-    }
-    // Comprobar si el libro ya está en la biblioteca basado en un identificador único, como podría ser el título
+    
     if (libraryBooks.some(libBook => libBook.title === book.title)) {
-        alert('Este libro ya está en tu biblioteca.'); // O alguna otra forma de notificación
-        return; // Salir de la función si el libro ya existe
+        alert('Este libro ya está en tu biblioteca.');
+        return;
     }
 
-    // Crear un nuevo objeto de libro con información completa
     const newBook = {
         title: book.title,
-        author: book.authors?.join(', ') || 'Autor no disponible', // Unir autores con coma o mostrar un mensaje si no están disponibles
-        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen', // Imagen del libro o una imagen de placeholder
-        link: book.infoLink || '#' // Enlace para más información o un enlace placeholder
+        author: book.authors?.join(', ') || 'Autor no disponible',
+        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
+        link: book.infoLink || '#'
     };
 
-    // Añadir el nuevo libro a la biblioteca
     libraryBooks.push(newBook);
-
-    // Guardar la biblioteca actualizada en localStorage
     localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
-
-    // Notificar al usuario que el libro fue añadido exitosamente
     alert('Libro añadido a tu biblioteca.');
 }
 
-
-// Cerrar el modal al hacer clic en el botón de cerrar
+// Cerrar el modal
+// Función para cerrar el modal al hacer clic en el botón de cerrar
 function closeModal() {
     document.getElementById('bookModal').style.display = 'none';
+    console.log('Modal cerrado'); // Mensaje para verificar que la función se ejecuta
 }
 
+// Asignar el evento para cerrar el modal
+document.getElementById('closeModalBtn').onclick = closeModal;
+
 // Llamadas para cargar libros en distintas secciones
-fetchBooks('mystery', carouselBooks);  // Cargamos libros de misterio en el carrusel principal
-fetchBooks('fantasy', genreBooks);     // Cargamos libros de fantasía en otra sección
-fetchBooks('adventure', document.getElementById('adventure-books'));  // Ejemplo para otra sección
+fetchBooks('mystery', carouselBooks);
+fetchBooks('fantasy', genreBooks);
+fetchBooks('adventure', document.getElementById('adventure-books'));
 fetchBooks('werewolf', document.getElementById('werewolf-books'));
 fetchBooks('vampire', document.getElementById('vampire-books'));
 fetchBooks('classic', document.getElementById('classic-books'));
@@ -145,26 +129,60 @@ fetchBooks('romance', document.getElementById('romance-books'));
 fetchBooks('thriller', document.getElementById('thriller-books'));
 fetchBooks('science fiction', document.getElementById('science-fiction-books'));
 
+// Función para mostrar una notificación de mensaje
+function showNotification(message, color) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.backgroundColor = color; // Asigna color según el mensaje
+    document.body.appendChild(notification);
 
-// Asignamos el evento para cerrar el modal
-document.getElementById('closeModalBtn').onclick = closeModal;
+    // Elimina la notificación después de 3 segundos
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
 
-// Función para mover el carrusel principal (recomendaciones)
+// Función para agregar un libro a la biblioteca con notificación
+function addToLibrary(book) {
+    const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
+    
+    if (libraryBooks.some(libBook => libBook.title === book.title)) {
+        showNotification('Este libro ya está en tu biblioteca.', 'orange');
+        return;
+    }
+
+    const newBook = {
+        title: book.title,
+        author: book.authors?.join(', ') || 'Autor no disponible',
+        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
+        link: book.infoLink || '#'
+    };
+
+    libraryBooks.push(newBook);
+    localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
+    showNotification('Libro añadido a tu biblioteca.', 'green');
+}
+// Función para mover el carrusel principal (Recomendaciones)
 function moveCarousel(direction) {
     const carousel = document.getElementById('carousel-books');
-    const scrollAmount = carousel.offsetWidth; // El ancho visible del carrusel
+    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
+
+    // Mueve el carrusel en la dirección indicada
     carousel.scrollBy({
-        left: scrollAmount * direction, // Desplazar en la dirección indicada
-        behavior: 'smooth' // Movimiento suave
+        left: direction * scrollAmount,
+        behavior: 'smooth'
     });
 }
 
-// Función para mover el carrusel en los géneros
+// Función para mover los carruseles de género
 function moveCarouselGenre(direction, containerId) {
     const carousel = document.getElementById(containerId);
-    const scrollAmount = carousel.offsetWidth; // El ancho visible del carrusel
+    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
+
+    // Mueve el carrusel en la dirección indicada
     carousel.scrollBy({
-        left: scrollAmount * direction, // Desplazar en la dirección indicada
-        behavior: 'smooth' // Movimiento suave
+        left: direction * scrollAmount,
+        behavior: 'smooth'
     });
 }
