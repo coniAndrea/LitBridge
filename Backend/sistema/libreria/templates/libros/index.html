@@ -2,29 +2,16 @@
 
 {% block titulo %} Lista de libros {% endblock %}
 
-{% block contenido %} 
-
-<div class="card">
-    <div class="card-header">
-        <a
-            name=""
-            id=""
-            class="btn btn-primary btn-sm"
-            href="{% url 'crear' %}"
-            role="button"
-            >Agregar nuevo libro</a
-        >
-        
+{% block contenido %}
+<div class="card custom-card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="card-title mb-0">Libros</h4>
+        <a class="btn btn-outline-info" href="{% url 'crear_admin' %}" role="button">Agregar nuevo libro</a>
     </div>
     <div class="card-body">
-        <h4 class="card-title">Libros</h4>
-        <div
-            class="table-responsive"
-        >
-            <table
-                class="table table-primary"
-            >
-                <thead>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="table-header">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Titulo</th>
@@ -36,41 +23,27 @@
                 <tbody>
                     {% for libro in libros %}
                     <tr>
-                        <td>{{ libro.id}}</td>
-                        <td>{{ libro.titulo}}</td>
+                        <td>{{ libro.id }}</td>
+                        <td>{{ libro.titulo }}</td>
+                        <td><img src="{{ libro.imagen.url }}" width="100" alt="Imagen del libro" class="img-thumbnail" /></td>
                         <td>
-                        <img src="{{ libro.imagen.url}}" width="100" alt="" srcset="">    
-                            
-
+                            <!-- Contenedor centrado para la descripción 
+                            <div class="card w-75 mx-auto"> card-text </div>-->
+                                <div class="card-body p-2"> <!-- Se reduce el padding -->
+                                    <p class="card-text">{{ libro.descripcion }}</p>
+                                </div>
                         </td>
-                        <td>{{ libro.descripcion}}</td>
-                        <td> <a
-                            name=""
-                            id=""
-                            class="btn btn-info"
-                            href="{% url 'editar' libro.id %}"
-                            role="button"
-                            >Editar</a
-                        >
-                         | <a
-                            name=""
-                            id=""
-                            class="btn btn-danger"
-                            href="{% url 'eliminar' libro.id %}"
-                            role="button"
-                            >Eliminar</a
-                         >
-                         </td>
+                        <td>
+                            <div class="d-flex gap-2"> <!-- Utilizamos gap-2 para agregar espacio entre los botones -->
+                                <a class="btn btn-sm btn-info" href="{% url 'editar' libro.id %}" role="button">Editar</a>
+                                <a class="btn btn-sm btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Eliminar</a>
+                            </div>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-        
-
     </div>
-
 </div>
-
-
 {% endblock %}

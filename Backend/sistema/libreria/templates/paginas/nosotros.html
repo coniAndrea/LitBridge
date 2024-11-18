@@ -3,8 +3,24 @@
 {% block titulo %} Nosotros {% endblock %}
 
 {% block contenido %} 
-
-Sección de Nosotros 
+{% load static %}
+<body>
+    <section class="about-us">
+        <h2>Nosotros</h2>
+        <p class="about-description">
+            En <strong>LitBridge</strong>, creemos que la literatura debe ser accesible para todos, independientemente del idioma en que esté escrita. 
+            La idea detrás de nuestra plataforma surgió al darnos cuenta de las dificultades que enfrentan muchos lectores para acceder a contenido 
+            literario en idiomas extranjeros. A menudo, el tiempo y costo que implica traducir historias manualmente limita la comprensión y el disfrute 
+            de obras de otros países y culturas.
+        </p>
+        <p class="about-description">
+            Con LitBridge, abordamos esta necesidad creando una plataforma digital donde los usuarios pueden acceder, traducir y gestionar libros de 
+            manera sencilla y directa. Nuestra tecnología permite la traducción automática de descripciones y textos breves, facilitando así una 
+            experiencia de lectura más inclusiva y accesible. Con esta solución, aspiramos a romper las barreras lingüísticas y abrir las puertas a 
+            un mundo literario sin fronteras.
+        </p>
+    </section>
+</body>
 
 {% endblock %}
 

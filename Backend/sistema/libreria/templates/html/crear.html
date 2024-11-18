@@ -54,7 +54,7 @@
 
         <div class="user-container">
             <div class="user-icon">
-                <img src="https://via.placeholder.com/40" alt="Usuario" class="user-image">
+                <img src="{% static 'img/pretty-flower.jpg' %}" alt="Usuario" class="user-image">
                 <i class="fas fa-caret-down"></i>
             </div>
             <div id="userMenu" class="user-menu">
@@ -68,7 +68,7 @@
                     <li><a href="#">Idioma:</a></li>
                     <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
-                    <li><a href="{% url 'logout_user' %}">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>

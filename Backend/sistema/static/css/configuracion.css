@@ -298,3 +298,49 @@ footer {
         padding: 14px;
     }
 }
+
+/* Estilos para el contenedor del logo */
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+/* Estilizar la imagen del logo */
+header .logo .logo-image {
+    width: 120px;  /* Aumento el tamaño */
+    height: auto;
+    margin-right: 15px;  /* Más espacio entre el logo y el texto */
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+/* Estilizar el texto del logo */
+header .logo h1 {
+    font-size: 60px;  /* Aumento el tamaño */
+    color: #1f3a93;
+    font-family: serif;
+    margin: 0; 
+}
+
+/* Efecto de hover sobre el logo */
+header .logo a:hover .logo-image {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Estilo del enlace (para evitar el subrayado) */
+header .logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Contenedor del título principal y logo */
+.contenedor-titulo {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    padding-top: 20px;  /* Más espacio superior */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}

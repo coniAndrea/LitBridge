@@ -24,24 +24,27 @@ header {
     position: relative; 
 }
 
-/* Flecha de volver */
-.back-arrow {
+/* Botón de volver */
+.btn-volver {
     position: absolute;
     top: 10px; 
     right: 20px;
-    z-index: 10;
+    background-color: #182a3f; 
+    color: whitesmoke; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 15px; 
+    transition: background-color 0.3s ease; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
-.back-arrow a {
-    color: #074693;
-    font-size: 36px; 
-    text-decoration: none;
-    display: inline-block;
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1.0))
-}
-
-.back-arrow a:hover {
-    color: #182a3f;
+.btn-volver:hover {
+    background-color: #074693; 
+    cursor: pointer;
 }
 
 /* Logo y Título */
@@ -152,7 +155,7 @@ button {
 }
 
 button:hover {
-    background-color: #182a3f;
+    background-color: #074693;
 }
 
 .extras {
