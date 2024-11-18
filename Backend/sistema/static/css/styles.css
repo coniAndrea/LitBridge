@@ -1,0 +1,193 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* About Us Section Styling */
+.about-us {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 700px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 2rem;
+    color: #4a4e69;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.about-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.about-description strong {
+    color: #9a8c98;
+    font-weight: bold;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    background: linear-gradient(135deg, #4a4e69, #9a8c98);
+    padding: 50px 20px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.display-5 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #f1f1f1;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background-color: #f1f1f1;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.description {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #e6e6e6;
+}
+
+.btn-start {
+    font-size: 1rem;
+    color: #4a4e69;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-start:hover {
+    background-color: #f1f1f1;
+}
+
+/* Card Styling */
+.custom-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.description-box {
+    max-width: 250px; /* Ajusta este valor para que la descripción ocupe menos espacio */
+    overflow: hidden; /* Oculta el texto que sobrepase el contenedor */
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    gap: 5px; /* Espacio entre los botones */
+}
+
+/* Button Styling */
+.btn-info, .btn-danger {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-info {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.btn-info:hover {
+    background-color: #31b0d5;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* Image Styling */
+.img-thumbnail {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

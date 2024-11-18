@@ -46,7 +46,7 @@
                     {{ messages }}
                 </div>
             {% endif %}
-            <form action="{% url 'login' %}" method="POST">
+            <form action="{% url 'login_admin' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="username" class="form-label">Nombre de Usuario</label>
