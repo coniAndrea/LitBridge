@@ -1,0 +1,760 @@
+/* Profile Header */
+.profile-header {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.background-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.stats {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.stats span {
+    color: #fff;
+    padding: 5px 10px;
+}
+
+/*buton de editar tu perfil*/
+
+/* Contenedor del botón */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Posiciona el botón en el lado derecho */
+    padding: 10px 20px; /* Añade algo de espacio para separar del contenido */
+}
+
+/* Botón estilo pequeño */
+.edit-profile {
+    background: linear-gradient(90deg, #074693, #6ea3dc);
+    color: whitesmoke;
+    padding: 8px 20px; /* Tamaño pequeño */
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px; /* Texto pequeño */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex; /* Para alinear el texto e ícono */
+    align-items: center;
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    cursor: pointer;
+}
+
+.edit-profile:hover {
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5); 
+}
+
+/* Estilo para el ícono dentro del botón */
+.edit-profile i {
+    font-size: 16px; /* Tamaño del ícono */
+}
+
+
+
+/* Contenedor de configuración */
+.settings-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+}
+
+/* Menú de configuración */
+.settings-menu {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    gap: 15px; /* Añadido para separación entre iconos de cuenta, notificaciones e idioma */
+}
+
+.settings-menu li {
+    list-style: none;
+}
+
+.settings-menu a {
+    text-decoration: none;
+    color: #333;
+    border-radius: 8px;
+    font-size: 20px; /* Tamaño mediano del texto */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: serif;
+    margin: 0 auto; /* Centrado horizontal */
+    display: block; /* Asegura que el botón esté centrado */
+    width: auto; /* Ajusta el tamaño a contenido */
+}
+
+.settings-menu a.active,
+.settings-menu a:hover {
+    background: linear-gradient(90deg, #b7d7ff, #3f51b5); 
+    color: white;
+    border-radius: 5px;
+    padding: 12px 40px;  /* Botón de tamaño mediano */
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 20px; /* Tamaño mediano del texto */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centrado horizontal */
+    display: block; /* Asegura que el botón esté centrado */
+    width: auto; /* Ajusta el tamaño a contenido */
+}
+
+/* Contenido de configuración */
+.settings-content {
+    padding: 20px 0;
+}
+
+.section {
+    display: none;
+}
+
+.section h2 {
+    margin-top: 0;
+    color: #074693;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.change-link {
+    color: #074693;
+    text-decoration: none;
+    float: right;
+    margin-top: 5px;
+}
+
+.change-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los checkboxes personalizados */
+.checkbox-custom {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Estado checked para el checkbox */
+.checkbox-custom:checked {
+    background-color: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    border-color: #074693;
+}
+
+/* Estilo para el checkmark (marca de verificación) */
+.checkbox-custom:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid linear-gradient(90deg, #b7d7ff, #3f51b5);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Botones */
+.submit-btn {
+    background-color: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: serif;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: linear-gradient(90deg, #b7d7ff, #3f51b5);
+}
+
+/* Notificaciones y selección de idiomas */
+.notifications-group, .language-item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Añadido para separar el checkbox del texto o recuadro */
+}
+
+.notifications-group ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+/* Agrupación de botones para alinearlos en una fila */
+.button-group {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Separación respecto a otros elementos */
+}
+
+.close-account-btn {
+    background-color: linear-gradient(90deg, #b7d7ff, #3f51b5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-account-btn:hover {
+    background-color: black
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+}
+
+.continent {
+    flex: 1;
+}
+
+.continent h2 {
+    color: #182a3f;
+    font-size: 1.2em;
+    border-bottom: 2px solid #1f3a93;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+
+
+/*Modal y card*/
+
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card button {
+    background-color: #b7d7ff;
+    color: #1f3a93;
+    border: none;
+    font-family: serif;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+}
+
+.card button:hover {
+    background-color:#8f9de9  ;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+/* Ajuste del tamaño de los íconos sociales */
+.social-icons img {
+    width: 30px;  /* Ajusta el tamaño aquí */
+    height: 30px; /* Ajusta el tamaño aquí */
+    object-fit: contain; /* Asegura que la imagen no se distorsione */
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #b7d7ff;
+    padding: 50px;
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+}
+
+.modal-content textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px; 
+}
+
+.modal-content button {
+    padding: 10px 15px;
+    margin: 5px;
+}
+
+.modal-content .save-btn {
+    background-color: #5ad176;
+    font-family: serif;
+    color: #1f3a93;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.modal-content .cancel-btn {
+    background-color: #e75261;
+    font-family: serif;
+    color: #1f3a93;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+/*CONVERSACION*/
+
+.comment-section {
+    width: 800px; /* Aumentado de 600px a 800px */
+    margin: 20px auto;
+}
+
+.post-message input {
+    width: 100%;
+    padding: 20px; /* Aumentado el padding para hacer el recuadro más grande */
+    border-radius: 8px; /* Cambiado el border-radius para hacerlo más redondeado */
+    border: 1px solid #ccc;
+    margin-bottom: 20px; /* Aumentado el espacio inferior */
+    background-color: #fff;
+}
+
+.comment-box {
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Cambiado el border-radius para hacerlo más redondeado */
+    padding: 20px; /* Aumentado el padding para hacer el recuadro más grande */
+    background-color: #fff;
+    position: relative;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-pic {
+    width: 70px; /* Aumentado de 50px a 70px */
+    height: 70px; /* Aumentado de 50px a 70px */
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.comment-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 18px; /* Aumentado el tamaño de la fuente */
+}
+
+.date {
+    font-size: 16px; /* Aumentada la fuente para mejor visibilidad */
+    color: #888;
+}
+
+.menu-btn {
+    border: none;
+    background: none;
+    font-size: 26px; /* Aumentado el tamaño de la fuente */
+    cursor: pointer;
+}
+
+.comment-body {
+    margin-top: 20px; /* Aumentado el margen superior */
+}
+
+.comment-response {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /* Aumentado el margen superior */
+}
+
+.response-input {
+    width: 100%;
+    padding: 20px; /* Aumentado el padding para hacer el recuadro más grande */
+    border-radius: 8px; /* Cambiado el border-radius para hacerlo más redondeado */
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Cambiado el border-radius para hacerlo más redondeado */
+    top: 60px; /* Ajuste para mayor espacio con el botón de tres puntos */
+    right: 10px;
+    width: 260px; /* Aumentado el ancho del menú desplegable */
+    z-index: 1;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 16px; /* Aumentado el padding de cada ítem */
+    cursor: pointer;
+    font-size: 18px; /* Aumentado el tamaño de la fuente */
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #f2f2f2;
+}
+
+/*MODAL DEL EDITAR PERFIL/
+/* Estilos para el modal */
+.modal {
+    display: none; /* Ocultar modal por defecto */
+    position: fixed;
+    z-index: 1; /* Asegura que el modal esté sobre otros contenidos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    overflow: auto;
+    padding-top: 60px;
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el encabezado del modal */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo para el botón de cerrar */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo de los labels */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Estilo de los inputs y textarea */
+input[type="text"],
+input[type="url"],
+textarea,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Estilo para la sección de cambiar imágenes */
+.image-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.image-actions input[type="file"] {
+    font-size: 14px;
+}
+
+/* Estilo para los botones */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #5ad176;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #5ad176;
+}
+
+.cancel-btn {
+    background-color: #e75261;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #e53935;
+}
+/* Estilo para las acciones de imagen */
+.image-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Ocultar el campo de entrada por defecto */
+input[type="file"] {
+    display: none;
+}
+
+/* Estilo para el ícono */
+.image-actions label {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.image-actions label i {
+    margin-right: 8px;
+    font-size: 24px;  /* Ajusta el tamaño del ícono */
+}
+
+/* Cambiar el color cuando el usuario pasa el mouse sobre el ícono */
+.image-actions label:hover i {
+    color: #007bff;
+}
+
+  
+/*responsivo*/
+
+/* General: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .profile-header {
+        font-size: 14px; /* Ajusta el tamaño del texto */
+    }
+
+    .background-image {
+        height: 150px; /* Reduce la altura de la imagen */
+    }
+
+    .profile-info {
+        top: 60%; /* Ajusta la posición para pantallas más pequeñas */
+    }
+
+    .avatar {
+        width: 70px; /* Reduce el tamaño del avatar */
+        height: 70px;
+    }
+
+    .stats {
+        font-size: 14px; /* Reduce el tamaño del texto en las estadísticas */
+        gap: 10px; /* Reduce el espacio entre elementos */
+    }
+
+    .settings-container {
+        width: 95%; /* Aumenta el ancho para aprovechar el espacio */
+        padding: 15px; /* Reduce el padding */
+    }
+
+    .settings-menu a {
+        font-size: 16px; /* Reduce el tamaño del texto */
+        padding: 8px 20px; /* Ajusta el espacio interno */
+    }
+
+    .comment-section {
+        width: 95%; /* Reduce el ancho de la sección de comentarios */
+    }
+
+    .profile-pic {
+        width: 50px; /* Reduce el tamaño de la imagen de perfil */
+        height: 50px;
+    }
+
+    .username {
+        font-size: 16px; /* Reduce el tamaño del nombre de usuario */
+    }
+
+    .comment-box {
+        padding: 15px; /* Reduce el padding */
+    }
+
+    .dropdown-menu {
+        width: 200px; /* Reduce el ancho del menú desplegable */
+    }
+}
+
+/* Extra pequeño: Ajustes para móviles */
+@media (max-width: 480px) {
+    .background-image {
+        height: 120px; /* Reduce aún más la altura de la imagen */
+    }
+
+    .avatar {
+        width: 50px; /* Reduce el tamaño del avatar */
+        height: 50px;
+    }
+
+    .stats {
+        flex-direction: column; /* Cambia a columna para más espacio vertical */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .settings-menu {
+        flex-direction: column; /* Coloca el menú en columna */
+        align-items: center;
+    }
+
+    .settings-menu a {
+        font-size: 14px; /* Reduce aún más el tamaño del texto */
+        padding: 5px 10px;
+    }
+
+    .modal-content {
+        width: 90%; /* Ajusta el modal para pantallas pequeñas */
+        padding: 20px;
+    }
+
+    .card {
+        width: 90%; /* Ajusta el ancho de la tarjeta */
+        padding: 15px;
+    }
+
+    .comment-section {
+        width: 100%; /* Aprovecha todo el ancho */
+    }
+}

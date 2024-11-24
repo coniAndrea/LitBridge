@@ -46,7 +46,7 @@
                 {% endif %}
                 <button type="submit">Iniciar sesión</button>
                 <div class="extras">
-                    <a href="#">Recordar contraseña</a>
+                    <a href="#" onclick="openModal()">Recordar contraseña</a>
                     <p>¿Todavía no tienes una cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
                 </div>
             </form>
@@ -54,3 +54,19 @@
     </div>
 </body>
 </html>
+
+<!-- Modal para recuperar contraseña -->
+
+<div id="forgot-password-modal" class="modal">
+    <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Recuperar contraseña</h2>
+    <form id="password-reset-form" method="POST" action="{% url 'password_reset' %}">
+        {% csrf_token %}
+        <div class="input-container">
+            <input type="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    </div>
+    </div>

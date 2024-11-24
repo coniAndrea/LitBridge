@@ -11,3 +11,19 @@ function togglePassword() {
         eyeIcon.classList.add("fa-eye");
     }
 }
+
+function openModal() {
+    document.getElementById("forgot-password-modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("forgot-password-modal").style.display = "none";
+}
+
+// Cerrar el modal si se hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    const modal = document.getElementById("forgot-password-modal");
+    if (event.target === modal) {
+        closeModal();
+    }
+};

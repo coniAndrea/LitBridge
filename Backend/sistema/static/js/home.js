@@ -68,16 +68,19 @@ function showBookDetails(bookInfo) {
     }
 
     // Configurar el botón de agregar a la biblioteca
-    addToLibraryBtn.onclick = () => {
-        if (isFree || isNotForSale) {
-            addToLibrary(bookInfo);
-            closeModal();
-        } else {
-            alert('Este libro es de pago y no puede ser añadido a tu biblioteca.');
-        }
-    };
+    addToLibraryBtn.onclick = () => handleAddToLibrary(bookInfo, isForSale);
 
     modal.style.display = 'block';
+}
+
+// Función para manejar el proceso de agregar libros con validación
+function handleAddToLibrary(bookInfo, isPurchasable) {
+    if (isPurchasable) {
+        showNotification('Este libro es de pago y no puede ser añadido a tu biblioteca.', 'error');
+        return;
+    }
+    addToLibrary(bookInfo);
+    closeModal();
 }
 
 // Función para obtener una descripción corta
@@ -89,9 +92,9 @@ function getShortDescription(description, maxWords) {
 // Agregar un libro a la biblioteca
 function addToLibrary(book) {
     const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
-    
+
     if (libraryBooks.some(libBook => libBook.title === book.title)) {
-        alert('Este libro ya está en tu biblioteca.');
+        showNotification('Este libro ya está en tu biblioteca.', 'warning');
         return;
     }
 
@@ -104,37 +107,37 @@ function addToLibrary(book) {
 
     libraryBooks.push(newBook);
     localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
-    alert('Libro añadido a tu biblioteca.');
+    showNotification('Libro añadido a tu biblioteca.', 'success');
 }
 
-// Cerrar el modal
-// Función para cerrar el modal al hacer clic en el botón de cerrar
-function closeModal() {
-    document.getElementById('bookModal').style.display = 'none';
-    console.log('Modal cerrado'); // Mensaje para verificar que la función se ejecuta
-}
-
-// Asignar el evento para cerrar el modal
-document.getElementById('closeModalBtn').onclick = closeModal;
-
-// Llamadas para cargar libros en distintas secciones
-fetchBooks('mystery', carouselBooks);
-fetchBooks('fantasy', genreBooks);
-fetchBooks('adventure', document.getElementById('adventure-books'));
-fetchBooks('werewolf', document.getElementById('werewolf-books'));
-fetchBooks('vampire', document.getElementById('vampire-books'));
-fetchBooks('classic', document.getElementById('classic-books'));
-fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
-fetchBooks('romance', document.getElementById('romance-books'));
-fetchBooks('thriller', document.getElementById('thriller-books'));
-fetchBooks('science fiction', document.getElementById('science-fiction-books'));
-
-// Función para mostrar una notificación de mensaje
-function showNotification(message, color) {
+// Mostrar una notificación con colores mejorados
+function showNotification(message, type) {
     const notification = document.createElement('div');
-    notification.className = 'notification';
     notification.textContent = message;
-    notification.style.backgroundColor = color; // Asigna color según el mensaje
+    notification.className = 'notification';
+
+    // Asignar colores según el tipo de mensaje
+    switch (type) {
+        case 'success':
+            notification.style.backgroundColor = '#4caf50'; // Verde
+            notification.style.color = '#ffffff';
+            break;
+        case 'warning':
+            notification.style.backgroundColor = '#ff9800'; // Naranja
+            notification.style.color = '#ffffff';
+            break;
+        case 'error':
+            notification.style.backgroundColor = '#f44336'; // Rojo
+            notification.style.color = '#ffffff';
+            break;
+        default:
+            notification.style.backgroundColor = '#2196f3'; // Azul
+            notification.style.color = '#ffffff';
+            break;
+    }
+
+
+
     document.body.appendChild(notification);
 
     // Elimina la notificación después de 3 segundos
@@ -143,46 +146,15 @@ function showNotification(message, color) {
     }, 3000);
 }
 
-// Función para agregar un libro a la biblioteca con notificación
-function addToLibrary(book) {
-    const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
-    
-    if (libraryBooks.some(libBook => libBook.title === book.title)) {
-        showNotification('Este libro ya está en tu biblioteca.', 'orange');
-        return;
-    }
-
-    const newBook = {
-        title: book.title,
-        author: book.authors?.join(', ') || 'Autor no disponible',
-        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
-        link: book.infoLink || '#'
-    };
-
-    libraryBooks.push(newBook);
-    localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
-    showNotification('Libro añadido a tu biblioteca.', 'green');
-}
-// Función para mover el carrusel principal (Recomendaciones)
-function moveCarousel(direction) {
-    const carousel = document.getElementById('carousel-books');
-    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
-
-    // Mueve el carrusel en la dirección indicada
-    carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-    });
+// Cerrar el modal
+function closeModal() {
+    document.getElementById('bookModal').style.display = 'none';
 }
 
-// Función para mover los carruseles de género
-function moveCarouselGenre(direction, containerId) {
-    const carousel = document.getElementById(containerId);
-    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
+// Asignar el evento para cerrar el modal
+document.getElementById('closeModalBtn').onclick = closeModal;
 
-    // Mueve el carrusel en la dirección indicada
-    carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-    });
-}
+// Llamadas para cargar libros en distintas secciones
+fetchBooks('mystery', carouselBooks);
+fetchBooks('fantasy', genreBooks);
+// Agrega más categorías según sea necesario
