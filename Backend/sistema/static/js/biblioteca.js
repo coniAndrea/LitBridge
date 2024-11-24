@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <h2 class="story-title">${book.title || 'Título Desconocido'}</h2>
                 <p class="story-author">${book.author || 'Autor Desconocido'}</p>
                 <a href="${book.link || '../html/lectura.html'}" class="cta-button">
-                    <img src="../img/leer.png" alt="Icono de Leer" class="cta-image"> Leer
+                    <img src="${book.image || '../img/leer.png'}" class="cta-image"> Leer
                 </a>
             </div>
         `;
@@ -40,14 +40,5 @@ document.addEventListener("DOMContentLoaded", function() {
         return bookElement;
     }
 
-    // Ejemplo de uso (puedes ajustar según tus necesidades)
-  /*  const newBook = {
-        title: 'Título del Libro',
-        author: 'Autor del Libro',
-        image: '../img/portada-libro.png',
-        link: '../html/lectura.html'
-    };
-
-    addBookToLibrary(newBook);*/
 });
 

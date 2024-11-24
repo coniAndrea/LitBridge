@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <script src="{% static 'js/header.js' %}" defer></script> 
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+    <script src="{% static 'js/perfil.js' %}" defer></script>
 </head>
 <body>
     <header>
@@ -75,6 +77,179 @@
             </div>
         </div>
     </header>
+
+    <div class="profile-header">
+        <div class="background-image">
+            <img class="fondo" src="{% static 'img/background.jpeg' %}" alt="Fondo de perfil">
+        </div>
+        <div class="profile-info">
+            <img class="avatar" src="{% static 'img/Perfil.jpeg' %}" alt="Avatar">
+            <div class="stats">
+                <span id="obras">0 Obras</span>
+                <span id="listas">0 Listas de lectura</span>
+                <span id="seguidores">0 Seguidores</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="button-container">
+      
+        <a href="#" id="editProfileBtn" class="edit-profile">
+            <i class="fas fa-edit"></i> Editar tu perfil
+        </a>
+    </div>
+    
+    <!-- MODAL DE EDITAR PERFIL -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edita tu perfil</h2>
+            <form id="profileForm">
+                <label for="gender">Género</label>
+                <select id="gender">
+                    <option>Él</option>
+                    <option>Ella</option>
+                    <option>Elles</option>
+                </select>
+    
+                <label for="info">Información</label>
+                <textarea id="info" placeholder="Escribe algo sobre ti..." maxlength="2000"></textarea>
+    
+                <label for="website">Mi sitio web</label>
+                <input type="url" id="website" placeholder="Introduce un enlace a tu página web personal">
+    
+                <label for="location">Ubicación</label>
+                <input type="text" id="location" placeholder="Ingresa tu ubicación">
+    
+                <!-- Botones para cambiar imágenes -->
+                <div class="image-actions">
+                    <label for="bgImageInput">
+                        <i class="fas fa-camera"></i> Cambiar fondo
+                    </label>
+                    <input type="file" id="bgImageInput" accept="image/*" />
+                
+                    <label for="profileImageInput">
+                        <i class="fas fa-camera"></i> Cambiar foto de perfil
+                    </label>
+                    <input type="file" id="profileImageInput" accept="image/*" />
+                </div>
+    
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn">Guardar cambios</button>
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="settings-container">
+        <ul class="settings-menu">
+            <li><a href="#" class="active" onclick="showSection('info')">Info</a></li>
+            <li><a href="#" onclick="showSection('Conversasion')">Conversaciones</a></li>
+            <!--  <li><a href="#" onclick="showSection('siguiendo')">Siguiendo</a></li>-->
+
+        </ul>
+
+        <div class="settings-content">
+            <div id="info" class="section" style="display: block;">
+                <div class="card">
+                    <h2>Ayuda a que las personas puedan conocerte</h2>
+                    <br>
+                    <button id="openModalBtn">Añade una descripción</button>
+
+                    <br>
+                    <div class="social-icons">
+                        <h2>COMPARTIR PERFIL</h2>
+                        <a href="https://www.facebook.com"><img src="{% static 'img/facebook.png' %}" alt="Facebook"></a>
+                        <a href="https://twitter.com"><img src="{% static 'img/logotipos.png' %}" alt="Twitter"></a>
+                        <a href="https://www.pinterest.com"><img src="{% static 'img/pinterest.png' %}" alt="Pinterest"></a>
+                        <a href="mailto:?subject=Compartir Perfil&body=¡Mira este perfil!"><img src="{% static 'img/correo.png' %}"
+                                alt="Correo"></a>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <form id="profileForm">
+                            <label for="gender">Género</label>
+                            <select id="gender">
+                                <option>Él</option>
+                                <option>Ella</option>
+                                <option>Elles</option>
+                            </select>
+                    
+                            <label for="info">Información</label>
+                            <textarea id="info" placeholder="Escribe algo sobre ti..." maxlength="2000"></textarea>
+                    
+                            <label for="website">Mi sitio web</label>
+                            <input type="url" id="website" placeholder="Introduce un enlace a tu página web personal">
+                    
+                            <label for="location">Ubicación</label>
+                            <input type="text" id="location" placeholder="Ingresa tu ubicación">
+                        </form>
+                        <div>
+                            <button class="save-btn" id="saveBtn">Guardar</button>
+                            <button class="cancel-btn" id="cancelBtn">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="Conversasion" class="section">
+                <div class="comment-section">
+                    <div class="post-message">
+                        <input type="text" placeholder="Publicar un mensaje" class="publish-message">
+                    </div>
+
+                    <div class="comment-box">
+                        <div class="comment-header">
+                            <img src="#" alt="Profile Picture" class="profile-pic">
+                            <div class="comment-info">
+                                <span class="username"></span>
+                                <span class="date"></span>
+                            </div>
+                            <button onclick="toggleMenu()" class="menu-btn">⋮</button>
+                        </div>
+                        <div class="comment-body">
+
+                        </div>
+
+                        <div id="menu" class="dropdown-menu">
+                            <ul>
+                                <li>Silenciar</li>
+                                <li>Reportar Comentario</li>
+                                <li>Eliminar Comentario</li>
+                                <li>Código de conducta</li>
+                                <li>Portal de Seguridad de LitBrigde</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comment-response">
+                        <img src="#" alt="Profile Picture" class="profile-pic">
+                        <input type="text" placeholder="Escribe una respuesta..." class="response-input">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- <div id="siguiendo" class="section">
+            <h2></h2>
+            <br>
+            <div class="container">
+
+            </div>-->
+
+        </div>
+    </div> <!-- Cierre del settings-content -->
+    </div> <!-- Cierre del settings-container -->
+
+
    <!-- Pie de página -->
    <footer>
     <div class="footer-content">

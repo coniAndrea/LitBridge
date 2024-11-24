@@ -1,19 +1,21 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, JsonResponse
+from django.utils.http import urlsafe_base64_encode
 from .models import Libro
 from .forms import LibroForm
 from .models import Administrador
 from django.db import connection
 import openai
 from django.contrib import messages
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 import json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
-from .forms import LoginForm, RegistroForm
+from .forms import LoginForm
+from django.contrib.auth.views import PasswordResetView
+
 
 # Create your views here.
 
@@ -119,7 +121,7 @@ def lectura(request):
 
 # login
 def login_usuario(request):
-    return render(request, 'html/login.html')
+    return render(request, 'registration/login.html')
 
 # perfil
 @login_required
@@ -186,6 +188,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)  # Cierra la sesión del usuario
     return redirect('index')  # Redirige al usuario al índice (o a otra página)
+
 
 
 # TRADUCTOR

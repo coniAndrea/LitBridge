@@ -1,65 +1,72 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CRUD</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #e0f7fa; /* Celeste suave */
-        }
-        .login-container {
-            max-width: 400px;
-            margin-top: 10%;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .login-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .login-header h3 {
-            color: #007bff;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-    </style>
+    <title>Iniciar sesión - LitBrigde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/login.js' %}" defer></script> 
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="login-container">
-            <div class="login-header">
-                <h3>Iniciar Sesión</h3>
-            </div>
-            <!-- Mostrar mensajes de error -->
-            {% if messages %}
-                <div class="alert alert-danger">
-                    {{ messages }}
-                </div>
-            {% endif %}
-            <form action="{% url 'login_admin' %}" method="POST">
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo">
+            <h2>LitBrigde</h2>
+        </div>
+		<!-- Botón de volver -->
+		<a href="{% url 'index' %}" class="btn-volver">Volver</a>
+    </header>
+    <div class="container">
+        <div class="left">
+            <img src="{% static 'img/login.png' %}" alt="LitBrigde Image" class="login-image">
+        </div>
+        <div class="right">
+            <h1>¡Bienvenido de nuevo!</h1>
+            <form class="login-form" method="POST" action="{% url 'login_backend' %}">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu usuario" required>
+                <div class="input-container">
+                    <input type="text" name="username" placeholder="Correo electrónico o Username" required>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                <div class="input-container">
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <span class="show-password" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="toggle-eye"></i>
+                    </span>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <button type="submit">Iniciar sesión</button>
+                <div class="extras">
+                    <a href="#" onclick="openModal()">Recordar contraseña</a>
+                    <p>¿Todavía no tienes una cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+                </div>
             </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<!-- Modal para recuperar contraseña -->
+
+<div id="forgot-password-modal" class="modal">
+    <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Recuperar contraseña</h2>
+    <form id="password-reset-form" method="POST" action="{% url 'password_reset' %}">
+        {% csrf_token %}
+        <div class="input-container">
+            <input type="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    </div>
+    </div>

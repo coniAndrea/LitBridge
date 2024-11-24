@@ -138,3 +138,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/imagenes/'
 
 LOGIN_URL = 'login'
+
+
+#RECUPERAR CONTRASEÑA
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'af323f10b50efc'
+EMAIL_HOST_PASSWORD = '6b190b661e995c'
+EMAIL_PORT = '2525'
