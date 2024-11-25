@@ -16,7 +16,6 @@ from django.contrib.auth.hashers import make_password, check_password
 from .forms import LoginForm
 from django.contrib.auth.views import PasswordResetView
 
-
 # Create your views here.
 
     # BACKEND #
@@ -26,26 +25,23 @@ def login_admin(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Autenticar usuario manualmente con la base de datos de XAMPP
         try:
             with connection.cursor() as cursor:
                 cursor.execute("""
                     SELECT * FROM administradores WHERE usuario = %s AND contraseña = %s
                 """, [username, password])
-                user = cursor.fetchone()  # Obtiene una fila si coincide, o None si no existe
+                user = cursor.fetchone()
 
             if user:
-                # Si el usuario se encuentra, iniciar sesión (aquí simulado) y redirigir
-                request.session['username'] = username  # Puedes almacenar el usuario en la sesión
-                return redirect('inicio')  # Redirige a la vista 'home' en urls.py
+                request.session['username'] = username
+                return redirect('inicio')
             else:
-                # Si la autenticación falla, muestra un mensaje de error sin redirigir
-                messages.error(request, 'Usuario o contraseña incorrectos.')
+                # Personaliza el mensaje de error
+                messages.error(request, '⚠️ Usuario o contraseña incorrectos. Intenta nuevamente.')
         except Exception as e:
-            messages.error(request, 'Error en el sistema de autenticación.')
+            messages.error(request, '❌ Ha ocurrido un error en el sistema de autenticación.')
 
-    # Renderiza la página de inicio de sesión nuevamente si falla la autenticación o es un GET request
-    return render(request, 'registration/login.html')
+    return render(request, 'registration/login_admin.html')
 
 #PÁGINA DE INICIO
 def inicio(request):
@@ -121,7 +117,7 @@ def lectura(request):
 
 # login
 def login_usuario(request):
-    return render(request, 'registration/login.html')
+    return render(request, 'html/login.html')
 
 # perfil
 @login_required

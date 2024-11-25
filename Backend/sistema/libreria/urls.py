@@ -41,22 +41,17 @@ urlpatterns = [
     path('registrar_usuario', views.registrar_usuario, name='registrar_usuario'),
     path('registro', views.registro, name='registro'),
     path('sugerencia', views.sugerencia, name='sugerencia'),
-    #path('password_reset', views.password_reset, name='password_reset'),
     path('login', LoginView.as_view(template_name='registration/login.html'), name='login'),
-    
     path('password_reset/', PasswordResetView.as_view(
         template_name='registration/password_reset_form.html',
         email_template_name='registration/password_reset_email.html', 
     ), name='password_reset'),
-    
     path('password_reset/done/', PasswordResetDoneView.as_view(
         template_name='registration/password_reset_done.html'
     ), name='password_reset_done'),
-    
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(
         template_name='registration/password_reset_confirm.html',
     ), name='password_reset_confirm'),
-    
     path('reset/done/', PasswordResetCompleteView.as_view(
         template_name='registration/password_reset_complete.html'
     ), name='password_reset_complete'),

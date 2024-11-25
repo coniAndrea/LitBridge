@@ -59,7 +59,7 @@
 
         <div class="user-container">
             <div class="user-icon">
-                <img src="{% static 'img/pretty-flower.jpg' %}" alt="Usuario" class="user-image">
+                <img src="{% static 'img/Perfil.jpeg' %}" alt="Usuario" class="user-image">
                 <i class="fas fa-caret-down"></i>
             </div>
             <div id="userMenu" class="user-menu">
@@ -79,7 +79,28 @@
         </div>
     </header>
     
-
+ <!-- BASE -->
+    <header id="book-header">
+        <div class="book-info">
+            <img id="book-cover" src="../img/default-cover.png" alt="Portada del libro" class="book-cover">
+            <div class="book-details">
+                <h1 id="book-title">Título del Libro</h1>
+                <h3 id="book-author">Autor del Libro</h3>
+            </div>
+        </div>
+        <div class="chapter-selector">
+            <label for="chapters">Seleccionar capítulo:</label>
+            <select id="chapters">
+                <option value="" disabled selected>Elige un capítulo</option>
+            </select>
+        </div>
+    </header>
+    <main id="chapter-content">
+        <div class="card">
+            <h2 id="chapter-title">Título del Capítulo</h2>
+            <p id="chapter-text">El contenido del capítulo aparecerá aquí.</p>
+        </div>
+    </main>
     
    <!-- Pie de página -->
    <footer>

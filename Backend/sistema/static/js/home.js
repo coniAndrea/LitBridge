@@ -137,7 +137,6 @@ function showNotification(message, type) {
     }
 
 
-
     document.body.appendChild(notification);
 
     // Elimina la notificación después de 3 segundos
@@ -158,3 +157,27 @@ document.getElementById('closeModalBtn').onclick = closeModal;
 fetchBooks('mystery', carouselBooks);
 fetchBooks('fantasy', genreBooks);
 // Agrega más categorías según sea necesario
+
+// Función para mover el carrusel principal (Recomendaciones)
+function moveCarousel(direction) {
+    const carousel = document.getElementById('carousel-books');
+    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
+
+    // Mueve el carrusel en la dirección indicada
+    carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+// Función para mover los carruseles de género
+function moveCarouselGenre(direction, containerId) {
+    const carousel = document.getElementById(containerId);
+    const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
+
+    // Mueve el carrusel en la dirección indicada
+    carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}

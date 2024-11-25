@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Referencia al elemento header
+    const header = document.querySelector('header'); // Asegúrate de que este selector coincida con tu HTML
+
     // Función para manejar el hover de las listas desplegables de categorías
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = dropdown.querySelector('.dropdown-content');
@@ -29,11 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para cerrar el menú de usuario si se hace clic fuera del área del header
     document.addEventListener('click', function(event) {
-        const isClickInsideHeader = header.contains(event.target);
+        const isClickInsideHeader = header.contains(event.target); // header ahora está definido
         const isClickInsideUserMenu = userMenu.contains(event.target);
         const isClickInsideDropdown = dropdown.contains(event.target);
 
-        if (!isClickInsideHeader || !isClickInsideUserMenu || !isClickInsideDropdown) {
+        // Verificar si el clic fue fuera de todos los elementos
+        if (!isClickInsideHeader && !isClickInsideUserMenu && !isClickInsideDropdown) {
             // Ocultar los menús si el clic es fuera del header
             userMenu.style.display = 'none';
             dropdownContent.style.display = 'none';
