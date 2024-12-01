@@ -27,7 +27,7 @@
             <form class="login-form" method="POST" action="{% url 'login_backend' %}">
                 {% csrf_token %}
                 <div class="input-container">
-                    <input type="text" name="username" placeholder="Correo electrónico o Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-container">
                     <input type="password" name="password" placeholder="Contraseña" required>

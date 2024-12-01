@@ -139,7 +139,6 @@ MEDIA_URL = '/imagenes/'
 
 LOGIN_URL = 'login'
 
-
 #RECUPERAR CONTRASEÑA
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'

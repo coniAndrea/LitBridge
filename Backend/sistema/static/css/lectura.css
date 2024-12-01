@@ -1,3 +1,4 @@
+/* Header principal */
 #book-header {
     display: flex;
     justify-content: space-between;
@@ -61,14 +62,14 @@
 }
 
 /* ===== Estilo para el contenido del capítulo ===== */
-/* Estilos para centrar el contenido */
+/* Contenedor principal que centra todo */
 #chapter-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 150px); /* Restar altura del header si es necesario */
-    padding: 20px;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    min-height: calc(100vh - 150px); /* Restar la altura del header */
     background-color: #f9f9f9;
+    padding: 20px;
 }
 
 /* Diseño del card */
@@ -82,6 +83,7 @@
     text-align: justify;
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    margin-bottom: 30px; /* Separación con el textarea */
 }
 
 .card h2 {
@@ -96,4 +98,137 @@
     color: #555;
     margin: 0;
     overflow-wrap: break-word;
+}
+
+/* Contenedor del textarea */
+.text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+textarea {
+    margin:40px auto;
+    width: 90%; /* Ocupa el 90% del ancho disponible */
+    max-width: 1200px; /* Máximo ancho para pantallas grandes */
+    height: 70vh; /* Ocupa el 70% de la altura de la ventana */
+    font-size: 16px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Desactiva el redimensionamiento */
+    box-shadow: 0px 4px 6px rgba(242, 242, 242, 0.1);
+    background-color: #ffffff;
+    display: block;
+    line-height: 1.5;
+    color: #555;
+    pointer-events: none;
+    user-select: none;
+    cursor: default
+}
+
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Sección de traducción */
+#traduccion {
+    margin: 40px auto; /* Centrado y espacio vertical */
+    padding: 20px;
+    width: 80%; /* Ajuste de ancho para adaptarse al contenido */
+    max-width: 800px; /* Máximo ancho */
+    background-color: #f9f9f9; /* Fondo claro */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para un efecto flotante */
+}
+
+/* Título de la sección */
+#traduccion h2 {
+    font-size: 24px;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 20px; /* Separación inferior */
+    text-align: center; /* Centrado */
+    font-weight: bold;
+}
+
+/* Formulario de traducción */
+#form-traduccion {
+    display: flex;
+    flex-direction: column; /* Apila elementos verticalmente */
+    align-items: center; /* Centra elementos */
+    gap: 10px; /* Espacio entre elementos */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Etiqueta del formulario */
+#form-traduccion label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Inputs de idioma */
+#form-traduccion div {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    gap: 20px; /* Espaciado entre radios */
+}
+
+#form-traduccion input[type="radio"] {
+    margin: 0 5px; /* Espaciado lateral para los radios */
+}
+
+/* Botón de traducción */
+#btn-traducir {
+    background-color: #007bff; /* Azul */
+    color: #fff; /* Texto blanco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#btn-traducir:hover {
+    background-color: #0056b3; /* Azul más oscuro en hover */
+}
+
+/* Contenido traducido */
+#contenido-traducido {
+    margin-top: 20px;
+    text-align: center; /* Centrado */
+}
+
+#contenido-traducido h3 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#contenido-traducido p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    background-color: #fff; /* Fondo blanco */
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
 }

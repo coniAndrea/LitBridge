@@ -70,13 +70,24 @@ async function cerrarCuenta(){
 }
 
 
-//CONFIGURACIÓN DE LAS NOTIFICACIÓN 
+//función para obtenr el token CSRF
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(`${name}=`)) {
+            return decodeURIComponent(cookie.split('=')[1]);
+        }
+    }
+    return null;
+}
 
 
-// CONFIGURACION DEL IDIOMA DE LA CUENTA --> IMPLEMENTACIÓN DE LA API PARA LA TRADUCCION 
-   //solo permite seleccionar una opción 
-   document.querySelectorAll('input[name="language"]').forEach((checkbox) => {
-    checkbox.addEventListener('change', function() {
+// CONFIGURACIÓN DE LAS NOTIFICACIONES 
+
+/// CONFIGURACIÓN DEL IDIOMA DE LA CUENTA --> IMPLEMENTACIÓN DE LA API PARA LA TRADUCCION 
+document.querySelectorAll('input[name="language"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', function () {
         if (this.checked) {
             document.querySelectorAll('input[name="language"]').forEach((otherCheckbox) => {
                 if (otherCheckbox !== this) {
@@ -87,84 +98,78 @@ async function cerrarCuenta(){
     });
 });
 
-// traducir el contenido de otra pai con OpenAi 
-async function traducirContenidoDeAPI() {
-    const selectedLanguage = document.querySelector('input[name="language"]:checked').id;
+// Función para obtener el idioma seleccionado
+function obtenerIdiomaSeleccionado() {
+    const selectedCheckbox = document.querySelector('input[name="language"]:checked');
+    if (!selectedCheckbox) {
+        alert("Por favor selecciona un idioma.");
+        return null;
+    }
+    return selectedCheckbox.id; // Devuelve el ID del idioma seleccionado
+}
 
+async function traducirContenido() {
+    const selectedLanguage = obtenerIdiomaSeleccionado();
+    if (!selectedLanguage) return;
+
+    const content = "Texto de ejemplo a traducir"; // Reemplazar con el texto dinámico
     try {
-        // Hacer una solicitud a la API externa
-        const responseAPI = await fetch("https://www.googleapis.com/books/v1/volumes?q=${query}");
-        
-        if (!responseAPI.ok) {
-            throw new Error("Error al obtener contenido de la API externa");
-        }
-
-        const dataAPI = await responseAPI.json();
-        const content = dataAPI.content || "Texto por defecto si no se encuentra 'content' en la respuesta";
-
-        // Enviar el contenido a traducir al backend
-        const responseTranslate = await fetch("/translate/", {
-            method: "POST",
+        const response = await fetch('/api/traducir-texto/', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": getCookie("csrftoken")
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
             },
-            body: JSON.stringify({ content, language: selectedLanguage })
+            body: JSON.stringify({ texto: content, idioma: selectedLanguage }),
         });
 
-        const result = await responseTranslate.json();
-
-        if (result.translated_text) {
-            // Muestra el texto traducido en algún lugar de tu página
-            document.getElementById("contenido-traducido").innerText = result.translated_text;
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById("texto-traducido").innerText = data.traduccion;
         } else {
-            console.error("Error en la traducción:", result.error);
+            alert("Error al traducir el contenido.");
         }
-
     } catch (error) {
-        console.error("Error al obtener o traducir el contenido:", error);
+        console.error("Error:", error);
     }
 }
 
-  
-//Captura la Selección de idioma
+// Añadir evento al botón de traducción
+document.getElementById("btn-traducir").addEventListener("click", traducirContenido);
 
-async function traducirPaginaCompleta() {
-    const selectedLanguage = document.querySelector('input[name="language"]:checked').id;
-    const content = document.body.innerText;
 
-    try{
-        const response = await fetch("/translate/",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": getCookie("csrftoken")
-            },
-            body: JSON.stringify({content, language:selectedLanguage})
-        });
+// Función para traducir todo el contenido de la página
+async function traducirPaginaCompleta(selectedLanguage) {
+    // Selecciona todos los elementos que pueden contener texto
+    const elementsToTranslate = document.querySelectorAll(`
+        h1, h2, h3, h4, h5, h6, p, span, label, a, button, option, 
+        div, li, td, th, caption, figcaption, blockquote, pre, code
+    `);
 
-        const result = await response.json();
-        if (result.translated_text){
-            document.body.innerHTML = result.translated_text;
-        }else{
-            console.error("Error en la traducción:", result.error);
-        }
-    }catch (error){
-        console.error("Error al traduccir la página completa:", error);
-    }
-}
+    for (const element of elementsToTranslate) {
+        const originalContent = element.innerText;
 
-//función para obtenr el token CSRF
-function getCookie(name){
-    let cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) == (name + '=')){
-                cookieValue = decodeURIComponent(cookie.substring(name.length +1));
+        if (originalContent.trim() !== "") {
+            const translatedText = await traducirConOpenAI(originalContent, selectedLanguage);
+            if (translatedText) {
+                element.innerText = translatedText; // Reemplazar el contenido traducido
+            } else {
+                console.error(`No se pudo traducir el elemento: ${element}`);
             }
         }
     }
-    return cookieValue;
+}
+
+// Función que se ejecuta al hacer clic en el botón "Guardar"
+async function guardarCambios() {
+    const selectedLanguage = obtenerIdiomaSeleccionado();
+    if (!selectedLanguage) return;
+
+    // Traducir el contenido de la API externa
+    await traducirContenidoDeAPI(selectedLanguage);
+    
+    // Traducir toda la página
+    await traducirPaginaCompleta(selectedLanguage);
+
+    alert("Traducción completada.");
 }
