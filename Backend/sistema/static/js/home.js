@@ -75,7 +75,8 @@ function showBookDetails(bookInfo) {
             addToLibrary(bookInfo);
             closeModal();
         } else {
-            alert('Este libro es de pago y no puede ser añadido a tu biblioteca.');
+            // Mostrar notificación de libro de pago
+            showNotification('Este libro es de pago y no puede ser añadido a tu biblioteca.', '#f44336');
         }
     };
 
@@ -90,31 +91,53 @@ function getShortDescription(description, maxWords) {
 
 // Agregar un libro a la biblioteca
 function addToLibrary(book) {
-    // Obtener la biblioteca desde localStorage
-    const library = JSON.parse(localStorage.getItem('library')) || [];
-
+    const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
+    
     // Evitar duplicados en la biblioteca
-    const isDuplicate = library.some(item => item.id === book.id);
-    if (!isDuplicate) {
-        library.push({
-            id: book.id,
-            title: book.title,
-            authors: book.authors,
-            description: book.description,
-            image: book.imageLinks?.thumbnail || '../img/default-cover.png'
-        });
-        localStorage.setItem('library', JSON.stringify(library));
-        alert('Libro agregado a tu biblioteca');
-    } else {
-        alert('El libro ya está en tu biblioteca');
+    if (libraryBooks.some(libBook => libBook.title === book.title)) {
+        showNotification('Este libro ya está en tu biblioteca.', 'orange');
+        return;
     }
+
+    const newBook = {
+        id: book.id,
+        title: book.title,
+        author: book.authors?.join(', ') || 'Autor no disponible',
+        description: book.description || 'Descripción no disponible',
+        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
+        link: book.infoLink || '#'
+    };
+
+    libraryBooks.push(newBook);
+    localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
+    showNotification('Libro añadido a tu biblioteca.', 'green');
+}
+
+// Función para mostrar una notificación de mensaje
+function showNotification(message, color) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.backgroundColor = color; // Asigna color según el mensaje
+    notification.style.position = 'fixed';
+    notification.style.bottom = '10px';
+    notification.style.left = '50%';
+    notification.style.transform = 'translateX(-50%)';
+    notification.style.padding = '10px 20px';
+    notification.style.borderRadius = '5px';
+    notification.style.color = '#fff';
+    notification.style.zIndex = '1000';
+    document.body.appendChild(notification);
+
+    // Elimina la notificación después de 3 segundos
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
 
 // Cerrar el modal
-// Función para cerrar el modal al hacer clic en el botón de cerrar
 function closeModal() {
     document.getElementById('bookModal').style.display = 'none';
-    console.log('Modal cerrado'); // Mensaje para verificar que la función se ejecuta
 }
 
 // Asignar el evento para cerrar el modal
@@ -131,49 +154,12 @@ fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
 fetchBooks('romance', document.getElementById('romance-books'));
 fetchBooks('thriller', document.getElementById('thriller-books'));
 fetchBooks('science fiction', document.getElementById('science-fiction-books'));
-// Función para mostrar una notificación de mensaje
-function showNotification(message, color) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.backgroundColor = color; // Asigna color según el mensaje
-    document.body.appendChild(notification);
 
-    // Elimina la notificación después de 3 segundos
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
-
-// Función para agregar un libro a la biblioteca con notificación
-function addToLibrary(book) {
-    const libraryBooks = JSON.parse(localStorage.getItem('libraryBooks')) || [];
-    
-    // Evitar duplicados en la biblioteca
-    if (libraryBooks.some(libBook => libBook.title === book.title)) {
-        showNotification('Este libro ya está en tu biblioteca.', 'orange');
-        return;
-    }
-
-    const newBook = {
-        id: book.id,
-        title: book.title,
-        author: book.authors?.join(', ') || 'Autor no disponible',
-        description: book.description || 'Descripción no disponible', // Incluir la descripción
-        image: book.imageLinks?.thumbnail || 'https://via.placeholder.com/128x195?text=Sin+imagen',
-        link: book.infoLink || '#'
-    };
-
-    libraryBooks.push(newBook);
-    localStorage.setItem('libraryBooks', JSON.stringify(libraryBooks));
-    showNotification('Libro añadido a tu biblioteca.', 'green');
-}
 // Función para mover el carrusel principal (Recomendaciones)
 function moveCarousel(direction) {
     const carousel = document.getElementById('carousel-books');
     const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
 
-    // Mueve el carrusel en la dirección indicada
     carousel.scrollBy({
         left: direction * scrollAmount,
         behavior: 'smooth'
@@ -185,11 +171,8 @@ function moveCarouselGenre(direction, containerId) {
     const carousel = document.getElementById(containerId);
     const scrollAmount = 300; // Ajusta el valor según el ancho de los libros
 
-    // Mueve el carrusel en la dirección indicada
     carousel.scrollBy({
         left: direction * scrollAmount,
         behavior: 'smooth'
     });
 }
-
-

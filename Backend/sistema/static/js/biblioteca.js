@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <h2 class="story-title">${book.title || 'Título Desconocido'}</h2>
                 <p class="story-author">${book.authors || 'Autor Desconocido'}</p>
                 <button class="cta-button leer-button">
-                    <img src="../img/leer.png" alt="Icono de Leer" class="cta-image"> Leer
+                    <img src="${book.image || '../img/leer.png'}"  class="cta-image"> Leer
                 </button>
             </div>
         `;
