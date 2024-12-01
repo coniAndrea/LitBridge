@@ -7,9 +7,9 @@
     <title> Biblioteca - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/biblioteca.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lectura.css' %}">
     <script src="{% static 'js/header.js' %}" defer></script> 
-    <script src="{% static 'js/biblioteca.js' %}" defer></script> 
+    <script src="{% static 'js/lectura.js' %}" defer></script> 
 </head>
 <body>
     <header>
@@ -54,7 +54,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir.html';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='creaciones/';">Escribir</button>
         </div>
 
         <div class="user-container">
@@ -66,42 +66,51 @@
                 <ul>
                     <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
                     <hr>
-                    <li><a href="#">Buzón</a></li>
-                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'buzon' %}">Buzón</a></li>
                     <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma:</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Idioma: Español</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
     </header>
-    
- <!-- BASE -->
+
+    <!-- BASE -->
+    <main>
+        <div>
+            <textarea id="book_description" readonly disabled></textarea>
+        </div>
+    </main>
+
+ <!-- Añadir una sección de traducción -->
+<section id="traduccion">
     <header id="book-header">
         <div class="book-info">
-            <img id="book-cover" src="../img/default-cover.png" alt="Portada del libro" class="book-cover">
+            <img id="book-cover" src="{% static 'img/default-cover.png' %}" alt="Portada del libro" class="book-cover">
             <div class="book-details">
                 <h1 id="book-title">Título del Libro</h1>
                 <h3 id="book-author">Autor del Libro</h3>
             </div>
         </div>
-        <div class="chapter-selector">
-            <label for="chapters">Seleccionar capítulo:</label>
-            <select id="chapters">
-                <option value="" disabled selected>Elige un capítulo</option>
-            </select>
-        </div>
     </header>
-    <main id="chapter-content">
-        <div class="card">
-            <h2 id="chapter-title">Título del Capítulo</h2>
-            <p id="chapter-text">El contenido del capítulo aparecerá aquí.</p>
+    <h2>Traducción</h2>
+    <form id="form-traduccion">
+        {% csrf_token %}
+        <label for="idioma">Selecciona un idioma:</label>
+        <div>
+            <input type="radio" id="es" name='idioma' value="es"> Español
+            <input type="radio" id="en" name='idioma' value="en"> Inglés
         </div>
-    </main>
-    
+        <button type="button" id="btn-traducir">Traducir contenido</button>
+    </form>
+    <div id="contenido-traducido">
+        <h3>Texto traducido:</h3>
+        <p id="texto-traducido">Aquí aparecerá el texto traducido.</p>
+    </div>
+</section>
+
    <!-- Pie de página -->
    <footer>
     <div class="footer-content">

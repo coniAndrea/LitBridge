@@ -54,7 +54,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='creaciones/';">Escribir</button>
         </div>
 
         <div class="user-container">
@@ -66,11 +66,9 @@
                 <ul>
                     <li><a href="{% url 'perfil'%}">Mi Perfil</a></li>
                     <hr>
-                    <li><a href="#">Buzón</a></li>
-                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'buzon' %}">Buzón</a></li>
                     <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
@@ -261,7 +259,7 @@
 
                 </div>
                 <br>
-                <button class="submit-btn" onclick="traducirContenidoDeAPI(); traducirPaginaCompleta();">Guardar</button>
+                <button class="submit-btn" type="submit" onclick="traducirContenidoDeAPI(); traducirPaginaCompleta();">Guardar</button>
             </div>
         </div> <!-- Cierre del settings-content -->
     </div> <!-- Cierre del settings-container -->

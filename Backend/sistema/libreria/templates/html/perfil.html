@@ -7,16 +7,17 @@
     <title> Perfil - LitBrigde</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <script src="{% static 'js/header.js' %}" defer></script> 
     <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
-    <script src="{% static 'js/perfil.js' %}" defer></script>
+    <script src="{% static 'js/header.js' %}" defer></script> 
+    <script src="{% static 'js/perfil.js' %}" defer></script> 
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{% url 'home' %}"></a>
+          <a href="{% url 'home' %}">
             <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
+          </a>
         </div>
 
         <div class="dropdown">
@@ -53,7 +54,7 @@
             <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
         </div>
         <div class="button-container">
-            <button class="navigate-button" onclick="window.location.href='escribir';">Escribir</button>
+            <button class="navigate-button" onclick="window.location.href='creaciones/';">Escribir</button>
         </div>
 
         <div class="user-container">
@@ -65,25 +66,30 @@
                 <ul>
                     <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
                     <hr>
-                    <li><a href="#">Buzón</a></li>
-                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'buzon' %}">Buzón</a></li>
                     <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma: Español</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Idioma: Español</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
     </header>
-
     <div class="profile-header">
         <div class="background-image">
-            <img class="fondo" src="{% static 'img/background.jpeg' %}" alt="Fondo de perfil">
+            {% if user.PerfilUsuario.imagen_perfil %}
+            <td><img class="fondo" src="{{ user.PerfilUsuario.imagen_perfil.url }}" alt="Fondo perfil"></td>
+            {% else %}
+            <td><img class="fondo" src="{% static 'img/background.jpeg' %}" alt="Fondo predeterminado"></td>
+            {% endif %}
         </div>
         <div class="profile-info">
-            <img class="avatar" src="{% static 'img/Perfil.jpeg' %}" alt="Avatar">
+            {% if user.PerfilUsuario.media_perfil %}
+            <td><img class="avatar" src="{{ PerfilUsuario.imagen_perfil.url }}" alt="Avatar"></td>
+            {% else %}
+            <td><img class="avatar" src="{% static 'img/Perfil.jpeg' %}" alt="Avatar predeterminado"></td>
+            {% endif %}
             <div class="stats">
                 <span id="obras">0 Obras</span>
                 <span id="listas">0 Listas de lectura</span>
@@ -105,49 +111,43 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Edita tu perfil</h2>
-            <form id="profileForm">
-                <label for="gender">Género</label>
-                <select id="gender">
-                    <option>Él</option>
-                    <option>Ella</option>
-                    <option>Elles</option>
-                </select>
+            <form id="profileForm" method="post" enctype="multipart/form-data" action="{% url 'editar_perfil' %}">
+                {% csrf_token %}
     
                 <label for="info">Información</label>
-                <textarea id="info" placeholder="Escribe algo sobre ti..." maxlength="2000"></textarea>
+                <textarea id="info" name="info" placeholder="Escribe algo sobre ti..." maxlength="2000"></textarea>
     
                 <label for="website">Mi sitio web</label>
-                <input type="url" id="website" placeholder="Introduce un enlace a tu página web personal">
+                <input type="url" id="website" name="website" placeholder="Introduce un enlace a tu página web personal">
     
                 <label for="location">Ubicación</label>
-                <input type="text" id="location" placeholder="Ingresa tu ubicación">
+                <input type="text" id="location" name="location" placeholder="Ingresa tu ubicación">
     
-                <!-- Botones para cambiar imágenes -->
                 <div class="image-actions">
                     <label for="bgImageInput">
                         <i class="fas fa-camera"></i> Cambiar fondo
                     </label>
-                    <input type="file" id="bgImageInput" accept="image/*" />
-                
+                    <input type="file" id="bgImageInput" name="bg_image" accept="image/*">
+    
                     <label for="profileImageInput">
                         <i class="fas fa-camera"></i> Cambiar foto de perfil
                     </label>
-                    <input type="file" id="profileImageInput" accept="image/*" />
+                    <input type="file" id="profileImageInput" name="profile_image" accept="image/*">
                 </div>
     
                 <div class="modal-actions">
                     <button type="submit" class="save-btn">Guardar cambios</button>
-                    <button type="button" class="cancel-btn">Cancelar</button>
+                    <button class="cancel-btn" id="cancelBtn">Cancelar</button>
                 </div>
             </form>
         </div>
     </div>
+    
     <br>
     <div class="settings-container">
         <ul class="settings-menu">
-            <li><a href="#" class="active" onclick="showSection('info')">Info</a></li>
+            <li><a href="{% url 'perfil' %}" class="active" onclick="showSection('info')">Info</a></li>
             <li><a href="#" onclick="showSection('Conversasion')">Conversaciones</a></li>
-            <!--  <li><a href="#" onclick="showSection('siguiendo')">Siguiendo</a></li>-->
 
         </ul>
 
@@ -173,13 +173,6 @@
                 <div id="myModal" class="modal">
                     <div class="modal-content">
                         <form id="profileForm">
-                            <label for="gender">Género</label>
-                            <select id="gender">
-                                <option>Él</option>
-                                <option>Ella</option>
-                                <option>Elles</option>
-                            </select>
-                    
                             <label for="info">Información</label>
                             <textarea id="info" placeholder="Escribe algo sobre ti..." maxlength="2000"></textarea>
                     
@@ -195,8 +188,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div id="Conversasion" class="section">
@@ -207,7 +198,11 @@
 
                     <div class="comment-box">
                         <div class="comment-header">
-                            <img src="#" alt="Profile Picture" class="profile-pic">
+                            {% if user.PerfilUsuario.imagen_perfil %}
+                            <td><img class="avatar" src="{{ user.PerfilUsuario.imagen_perfil.url }}" ></td>
+                            {% else %}
+                            <td><img class="avatar" src="{% static 'img/Perfil.jpeg' %}" ></td>
+                            {% endif %}
                             <div class="comment-info">
                                 <span class="username"></span>
                                 <span class="date"></span>
@@ -230,21 +225,16 @@
                     </div>
 
                     <div class="comment-response">
-                        <img src="#" alt="Profile Picture" class="profile-pic">
+                        {% if user.PerfilUsuario.imagen_perfil %}
+                            <td><img class="avatar" src="{{ user.PerfilUsuario.imagen_perfil.url }}" ></td>
+                            {% else %}
+                            <td><img class="avatar" src="{% static 'img/Perfil.jpeg' %}" ></td>
+                            {% endif %}
                         <input type="text" placeholder="Escribe una respuesta..." class="response-input">
                     </div>
                 </div>
 
             </div>
-
-
-            <!-- <div id="siguiendo" class="section">
-            <h2></h2>
-            <br>
-            <div class="container">
-
-            </div>-->
-
         </div>
     </div> <!-- Cierre del settings-content -->
     </div> <!-- Cierre del settings-container -->

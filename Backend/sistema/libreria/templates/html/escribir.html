@@ -5,24 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escribir - LitBrigde</title>
+    <!-- Fuentes y estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/escribir.css' %}">
     <script src="{% static 'js/header.js' %}" defer></script>
 </head>
 <body>
+    <!-- Encabezado -->
     <header>
         <div class="logo">
             <img src="{% static 'img/logo.png' %}" alt="LitBrigde Logo" class="logo-image">
             <h1>LitBrigde</h1>
         </div>
-
+        <!-- Menú desplegable de categorías -->
         <div class="dropdown">
             <button class="dropbtn">Categoría</button>
             <i class="fas fa-caret-down"></i>
             <div class="dropdown-content">
-                <a href="#">Acción</a>              
-                <a href="#">Aventura</a>                  
+                <a href="#">Acción</a>
+                <a href="#">Aventura</a>
                 <a href="#">Chick-Lit</a>
                 <a href="#">Ciencia Ficción</a>
                 <a href="#">Clásico</a>
@@ -46,11 +48,12 @@
                 <a href="#">Vampiro</a>
             </div>
         </div>
-         
+        <!-- Barra de búsqueda -->
         <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i> <input type="text" placeholder="Buscar..." />
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar..." />
         </div>
-
+        <!-- Perfil de usuario -->
         <div class="user-container">
             <div class="user-icon">
                 <img src="{% static 'img/Perfil.jpeg' %}" alt="Usuario" class="user-image">
@@ -60,12 +63,10 @@
                 <ul>
                     <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
                     <hr>
-                    <li><a href="#">Buzón</a></li>
-                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{% url 'buzon' %}">Buzón</a></li>
                     <li><a href="{% url 'biblioteca' %}">Biblioteca</a></li>
                     <hr>
-                    <li><a href="#">Idioma:</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="{% url 'config' %}">Idioma: Español</a></li>
                     <li><a href="{% url 'config' %}">Configuración</a></li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 </ul>
@@ -73,36 +74,67 @@
         </div>
     </header>
     <br>
+    <!-- Contenido principal -->
     <main>
+        <!-- Navegación -->
         <nav>
             <div class="back-arrow">
                 <a href="{% url 'home' %}"><i class="fa-solid fa-arrow-left"></i></a>
             </div>
         </nav>
-        <div class="create-new-story-container"> <!-- Contenedor del botón -->
+        <!-- Botón de crear nueva historia -->
+        <div class="create-new-story-container">
             <a href="{% url 'crear_usuario' %}" class="create-new-story">
                 <i class="fa-regular fa-square-plus"></i>
                 Crear Una Nueva Historia
             </a>
         </div>
         <br>
-        <h1> Mis Creaciones</h1>
-        <br>
-        <div class="story-card">
-            <div class="story-image">
-                <img src="ruta_de_la_imagen" alt="Imagen de la historia">
+        <!-- Bloque dinámico -->
+        {% block contenido %}
+        <div class="card custom-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="card-title mb-0">Mis Creaciones</h4>
             </div>
-            <div class="story-details">
-                <p class="story-name"><strong>Nombre de la historia</strong></p>
-                <p class="story-info">Estado: <span>Activo</span> | Cantidad de capítulos: <span>10</span></p>
-                <br>
-                <nav class="story-actions">
-                    <div><a href="#" class="edit"><i class="fa-regular fa-pen-to-square"></i>Editar</a></div>
-                    <div><a href="#" class="continue"><i class="fa-solid fa-pencil-alt"></i>Continuar...</a></div>
-                    <div><a href="#" class="delete"> <i class="fa-solid fa-trash-can"></i>Eliminar</a></div>
-                </nav>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Idioma</th>
+                                <th scope="col">Portada</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for creacion in creaciones %}
+                            <tr>
+                                <td>{{ creacion.titulo }}</td>
+                                <td>{{ creacion.idioma }}</td>
+                                <td>
+                                    <img src="{{ creacion.portada.url }}" width="100" alt="Portada del libro" class="img-thumbnail" />
+                                </td>
+                                <td>{{ creacion.descripcion }}</td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-sm btn-info" href="{% url 'escribir_editar' creacion.id %}" role="button">Editar</a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'eliminar' creacion.id %}" role="button">Eliminar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">No hay creaciones disponibles.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        {% endblock %}
     </main>
 </body>
 </html>

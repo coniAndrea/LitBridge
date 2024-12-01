@@ -154,9 +154,16 @@ function closeModal() {
 document.getElementById('closeModalBtn').onclick = closeModal;
 
 // Llamadas para cargar libros en distintas secciones
-fetchBooks('mystery', carouselBooks);
-fetchBooks('fantasy', genreBooks);
-// Agrega más categorías según sea necesario
+fetchBooks('mystery', carouselBooks);  
+fetchBooks('fantasy', genreBooks);    
+fetchBooks('adventure', document.getElementById('adventure-books'));  
+fetchBooks('werewolf', document.getElementById('werewolf-books'));
+fetchBooks('vampire', document.getElementById('vampire-books'));
+fetchBooks('classic', document.getElementById('classic-books'));
+fetchBooks('fairy tales', document.getElementById('fairy-tales-books'));
+fetchBooks('romance', document.getElementById('romance-books'));
+fetchBooks('thriller', document.getElementById('thriller-books'));
+fetchBooks('science fiction', document.getElementById('science-fiction-books'));
 
 // Función para mover el carrusel principal (Recomendaciones)
 function moveCarousel(direction) {

@@ -27,74 +27,6 @@ main {
     color: #182a3f;
 }
 
-/* Tarjeta de historia */
-.story-card {
-    display: flex;
-    background-color: #d8e7ff; 
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-}
-
-/* Imagen de la historia */
-.story-image img {
-    width: 120px;
-    height: 160px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-
-/* Detalles de la historia */
-.story-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.title {
-    font-size: 1.2em;
-    color: #333;
-}
-
-.story-name {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.story-info {
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Acciones de la historia (botones) */
-.story-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.story-actions a {
-    display: inline-block;
-    background-color: #d8e7ff;
-    color: #3f51b5;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: background-color 0.3s; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-}
-
-.story-actions a:hover {
-    background-color: #074693;
-    color: #d8e7ff;
-}
-
 /* Estilos para el nav */
 nav {
     background-color: transparent; 
@@ -144,5 +76,116 @@ nav {
 
 .create-new-story:hover i {
     color: #3f51b5; 
+}
+
+/* Estilo de la tarjeta */
+.custom-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #3f51b5;
+    overflow: hidden;
+}
+
+/* Encabezado de la tarjeta */
+.custom-card .card-header {
+    background-color: #3f51b5;
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Título en el encabezado */
+.custom-card .card-header .card-title {
+    margin: 0;
+}
+
+/* Contenido de la tarjeta */
+.custom-card .card-body {
+    padding: 20px;
+    background-color: #f9fbff;
+}
+
+/* Tabla */
+.custom-card .table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.custom-card .table-hover tbody tr:hover {
+    background-color: #eef4ff;
+    transition: background-color 0.3s ease;
+}
+
+.custom-card .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7f9ff;
+}
+
+/* Encabezado de la tabla */
+.custom-card .table-header {
+    background-color: #3f51b5;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Celdas de la tabla */
+.custom-card .table th,
+.custom-card .table td {
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Imágenes en las filas */
+.custom-card .img-thumbnail {
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: auto;
+}
+
+/* Botones de acción */
+.custom-card .btn-info {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.custom-card .btn-info:hover {
+    background-color: #2c3a9b;
+    transform: scale(1.05);
+}
+
+.custom-card .btn-danger {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.custom-card .btn-danger:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* Mensaje de tabla vacía */
+.custom-card tbody tr td[colspan] {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
 }
 
